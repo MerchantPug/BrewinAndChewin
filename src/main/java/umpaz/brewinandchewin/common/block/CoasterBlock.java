@@ -21,7 +21,6 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import umpaz.brewinandchewin.common.block.entity.CoasterBlockEntity;
@@ -33,18 +32,17 @@ public class CoasterBlock extends BaseEntityBlock {
     public static final BooleanProperty INVISIBLE = BooleanProperty.create("invisible");
 
     protected static final VoxelShape COASTER_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 1.0D, 13.0D);
-    protected static final VoxelShape TRAY_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
     protected static final VoxelShape[] SHAPES_WITHOUT_COASTER = {
-            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 7.0D, 13.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 7.0D, 15.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 7.0D, 15.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 7.0D, 15.0D),
+            Block.box(6.0D, 0.0D, 6.0D, 11.0D, 6.0D, 11.0D),
+            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 6.0D, 13.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D)
     };
     protected static final VoxelShape[] SHAPES_WITH_COASTER = {
-            Shapes.or(SHAPES_WITHOUT_COASTER[0].move(0,  1.0 / 16.0, 0), COASTER_SHAPE),
-            Shapes.or(SHAPES_WITHOUT_COASTER[1].move(0, 1.0 / 16.0, 0), TRAY_SHAPE),
-            Shapes.or(SHAPES_WITHOUT_COASTER[2].move(0, 1.0 / 16.0, 0), TRAY_SHAPE),
-            Shapes.or(SHAPES_WITHOUT_COASTER[3].move(0, 1.0 / 16.0, 0), TRAY_SHAPE),
+            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 8.0D, 13.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 8.0D, 15.0D)
     };
 
     public CoasterBlock() {
