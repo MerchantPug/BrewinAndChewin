@@ -120,7 +120,8 @@ public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBl
 
         if (!entity.getBlockState().getValue(CoasterBlock.INVISIBLE)) {
             poseStack.pushPose();
-            Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), Minecraft.getInstance().getModelManager().getModel(new ResourceLocation(BrewinAndChewin.MODID, "block/coaster")), entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, null);
+            ResourceLocation modelId = entity.getBlockState().getValue(CoasterBlock.SIZE) > 1 ? new ResourceLocation(BrewinAndChewin.MODID, "block/coaster_tray") : new ResourceLocation(BrewinAndChewin.MODID, "block/coaster");
+            Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), Minecraft.getInstance().getModelManager().getModel(modelId), entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, null);
             poseStack.popPose();
         }
 

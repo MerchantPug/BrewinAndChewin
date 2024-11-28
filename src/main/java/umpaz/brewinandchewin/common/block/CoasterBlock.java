@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 import umpaz.brewinandchewin.common.block.entity.CoasterBlockEntity;
@@ -31,7 +32,20 @@ public class CoasterBlock extends BaseEntityBlock {
     public static final IntegerProperty SIZE = IntegerProperty.create("size", 0, 4);
     public static final BooleanProperty INVISIBLE = BooleanProperty.create("invisible");
 
-    protected static final VoxelShape SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 1.0D, 13.0D);
+    protected static final VoxelShape COASTER_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 1.0D, 13.0D);
+    protected static final VoxelShape TRAY_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
+    protected static final VoxelShape[] SHAPES_WITHOUT_COASTER = {
+            Block.box(6.0D, 0.0D, 6.0D, 11.0D, 6.0D, 11.0D),
+            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 6.0D, 13.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D),
+            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D),
+    };
+    protected static final VoxelShape[] SHAPES_WITH_COASTER = {
+            Shapes.or(SHAPES_WITHOUT_COASTER[0].move(0, 1, 0), COASTER_SHAPE),
+            Shapes.or(SHAPES_WITHOUT_COASTER[1].move(0, 1, 0), TRAY_SHAPE),
+            Shapes.or(SHAPES_WITHOUT_COASTER[2].move(0, 1, 0), TRAY_SHAPE),
+            Shapes.or(SHAPES_WITHOUT_COASTER[3].move(0, 1, 0), TRAY_SHAPE),
+    };
 
     public CoasterBlock() {
         super(Properties.copy(Blocks.BROWN_CARPET).sound(SoundType.WOOD).instabreak());
@@ -45,12 +59,15 @@ public class CoasterBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+        int size = state.getValue(SIZE);
+        if (size > 0)
+            return state.getValue(INVISIBLE) ? SHAPES_WITHOUT_COASTER[size - 1] : SHAPES_WITH_COASTER[size - 1];
+        return COASTER_SHAPE;
     }
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return SHAPE;
+        return COASTER_SHAPE;
     }
 
     @Override

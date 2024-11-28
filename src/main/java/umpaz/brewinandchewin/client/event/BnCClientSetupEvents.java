@@ -48,6 +48,7 @@ public class BnCClientSetupEvents {
     public static void bakeModels(ModelEvent.RegisterAdditional event) {
         List<ResourceLocation> models = getModels(Minecraft.getInstance().getResourceManager(), Runnable::run);
         event.register(new ResourceLocation(BrewinAndChewin.MODID, "block/coaster"));
+        event.register(new ResourceLocation(BrewinAndChewin.MODID, "block/coaster_tray"));
         for (ResourceLocation entry : models) {
             event.register(entry);
         }
