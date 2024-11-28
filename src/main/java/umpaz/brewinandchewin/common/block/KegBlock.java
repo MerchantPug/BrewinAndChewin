@@ -88,7 +88,8 @@ public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock 
             else if ( !player.getInventory().add(itm) ) {
                player.drop(itm, false);
             }
-            return InteractionResult.SUCCESS;
+             level.playLocalSound(pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1, 1, false);
+             return InteractionResult.SUCCESS;
          }
          if ( !level.isClientSide() )
             NetworkHooks.openScreen((ServerPlayer) player, kegBE, pos);
