@@ -174,3 +174,26 @@ publishing {
 compileJava {
     options.compilerArgs << "-Acrafttweaker.processor.document.output_directory=${file('docsOut')}"
 }
+
+
+processResources {
+    var replaceProperties = [
+            minecraft_version       : mc_version,
+            minecraft_version_range : mc_version_range,
+
+            mod_id                  : mod_id,
+            mod_name                : mod_name,
+            mod_version             : version,
+            mod_license             : license,
+            mod_authors             : mod_authors,
+            mod_description         : mod_description,
+            mod_homepage            : mod_homepage,
+            mod_github              : mod_github
+    ]
+    // setting them as input
+    inputs.properties replaceProperties
+
+    filesMatching("META-INF/mods.toml") {
+        expand replaceProperties + [project: project]
+    }
+}
