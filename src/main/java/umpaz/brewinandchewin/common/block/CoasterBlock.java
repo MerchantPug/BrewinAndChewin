@@ -35,7 +35,7 @@ public class CoasterBlock extends BaseEntityBlock {
     protected static final VoxelShape COASTER_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 1.0D, 13.0D);
     protected static final VoxelShape TRAY_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
     protected static final VoxelShape[] SHAPES_WITHOUT_COASTER = {
-            Block.box(3.0D, 0.0D, 3.0D, 11.0D, 6.0D, 11.0D),
+            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 6.0D, 13.0D),
             Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D),
             Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D),
             Block.box(1.0D, 0.0D, 1.0D, 15.0D, 6.0D, 15.0D),
