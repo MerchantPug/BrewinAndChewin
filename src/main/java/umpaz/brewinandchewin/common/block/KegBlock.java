@@ -80,14 +80,16 @@ public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock 
 
       BlockEntity tileEntity = level.getBlockEntity(pos);
       if ( tileEntity instanceof KegBlockEntity kegBE ) {
-         ItemStack itm = kegBE.fluidExtract(kegBE, heldStack, player.getSlot(player.getInventory().getFreeSlot()).get(), 1);
-         if ( !itm.isEmpty() ) {
-            if ( heldStack.isEmpty() ) {
-               player.setItemInHand(hand, itm);
-            }
-            else if ( !player.getInventory().add(itm) ) {
-               player.drop(itm, false);
-            }
+         ItemStack itm = kegBE.fluidExtract(kegBE, heldStack, player.getSlot(player.getInventory().getFreeSlot()).get(), 1, player.getAbilities().instabuild);
+         if ( !itm.isEmpty()) {
+             if (!ItemStack.isSameItemSameTags(itm, heldStack) ) {
+                 if ( heldStack.isEmpty() ) {
+                     player.setItemInHand(hand, itm);
+                 }
+                 else if ( !player.getInventory().add(itm) ) {
+                     player.drop(itm, false);
+                 }
+             }
              level.playLocalSound(pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1, 1, false);
              return InteractionResult.SUCCESS;
          }
