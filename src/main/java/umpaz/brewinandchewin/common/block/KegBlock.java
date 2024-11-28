@@ -205,6 +205,8 @@ public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock 
 
    @Nullable
    public <T extends BlockEntity> BlockEntityTicker<T> getTicker( Level level, BlockState state, BlockEntityType<T> blockEntity ) {
-      return createTickerHelper(blockEntity, BnCBlockEntityTypes.KEG.get(), KegBlockEntity::fermentingTick);
+       if (level.isClientSide())
+           return null;
+       return createTickerHelper(blockEntity, BnCBlockEntityTypes.KEG.get(), KegBlockEntity::fermentingTick);
    }
 }
