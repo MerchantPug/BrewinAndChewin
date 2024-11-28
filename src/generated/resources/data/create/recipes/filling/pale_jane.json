@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:tankard"
+    },
+    {
+      "amount": 250,
+      "fluid": "brewinandchewin:pale_jane",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "brewinandchewin:pale_jane"
+    }
+  ]
+}

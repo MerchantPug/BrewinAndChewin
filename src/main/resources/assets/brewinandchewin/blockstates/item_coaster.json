@@ -1,0 +1,19 @@
+{
+    "variants": {
+        "facing=north": {
+            "model": "brewinandchewin:block/item_coaster"
+        },
+        "facing=south": {
+            "model": "brewinandchewin:block/item_coaster",
+            "y": 180
+        },
+        "facing=west": {
+            "model": "brewinandchewin:block/item_coaster",
+            "y": 270
+        },
+        "facing=east": {
+            "model": "brewinandchewin:block/item_coaster",
+            "y": 90
+        }
+    }
+}

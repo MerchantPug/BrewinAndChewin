@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:tankard"
+    },
+    {
+      "amount": 250,
+      "fluid": "brewinandchewin:withering_dross",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "brewinandchewin:withering_dross"
+    }
+  ]
+}

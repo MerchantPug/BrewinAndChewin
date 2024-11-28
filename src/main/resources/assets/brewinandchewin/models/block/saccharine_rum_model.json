@@ -1,0 +1,7 @@
+{
+  "parent": "brewinandchewin:block/tankard_model",
+  "textures": {
+    "particle": "brewinandchewin:block/saccharine_rum",
+    "tankard": "brewinandchewin:block/saccharine_rum"
+  }
+}

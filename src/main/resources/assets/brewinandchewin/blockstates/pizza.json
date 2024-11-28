@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "servings=3": {
+      "model": "brewinandchewin:block/pizza"
+    },
+    "servings=2": {
+      "model": "brewinandchewin:block/pizza_slice1"
+    },
+    "servings=1": {
+      "model": "brewinandchewin:block/pizza_slice2"
+    },
+    "servings=0": {
+      "model": "brewinandchewin:block/pizza_slice3"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+{
+  "variants": {
+    "facing=north,vertical=false": {
+      "model": "brewinandchewin:block/keg"
+    },
+    "facing=south,vertical=false": {
+      "model": "brewinandchewin:block/keg",
+      "y": 180
+    },
+    "facing=west,vertical=false": {
+      "model": "brewinandchewin:block/keg",
+      "y": 270
+    },
+    "facing=east,vertical=false": {
+      "model": "brewinandchewin:block/keg",
+      "y": 90
+    },
+    "facing=north,vertical=true": {
+      "model": "brewinandchewin:block/vertical_keg"
+    },
+    "facing=south,vertical=true": {
+      "model": "brewinandchewin:block/vertical_keg",
+      "y": 180
+    },
+    "facing=west,vertical=true": {
+      "model": "brewinandchewin:block/vertical_keg",
+      "y": 270
+    },
+    "facing=east,vertical=true": {
+      "model": "brewinandchewin:block/vertical_keg",
+      "y": 90
+    }
+  }
+}

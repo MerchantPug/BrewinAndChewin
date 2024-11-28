@@ -1,0 +1,9 @@
+{
+  "parent": "minecraft:block/orientable_with_bottom",
+  "textures": {
+    "bottom": "farmersdelight:block/crate_bottom",
+    "front": "brewinandchewin:block/heating_cask_front",
+    "side": "brewinandchewin:block/heating_cask_side",
+    "top": "brewinandchewin:block/heating_cask_top"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:flaxen_cheese_wheel"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "brewinandchewin:flaxen_cheese_wedge"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

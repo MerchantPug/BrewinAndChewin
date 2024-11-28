@@ -1,0 +1,21 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "experience": 1.0,
+  "fermentingtime": 12000,
+  "ingredients": [
+    {
+      "tag": "forge:crops/cabbage"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "item": "minecraft:kelp"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "brewinandchewin:kimchi"
+  },
+  "temperature": 4
+}

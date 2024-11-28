@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "minecraft:blaze_powder"
+    },
+    "c": {
+      "item": "minecraft:coal_block"
+    },
+    "m": {
+      "item": "minecraft:magma_block"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    },
+    "s": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "sss",
+    "cCc",
+    "pmp"
+  ],
+  "result": {
+    "item": "brewinandchewin:heating_cask"
+  },
+  "show_notification": true
+}

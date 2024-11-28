@@ -1,0 +1,11 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "container": {
+    "item": "brewinandchewin:tankard"
+  },
+  "fluid": "brewinandchewin:steel_toe_stout",
+  "output": {
+    "item": "brewinandchewin:steel_toe_stout"
+  }
+}

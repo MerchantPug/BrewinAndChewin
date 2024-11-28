@@ -1,0 +1,17 @@
+{
+  "type": "farmersdelight:cutting",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:pizza"
+    }
+  ],
+  "result": [
+    {
+      "count": 4,
+      "item": "brewinandchewin:pizza_slice"
+    }
+  ],
+  "tool": {
+    "tag": "forge:tools/knives"
+  }
+}

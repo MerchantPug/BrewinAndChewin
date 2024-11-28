@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "package": "umpaz.brewinandchewin.common.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "refmap": "brewinandchewin.refmap.json",
+  "mixins": [
+    "client.TipsyChatComponentMixin"
+  ],
+  "client": [
+    "client.TipsyDrunkRendererMixin",
+    "client.TipsyMouseHandlerMixin",
+    "client.TipsySignRendererMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}

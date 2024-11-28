@@ -1,0 +1,9 @@
+{
+  "parent": "farmersdelight:block/pie",
+  "textures": {
+    "particle": "brewinandchewin:block/quiche_top",
+    "bottom": "farmersdelight:block/pie_bottom",
+    "side": "farmersdelight:block/pie_side",
+    "top": "brewinandchewin:block/quiche_top"
+  }
+}

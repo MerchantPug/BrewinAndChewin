@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:tankard"
+    },
+    {
+      "amount": 250,
+      "fluid": "brewinandchewin:kombucha",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "brewinandchewin:kombucha"
+    }
+  ]
+}

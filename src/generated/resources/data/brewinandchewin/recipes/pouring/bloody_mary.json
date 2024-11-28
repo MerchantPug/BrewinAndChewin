@@ -1,0 +1,11 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "container": {
+    "item": "brewinandchewin:tankard"
+  },
+  "fluid": "brewinandchewin:bloody_mary",
+  "output": {
+    "item": "brewinandchewin:bloody_mary"
+  }
+}

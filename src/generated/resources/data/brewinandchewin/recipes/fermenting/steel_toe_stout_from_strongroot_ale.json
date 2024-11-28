@@ -1,0 +1,28 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "basefluid": {
+    "count": 1000,
+    "fluid": "brewinandchewin:strongroot_ale"
+  },
+  "experience": 1.0,
+  "fermentingtime": 6000,
+  "ingredients": [
+    {
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "item": "minecraft:crimson_fungus"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "item": "minecraft:wheat"
+    }
+  ],
+  "result": {
+    "count": 1000,
+    "fluid": "brewinandchewin:steel_toe_stout"
+  },
+  "temperature": 1
+}

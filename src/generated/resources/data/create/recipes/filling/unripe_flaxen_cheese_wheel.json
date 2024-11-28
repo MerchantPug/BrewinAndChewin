@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "amount": 1000,
+      "fluid": "brewinandchewin:flaxen_cheese",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "brewinandchewin:unripe_flaxen_cheese_wheel"
+    }
+  ]
+}

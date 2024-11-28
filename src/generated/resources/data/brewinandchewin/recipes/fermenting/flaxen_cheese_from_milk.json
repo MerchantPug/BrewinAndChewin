@@ -1,0 +1,25 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "basefluid": {
+    "count": 1000,
+    "fluid": "minecraft:milk"
+  },
+  "experience": 1.0,
+  "fermentingtime": 12000,
+  "ingredients": [
+    {
+      "item": "minecraft:brown_mushroom"
+    },
+    {
+      "item": "minecraft:pumpkin_seeds"
+    },
+    {
+      "item": "minecraft:sugar"
+    }
+  ],
+  "result": {
+    "count": 1000,
+    "fluid": "brewinandchewin:flaxen_cheese"
+  },
+  "temperature": 4
+}

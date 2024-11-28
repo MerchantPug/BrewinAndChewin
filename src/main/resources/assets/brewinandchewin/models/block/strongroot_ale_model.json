@@ -1,0 +1,7 @@
+{
+  "parent": "brewinandchewin:block/tankard_model",
+  "textures": {
+    "particle": "brewinandchewin:block/strongroot_ale",
+    "tankard": "brewinandchewin:block/strongroot_ale"
+  }
+}

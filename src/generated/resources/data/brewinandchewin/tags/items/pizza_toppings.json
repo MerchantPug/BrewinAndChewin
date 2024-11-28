@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#forge:cooked_bacon",
+    "#forge:cooked_beef",
+    "#forge:cooked_chicken",
+    "#forge:cooked_mutton",
+    "#forge:cooked_pork",
+    "minecraft:brown_mushroom",
+    "minecraft:red_mushroom",
+    "minecraft:carrot",
+    "minecraft:beetroot",
+    "farmersdelight:cabbage_leaf",
+    "farmersdelight:onion"
+  ]
+}

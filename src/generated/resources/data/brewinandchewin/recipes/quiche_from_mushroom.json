@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "farmersdelight:pie_crust"
+    },
+    "b": {
+      "item": "minecraft:brown_mushroom"
+    },
+    "c": {
+      "tag": "brewinandchewin:cheese_wedges"
+    },
+    "e": {
+      "item": "minecraft:egg"
+    },
+    "l": {
+      "item": "farmersdelight:cabbage_leaf"
+    },
+    "m": {
+      "item": "farmersdelight:milk_bottle"
+    }
+  },
+  "pattern": [
+    "blb",
+    "mcm",
+    "eCe"
+  ],
+  "result": {
+    "item": "brewinandchewin:quiche"
+  },
+  "show_notification": true
+}

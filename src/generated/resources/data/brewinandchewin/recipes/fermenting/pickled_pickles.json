@@ -1,0 +1,25 @@
+{
+  "type": "brewinandchewin:fermenting",
+  "basefluid": {
+    "count": 250,
+    "fluid": "brewinandchewin:honey"
+  },
+  "experience": 1.0,
+  "fermentingtime": 12000,
+  "ingredients": [
+    {
+      "item": "minecraft:sea_pickle"
+    },
+    {
+      "item": "minecraft:sea_pickle"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    }
+  ],
+  "result": {
+    "count": 2,
+    "item": "brewinandchewin:pickled_pickles"
+  },
+  "temperature": 2
+}

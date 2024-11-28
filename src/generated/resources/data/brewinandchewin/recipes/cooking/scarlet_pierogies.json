@@ -1,0 +1,26 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "brewinandchewin:scarlet_cheese_wedge"
+    },
+    {
+      "tag": "forge:vegetables/potato"
+    },
+    {
+      "tag": "forge:dough"
+    },
+    {
+      "item": "minecraft:nether_wart"
+    },
+    {
+      "tag": "farmersdelight:cabbage_roll_ingredients"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "brewinandchewin:scarlet_pierogies"
+  }
+}

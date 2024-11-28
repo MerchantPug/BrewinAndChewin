@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+issueTrackerURL = "https://github.com/MerchantPug/BrewinAndChewin/issues"
+license = "MIT License"
+
+[[mods]]
+modId = "brewinandchewin"
+version = "1.20.1-1.2.4"
+displayName = "Brewin' And Chewin'"
+# updateJSONURL=""
+displayURL = "https://github.com/MerchantPug/BrewinAndChewin"
+logoFile = "logo.png"
+logoBlur = false
+credits="Umpaz, Probleyes, MerchantPug"
+authors="Umpaz, Probleyes, MerchantPug"
+description = "A cozy farming and cooking expansion for Minecraft!"
+itemIcon = "farmersdelight:stove"
+configBackground = "minecraft:textures/block/bricks.png"
+
+[[dependencies.brewinandchewin]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.1.0,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.brewinandchewin]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.brewinandchewin]]
+modId = "crafttweaker"
+mandatory = false
+versionRange = "[14.0.6,)"
+ordering = "NONE"
+side = "BOTH"

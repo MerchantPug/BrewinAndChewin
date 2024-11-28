@@ -1,0 +1,17 @@
+{
+  "type": "create:emptying",
+  "ingredients": [
+    {
+      "item": "brewinandchewin:unripe_scarlet_cheese_wheel"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "amount": 1000,
+      "fluid": "brewinandchewin:scarlet_cheese"
+    }
+  ]
+}

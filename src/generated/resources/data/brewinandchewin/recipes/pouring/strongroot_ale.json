@@ -1,0 +1,11 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "container": {
+    "item": "brewinandchewin:tankard"
+  },
+  "fluid": "brewinandchewin:strongroot_ale",
+  "output": {
+    "item": "brewinandchewin:strongroot_ale"
+  }
+}

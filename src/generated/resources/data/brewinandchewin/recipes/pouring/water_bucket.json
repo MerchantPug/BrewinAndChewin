@@ -1,0 +1,11 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 1000,
+  "container": {
+    "item": "minecraft:bucket"
+  },
+  "fluid": "minecraft:water",
+  "output": {
+    "item": "minecraft:water_bucket"
+  }
+}

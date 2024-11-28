@@ -1,0 +1,132 @@
+{
+  "parent": "minecraft:block",
+  "render_type": "minecraft:cutout",
+  "ambientocclusion": false,
+  "texture_size": [32, 32],
+  "elements": [
+    {
+      "name": "Box",
+      "from": [4.5, 7, 2.5],
+      "to": [11.5, 7, 4.5],
+      "rotation": {"angle": -22.5, "axis": "x", "origin": [8, 7, 4.5]},
+      "faces": {
+        "north": {"uv": [9, 9.5, 12.5, 9.5], "texture": "#jam"},
+        "east": {"uv": [8, 9.5, 9, 9.5], "texture": "#jam"},
+        "south": {"uv": [13.5, 9.5, 17, 9.5], "texture": "#jam"},
+        "west": {"uv": [12.5, 9.5, 13.5, 9.5], "texture": "#jam"},
+        "up": {"uv": [12.5, 9.5, 9, 8.5], "texture": "#jam"},
+        "down": {"uv": [16, 8.5, 12.5, 9.5], "texture": "#jam"}
+      }
+    },
+    {
+      "name": "Box",
+      "from": [4.5, 7, 11.5],
+      "to": [11.5, 7, 13.5],
+      "rotation": {"angle": 22.5, "axis": "x", "origin": [8, 7, 11.5]},
+      "faces": {
+        "north": {"uv": [9, 10.5, 12.5, 10.5], "texture": "#jam"},
+        "east": {"uv": [8, 10.5, 9, 10.5], "texture": "#jam"},
+        "south": {"uv": [13.5, 10.5, 17, 10.5], "texture": "#jam"},
+        "west": {"uv": [12.5, 10.5, 13.5, 10.5], "texture": "#jam"},
+        "up": {"uv": [12.5, 10.5, 9, 9.5], "texture": "#jam"},
+        "down": {"uv": [16, 9.5, 12.5, 10.5], "texture": "#jam"}
+      }
+    },
+    {
+      "name": "Box",
+      "from": [11.5, 7, 4.5],
+      "to": [13.5, 7, 11.5],
+      "rotation": {"angle": -22.5, "axis": "z", "origin": [11.5, 7, 8]},
+      "faces": {
+        "north": {"uv": [11.5, 3.5, 10.5, 3.5], "texture": "#jam"},
+        "east": {"uv": [15, 3.5, 11.5, 3.5], "texture": "#jam"},
+        "south": {"uv": [16, 3.5, 15, 3.5], "texture": "#jam"},
+        "west": {"uv": [10.5, 3.5, 7, 3.5], "texture": "#jam"},
+        "up": {"uv": [10.5, 3.5, 11.5, 0], "texture": "#jam"},
+        "down": {"uv": [11.5, 0, 12.5, 3.5], "texture": "#jam"}
+      }
+    },
+    {
+      "name": "Box",
+      "from": [2.5, 7, 4.5],
+      "to": [4.5, 7, 11.5],
+      "rotation": {"angle": 22.5, "axis": "z", "origin": [4.5, 7, 8]},
+      "faces": {
+        "north": {"uv": [1, 3.5, 0, 3.5], "texture": "#jam"},
+        "east": {"uv": [4.5, 3.5, 1, 3.5], "texture": "#jam"},
+        "south": {"uv": [5.5, 3.5, 4.5, 3.5], "texture": "#jam"},
+        "west": {"uv": [0, 3.5, -3.5, 3.5], "texture": "#jam"},
+        "up": {"uv": [0, 3.5, 1, 0], "texture": "#jam"},
+        "down": {"uv": [1, 0, 2, 3.5], "texture": "#jam"}
+      }
+    },
+    {
+      "name": "Box",
+      "from": [5, 0.5, 5],
+      "to": [11, 9.5, 11],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 8]},
+      "faces": {
+        "north": {"uv": [3, 11.5, 6, 16], "texture": "#jam"},
+        "east": {"uv": [0, 11.5, 3, 16], "texture": "#jam"},
+        "south": {"uv": [9, 11.5, 12, 16], "texture": "#jam"},
+        "west": {"uv": [6, 11.5, 9, 16], "texture": "#jam"},
+        "up": {"uv": [6, 11.5, 3, 8.5], "texture": "#jam"},
+        "down": {"uv": [9, 8.5, 6, 11.5], "texture": "#jam"}
+      }
+    },
+    {
+      "name": "Box",
+      "from": [4.5, 0, 4.5],
+      "to": [11.5, 10, 11.5],
+      "rotation": {"angle": 0, "axis": "y", "origin": [8, 6, 8]},
+      "faces": {
+        "north": {"uv": [3.5, 3.5, 7, 8.5], "texture": "#jam"},
+        "east": {"uv": [0, 3.5, 3.5, 8.5], "texture": "#jam"},
+        "south": {"uv": [10.5, 3.5, 14, 8.5], "texture": "#jam"},
+        "west": {"uv": [7, 3.5, 10.5, 8.5], "texture": "#jam"},
+        "up": {"uv": [7, 3.5, 3.5, 0], "texture": "#jam"},
+        "down": {"uv": [10.5, 0, 7, 3.5], "texture": "#jam"}
+      }
+    }
+  ],
+  "groups": [
+    {
+      "name": "part1",
+      "origin": [0, 5, 0],
+      "color": 0,
+      "children": [
+        {
+          "name": "part2",
+          "origin": [0, 7, -3.5],
+          "color": 0,
+          "children": [0]
+        },
+        {
+          "name": "part2",
+          "origin": [0, 7, 3.5],
+          "color": 0,
+          "children": [1]
+        },
+        {
+          "name": "part2",
+          "origin": [3.5, 7, 0],
+          "color": 0,
+          "children": [2]
+        },
+        {
+          "name": "part2",
+          "origin": [-3.5, 7, 0],
+          "color": 0,
+          "children": [3]
+        },
+        {
+          "name": "part3",
+          "origin": [0, 5, 0],
+          "color": 0,
+          "children": [4]
+        },
+        5
+      ]
+    }
+  ]
+}

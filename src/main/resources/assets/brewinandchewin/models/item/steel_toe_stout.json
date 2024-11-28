@@ -1,0 +1,6 @@
+{
+  "parent": "farmersdelight:item/mug",
+    "textures": {
+        "layer0": "brewinandchewin:item/steel_toe_stout"
+    }
+}

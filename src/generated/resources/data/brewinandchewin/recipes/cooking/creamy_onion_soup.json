@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "tag": "brewinandchewin:cheese_wedges"
+    },
+    {
+      "tag": "forge:vegetables/onion"
+    },
+    {
+      "tag": "forge:vegetables"
+    },
+    {
+      "tag": "forge:bread"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "brewinandchewin:creamy_onion_soup"
+  }
+}

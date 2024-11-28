@@ -1,0 +1,11 @@
+{
+  "type": "brewinandchewin:keg_pouring",
+  "amount": 250,
+  "container": {
+    "item": "minecraft:glass_bottle"
+  },
+  "fluid": "minecraft:milk",
+  "output": {
+    "item": "farmersdelight:milk_bottle"
+  }
+}

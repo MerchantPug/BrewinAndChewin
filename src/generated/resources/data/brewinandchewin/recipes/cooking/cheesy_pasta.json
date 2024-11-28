@@ -1,0 +1,23 @@
+{
+  "type": "farmersdelight:cooking",
+  "cookingtime": 200,
+  "experience": 1.0,
+  "ingredients": [
+    {
+      "item": "brewinandchewin:flaxen_cheese_wedge"
+    },
+    {
+      "tag": "forge:pasta/raw_pasta"
+    },
+    {
+      "tag": "forge:vegetables/tomato"
+    },
+    {
+      "tag": "forge:raw_fishes"
+    }
+  ],
+  "recipe_book_tab": "meals",
+  "result": {
+    "item": "brewinandchewin:cheesy_pasta"
+  }
+}

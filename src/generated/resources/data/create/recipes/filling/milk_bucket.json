@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:bucket"
+    },
+    {
+      "amount": 1000,
+      "fluid": "minecraft:milk",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:milk_bucket"
+    }
+  ]
+}

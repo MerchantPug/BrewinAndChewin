@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "servings=3": {
+      "model": "brewinandchewin:block/flaxen_cheese_wheel"
+    },
+    "servings=2": {
+      "model": "brewinandchewin:block/flaxen_cheese_wheel1"
+    },
+    "servings=1": {
+      "model": "brewinandchewin:block/flaxen_cheese_wheel2"
+    },
+    "servings=0": {
+      "model": "brewinandchewin:block/flaxen_cheese_wheel3"
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block",
+  "textures": {
+    "particle": "brewinandchewin:block/tankard"
+  }
+}

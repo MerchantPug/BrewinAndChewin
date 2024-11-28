@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "S": {
+      "item": "minecraft:string"
+    },
+    "i": {
+      "item": "minecraft:packed_ice"
+    },
+    "p": {
+      "tag": "minecraft:planks"
+    },
+    "s": {
+      "tag": "minecraft:wooden_slabs"
+    }
+  },
+  "pattern": [
+    "pSp",
+    "sis",
+    "psp"
+  ],
+  "result": {
+    "item": "brewinandchewin:ice_crate"
+  },
+  "show_notification": true
+}

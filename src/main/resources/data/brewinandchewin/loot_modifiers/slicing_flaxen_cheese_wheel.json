@@ -1,0 +1,16 @@
+{
+  "type": "brewinandchewin:slicing",
+  "conditions": [
+    {
+      "condition": "minecraft:match_tool",
+      "predicate": {
+        "tag": "farmersdelight:tools/knives"
+      }
+    },
+    {
+      "condition": "minecraft:block_state_property",
+      "block": "brewinandchewin:flaxen_cheese_wheel"
+    }
+  ],
+  "slice": "brewinandchewin:flaxen_cheese_wedge"
+}
