@@ -87,6 +87,8 @@
   "brewinandchewin.container.keg.warm": "Warm",
   "brewinandchewin.container.keg.hot": "Hot",
 
+  "brewinandchewin.block.feast.use_knife": "You need a Knife to cut this.",
+
   "itemGroup.brewinandchewin": "Brewin' and Chewin'",
   "brewinandchewin.jei.fermenting": "Fermenting",
   "brewinandchewin.jei.aging": "Aging",
