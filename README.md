@@ -14,3 +14,10 @@
 **Brewin' and Chewin'** is an addon mod for Farmer's Delight.
 
 Using a keg, you can brew or ferment many new foods, including liquors, cheese, and fudge!
+
+🔨 Required Dependencies:
+
+- Farmer's Delight
+
+### Discord
+__Chef's Delights [Discord](https://discord.gg/7PBaMYNtrg)__ for questions or whatever~
