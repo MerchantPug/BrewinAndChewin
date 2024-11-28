@@ -59,11 +59,11 @@ public class CoasterBlockEntity extends SyncedBlockEntity {
                 player.drop(inventory.get(count - 1), false);
             }
             inventory.set(count - 1, ItemStack.EMPTY);
+            inventoryChanged();
 
             level.setBlockAndUpdate(pos, state.getValue(INVISIBLE) && count == 1 ? Blocks.AIR.defaultBlockState() : state
                     .setValue(CoasterBlock.SIZE, state.getValue(CoasterBlock.SIZE) - 1)
             );
-            inventoryChanged();
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
