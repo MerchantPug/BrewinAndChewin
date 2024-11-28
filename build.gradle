@@ -180,6 +180,7 @@ processResources {
     var replaceProperties = [
             minecraft_version       : mc_version,
             minecraft_version_range : mc_version_range,
+            forge_version_range     : forge_version_range,
 
             mod_id                  : mod_id,
             mod_name                : mod_name,

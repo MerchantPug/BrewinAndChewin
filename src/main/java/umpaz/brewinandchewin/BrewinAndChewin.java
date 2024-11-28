@@ -11,7 +11,8 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import umpaz.brewinandchewin.client.BnCClientSetup;
 import umpaz.brewinandchewin.common.BnCCommonSetup;
 import umpaz.brewinandchewin.common.BnCConfiguration;
@@ -25,6 +26,7 @@ import vectorwing.farmersdelight.common.registry.ModLootFunctions;
 public class BrewinAndChewin
 {
    public static final String MODID = "brewinandchewin";
+   public static final Logger LOG = LoggerFactory.getLogger("Brewin' And Chewin'");
     public BrewinAndChewin() {
         final IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 

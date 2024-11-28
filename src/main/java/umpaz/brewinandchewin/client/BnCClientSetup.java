@@ -12,20 +12,18 @@ import umpaz.brewinandchewin.client.gui.KegScreen;
 import umpaz.brewinandchewin.client.gui.KegTooltip;
 import umpaz.brewinandchewin.common.registry.BnCMenuTypes;
 
-
 @Mod.EventBusSubscriber(modid = BrewinAndChewin.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class BnCClientSetup {
 
     public static void init(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> MenuScreens.register(BnCMenuTypes.KEG.get(), KegScreen::new));
 
-       IntoxicatedHealthOverlay.init();
-       TipsyEffects.init();
+        IntoxicatedHealthOverlay.init();
+        TipsyEffects.init();
     }
 
-   @SubscribeEvent
-   public static void registerCustomTooltipRenderers( RegisterClientTooltipComponentFactoriesEvent event ) {
-      event.register(KegTooltip.KegTooltipComponent.class, KegTooltip::new);
-   }
-
+    @SubscribeEvent
+    public static void registerCustomTooltipRenderers(RegisterClientTooltipComponentFactoriesEvent event) {
+        event.register(KegTooltip.KegTooltipComponent.class, KegTooltip::new);
+    }
 }

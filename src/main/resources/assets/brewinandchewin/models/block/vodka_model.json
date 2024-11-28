@@ -1,7 +1,0 @@
-{
-  "parent": "brewinandchewin:block/tankard_model",
-  "textures": {
-    "particle": "brewinandchewin:block/vodka",
-    "tankard": "brewinandchewin:block/vodka"
-  }
-}

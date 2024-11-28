@@ -11,7 +11,6 @@ import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import umpaz.brewinandchewin.common.registry.BnCBlocks;
 import umpaz.brewinandchewin.common.loot.CopyDrinkFunction;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,14 +31,9 @@ public class BnCBlockLoot extends BlockLootSubProvider {
         dropSelf(BnCBlocks.ICE_CRATE.get());
         dropSelf(BnCBlocks.UNRIPE_FLAXEN_CHEESE_WHEEL.get());
         dropSelf(BnCBlocks.UNRIPE_SCARLET_CHEESE_WHEEL.get());
-        dropSelf(BnCBlocks.ITEM_COASTER.get());
-        dropSelf(BnCBlocks.SWEET_BERRY_JAM.get());
-        dropSelf(BnCBlocks.GLOW_BERRY_MARMALADE.get());
-        dropSelf(BnCBlocks.APPLE_JELLY.get());
+        dropSelf(BnCBlocks.COASTER.get());
 
         dropOther(BnCBlocks.FIERY_FONDUE_POT.get(), Blocks.CAULDRON);
-
-
     }
 
     @Override

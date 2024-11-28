@@ -2,19 +2,13 @@ package umpaz.brewinandchewin.data;
 
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.data.BlockTagsProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.registry.BnCBlocks;
 import umpaz.brewinandchewin.common.tag.BnCTags;
-import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.common.registry.ModBlocks;
-import vectorwing.farmersdelight.common.tag.CompatibilityTags;
-import vectorwing.farmersdelight.common.tag.ForgeTags;
 import vectorwing.farmersdelight.common.tag.ModTags;
 
 import javax.annotation.Nullable;
@@ -37,13 +31,13 @@ public class BnCBlockTags extends BlockTagsProvider
                 BnCBlocks.KEG.get(),
                 BnCBlocks.HEATING_CASK.get(),
                 BnCBlocks.ICE_CRATE.get(),
-                BnCBlocks.TANKARD.get()
+                BnCBlocks.COASTER.get()
         );
         tag(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 BnCBlocks.FIERY_FONDUE_POT.get()
         );
         tag(ModTags.MINEABLE_WITH_KNIFE).add(
-                BnCBlocks.ITEM_COASTER.get(),
+                BnCBlocks.COASTER.get(),
                 BnCBlocks.UNRIPE_FLAXEN_CHEESE_WHEEL.get(),
                 BnCBlocks.FLAXEN_CHEESE_WHEEL.get(),
                 BnCBlocks.UNRIPE_SCARLET_CHEESE_WHEEL.get(),

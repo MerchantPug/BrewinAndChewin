@@ -1,0 +1,7 @@
+{
+  "parent": "brewinandchewin:block/tankard",
+  "textures": {
+    "particle": "brewinandchewin:block/salty_folly",
+    "tankard": "brewinandchewin:block/salty_folly"
+  }
+}

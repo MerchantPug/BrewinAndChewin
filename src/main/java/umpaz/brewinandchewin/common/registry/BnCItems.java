@@ -30,9 +30,9 @@ public class BnCItems {
    public static final RegistryObject<Item> KEG = registerWithTab("keg", () -> new KegItem(BnCBlocks.KEG.get(), new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> HEATING_CASK = registerWithTab("heating_cask", () -> new BlockItem(BnCBlocks.HEATING_CASK.get(), new Item.Properties()));
     public static final RegistryObject<Item> ICE_CRATE = registerWithTab("ice_crate", () -> new BlockItem(BnCBlocks.ICE_CRATE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> ITEM_COASTER = registerWithTab("item_coaster", () -> new BlockItem(BnCBlocks.ITEM_COASTER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> ITEM_COASTER = registerWithTab("coaster", () -> new BlockItem(BnCBlocks.COASTER.get(), new Item.Properties()));
 
-    public static final RegistryObject<Item> TANKARD = registerWithTab("tankard", () -> new BlockItem(BnCBlocks.TANKARD.get(), new Item.Properties()));
+    public static final RegistryObject<Item> TANKARD = registerWithTab("tankard", () -> new Item(new Item.Properties()));
 
     public static final RegistryObject<Item> BEER = registerWithTab("beer", () -> new BoozeItem(BnCFluids.BEER.get(), 1, 8, new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get())));
@@ -125,11 +125,11 @@ public class BnCItems {
             () -> new Item(new Item.Properties().food(BnCFoods.QUICHE_SLICE)));
 
     public static final RegistryObject<Item> SWEET_BERRY_JAM = registerWithTab("sweet_berry_jam",
-            () -> new BlockItem(BnCBlocks.SWEET_BERRY_JAM.get(), new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.SWEET_BERRY_JAM)));
+            () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.SWEET_BERRY_JAM)));
     public static final RegistryObject<Item> GLOW_BERRY_MARMALADE = registerWithTab("glow_berry_marmalade",
-            () -> new BlockItem(BnCBlocks.GLOW_BERRY_MARMALADE.get(), new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.GLOW_BERRY_MARMALADE)));
+            () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.GLOW_BERRY_MARMALADE)));
     public static final RegistryObject<Item> APPLE_JELLY = registerWithTab("apple_jelly",
-            () -> new BlockItem(BnCBlocks.APPLE_JELLY.get(), new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.APPLE_JELLY)));
+            () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.APPLE_JELLY)));
     
 
 }

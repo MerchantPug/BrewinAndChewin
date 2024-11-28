@@ -1,0 +1,7 @@
+{
+  "parent": "brewinandchewin:block/tankard",
+  "textures": {
+    "particle": "brewinandchewin:block/egg_grog",
+    "tankard": "brewinandchewin:block/egg_grog"
+  }
+}

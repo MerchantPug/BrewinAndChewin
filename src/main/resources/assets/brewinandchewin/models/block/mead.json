@@ -1,0 +1,7 @@
+{
+  "parent": "brewinandchewin:block/tankard",
+  "textures": {
+    "particle": "brewinandchewin:block/mead",
+    "tankard": "brewinandchewin:block/mead"
+  }
+}

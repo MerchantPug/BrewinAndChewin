@@ -2,7 +2,6 @@ package umpaz.brewinandchewin.common.item;
 
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,12 +16,9 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import umpaz.brewinandchewin.common.block.entity.TankardBlockEntity;
 import umpaz.brewinandchewin.common.registry.BnCBlocks;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
 import umpaz.brewinandchewin.common.registry.BnCItems;
@@ -32,13 +28,13 @@ import vectorwing.farmersdelight.common.utility.TextUtils;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class BoozeItem extends BlockItem {
+public class BoozeItem extends Item {
     private final Fluid fluid;
     private final int potency;
     private final int duration;
 
     public BoozeItem(Fluid fluid, int potency, int duration, Properties properties) {
-        super(BnCBlocks.TANKARD.get(), properties);
+        super(properties);
         this.fluid = fluid;
         this.potency = potency;
         this.duration = duration;
@@ -46,25 +42,6 @@ public class BoozeItem extends BlockItem {
 
     public Fluid getFluid() {
         return this.fluid;
-    }
-
-    @Override
-    public InteractionResult useOn(UseOnContext context) {
-        if ( !context.getPlayer().isShiftKeyDown() && !( context.getLevel().getBlockEntity(context.getClickedPos()) instanceof TankardBlockEntity tankardEntity ) ) {
-            return InteractionResult.PASS;
-        }
-        return super.useOn(context);
-    }
-
-    @Override
-    public InteractionResult place( BlockPlaceContext pContext ) {
-//        BlockPos blockPos = pContext.getClickedPos().relative(pContext.getClickedFace().getOpposite());
-//        BlockEntity blockEntity = pContext.getLevel().getBlockEntity(blockPos);
-//        if (blockEntity instanceof TankardBlockEntity tankardEntity) {
-//            return tankardEntity.onUse(pContext.getLevel(), pContext.getLevel().getBlockState(blockPos), blockPos, pContext.getPlayer(), pContext.getHand());
-//
-//        }
-        return super.place(pContext);
     }
 
     public InteractionResultHolder<ItemStack> use( Level level, Player player, InteractionHand hand ) {

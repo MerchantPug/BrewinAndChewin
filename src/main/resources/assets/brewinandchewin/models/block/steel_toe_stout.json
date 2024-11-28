@@ -1,0 +1,7 @@
+{
+  "parent": "brewinandchewin:block/tankard",
+  "textures": {
+    "particle": "brewinandchewin:block/steel_toe_stout",
+    "tankard": "brewinandchewin:block/steel_toe_stout"
+  }
+}
