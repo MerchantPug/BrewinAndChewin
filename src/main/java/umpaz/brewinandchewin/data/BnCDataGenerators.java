@@ -11,8 +11,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.data.loot.BnCBlockLoot;
-import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.data.*;
 
 import java.util.Collections;
 import java.util.List;

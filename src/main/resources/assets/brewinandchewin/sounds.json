@@ -1,0 +1,8 @@
+{
+  "entity.moobloom.shear": {
+    "subtitle": "subtitles.item.shears.shear",
+    "sounds": [
+      "mob/sheep/shear"
+    ]
+  }
+}

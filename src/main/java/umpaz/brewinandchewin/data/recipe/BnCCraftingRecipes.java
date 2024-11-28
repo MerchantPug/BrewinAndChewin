@@ -66,7 +66,7 @@ public class BnCCraftingRecipes {
                 .unlockedBy("has_crust", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.PIE_CRUST.get()))
                 .save(consumer, new ResourceLocation(BrewinAndChewin.MODID, "quiche_from_mushroom"));
 
-        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BnCItems.ITEM_COASTER.get(), 4)
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, BnCItems.COASTER.get(), 4)
                 .pattern("cc")
                 .define('c', ModItems.CANVAS.get())
                 .unlockedBy("has_canvas", InventoryChangeTrigger.TriggerInstance.hasItems(ModItems.CANVAS.get()))

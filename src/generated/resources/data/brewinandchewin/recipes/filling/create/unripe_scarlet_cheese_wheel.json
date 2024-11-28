@@ -1,0 +1,24 @@
+{
+  "type": "create:filling",
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "ingredients": [
+    {
+      "item": "minecraft:honeycomb"
+    },
+    {
+      "amount": 1000,
+      "fluid": "brewinandchewin:scarlet_cheese",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "brewinandchewin:unripe_scarlet_cheese_wheel"
+    }
+  ]
+}

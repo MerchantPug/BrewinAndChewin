@@ -1,5 +1,6 @@
 package umpaz.brewinandchewin.data.loot;
 
+import net.minecraft.advancements.critereon.StatePropertiesPredicate;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.world.flag.FeatureFlags;
 import net.minecraft.world.level.block.Block;
@@ -8,7 +9,9 @@ import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
+import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import umpaz.brewinandchewin.common.block.CoasterBlock;
 import umpaz.brewinandchewin.common.registry.BnCBlocks;
 import umpaz.brewinandchewin.common.loot.CopyDrinkFunction;
 
@@ -31,7 +34,8 @@ public class BnCBlockLoot extends BlockLootSubProvider {
         dropSelf(BnCBlocks.ICE_CRATE.get());
         dropSelf(BnCBlocks.UNRIPE_FLAXEN_CHEESE_WHEEL.get());
         dropSelf(BnCBlocks.UNRIPE_SCARLET_CHEESE_WHEEL.get());
-        dropSelf(BnCBlocks.COASTER.get());
+        add(BnCBlocks.COASTER.get(), (block) -> LootTable.lootTable().withPool(this.applyExplosionCondition(block, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(block)).when(LootItemBlockStatePropertyCondition.hasBlockStateProperties(block)
+                .setProperties(StatePropertiesPredicate.Builder.properties().hasProperty(CoasterBlock.INVISIBLE, false))))));
 
         dropOther(BnCBlocks.FIERY_FONDUE_POT.get(), Blocks.CAULDRON);
     }

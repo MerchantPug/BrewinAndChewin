@@ -3,18 +3,24 @@ package umpaz.brewinandchewin.common.block.entity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import umpaz.brewinandchewin.common.block.CoasterBlock;
 import umpaz.brewinandchewin.common.registry.BnCBlockEntityTypes;
+import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.common.tag.BnCTags;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 
+import static umpaz.brewinandchewin.common.block.CoasterBlock.INVISIBLE;
 import static umpaz.brewinandchewin.common.block.CoasterBlock.SIZE;
 
 public class CoasterBlockEntity extends SyncedBlockEntity {
@@ -28,18 +34,33 @@ public class CoasterBlockEntity extends SyncedBlockEntity {
     public InteractionResult onUse( Level level, BlockState state, BlockPos pos, Player player, InteractionHand hand ) {
         ItemStack heldStack = player.getItemInHand(hand);
         ItemStack offhandStack = player.getOffhandItem();
-        if (state.getValue(CoasterBlock.SIZE) < 4 && (addItem(level, pos, state, heldStack, player.getAbilities().instabuild, state.getValue(CoasterBlock.SIZE)) || addItem(level, pos, state, offhandStack, player.getAbilities().instabuild, state.getValue(CoasterBlock.SIZE)))) {
+        if (state.getValue(CoasterBlock.INVISIBLE) && heldStack.is(BnCItems.COASTER.get())) {
+            if (!player.getAbilities().instabuild)
+                heldStack.shrink(1);
+            level.playSound(null, pos, SoundEvents.WOOL_PLACE, SoundSource.BLOCKS);
+            level.setBlockAndUpdate(pos, state.setValue(CoasterBlock.INVISIBLE, false));
+            return InteractionResult.SUCCESS;
+        } if (state.getValue(CoasterBlock.SIZE) < 4 && (addItem(level, pos, state, heldStack, player.getAbilities().instabuild, state.getValue(CoasterBlock.SIZE)) || addItem(level, pos, state, offhandStack, player.getAbilities().instabuild, state.getValue(CoasterBlock.SIZE)))) {
             return InteractionResult.SUCCESS;
         } else if (!heldStack.isEmpty()) {
             return InteractionResult.CONSUME;
         } else if (state.getValue(CoasterBlock.SIZE) > 0 && player.getMainHandItem().isEmpty() && hand == InteractionHand.MAIN_HAND) { //Pickup Logic
+            if (player.isShiftKeyDown() && !state.getValue(INVISIBLE)) {
+                ItemStack coaster = new ItemStack(BnCItems.COASTER.get());
+                if (!player.getAbilities().instabuild && !player.addItem(coaster)) {
+                    player.drop(coaster, false);
+                }
+                level.playSound(null, pos, SoundEvents.WOOL_BREAK, SoundSource.BLOCKS);
+                level.setBlockAndUpdate(pos, state.setValue(CoasterBlock.INVISIBLE, true));
+                return InteractionResult.SUCCESS;
+            }
             int count = state.getValue(CoasterBlock.SIZE);
             if (!player.getAbilities().instabuild && !player.addItem(inventory.get(count - 1))) {
                 player.drop(inventory.get(count - 1), false);
             }
             inventory.set(count - 1, ItemStack.EMPTY);
 
-            level.setBlockAndUpdate(pos, state
+            level.setBlockAndUpdate(pos, state.getValue(INVISIBLE) && count == 1 ? Blocks.AIR.defaultBlockState() : state
                     .setValue(CoasterBlock.SIZE, state.getValue(CoasterBlock.SIZE) - 1)
             );
             inventoryChanged();

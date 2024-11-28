@@ -30,7 +30,7 @@ public class BnCItems {
    public static final RegistryObject<Item> KEG = registerWithTab("keg", () -> new KegItem(BnCBlocks.KEG.get(), new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> HEATING_CASK = registerWithTab("heating_cask", () -> new BlockItem(BnCBlocks.HEATING_CASK.get(), new Item.Properties()));
     public static final RegistryObject<Item> ICE_CRATE = registerWithTab("ice_crate", () -> new BlockItem(BnCBlocks.ICE_CRATE.get(), new Item.Properties()));
-    public static final RegistryObject<Item> ITEM_COASTER = registerWithTab("coaster", () -> new BlockItem(BnCBlocks.COASTER.get(), new Item.Properties()));
+    public static final RegistryObject<Item> COASTER = registerWithTab("coaster", () -> new BlockItem(BnCBlocks.COASTER.get(), new Item.Properties()));
 
     public static final RegistryObject<Item> TANKARD = registerWithTab("tankard", () -> new Item(new Item.Properties()));
 

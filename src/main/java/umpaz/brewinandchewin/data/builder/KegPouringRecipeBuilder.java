@@ -15,6 +15,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
 import net.minecraftforge.registries.ForgeRegistries;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.registry.BnCRecipeSerializers;
@@ -61,16 +62,18 @@ public class KegPouringRecipeBuilder {
     public void build(Consumer<FinishedRecipe> consumerIn, ResourceLocation id) {
             consumerIn.accept(new KegPouringRecipeBuilder.Result(id, container, fluid, amount, output));
 
-       new ProcessingRecipeBuilder<>(FillingRecipe::new, new ResourceLocation(Create.ID, id.getPath().replace("pouring/", "")))
+       new ProcessingRecipeBuilder<>(FillingRecipe::new, new ResourceLocation(BrewinAndChewin.MODID, "create/" + id.getPath().replace("pouring/", "")))
                .require(fluid, amount)
                .require(container.getItem())
                .output(output)
+               .withCondition(new ModLoadedCondition("create"))
                .build(consumerIn);
 
-       new ProcessingRecipeBuilder<>(EmptyingRecipe::new, new ResourceLocation(Create.ID, id.getPath().replace("pouring/", "")))
+       new ProcessingRecipeBuilder<>(EmptyingRecipe::new, new ResourceLocation(BrewinAndChewin.MODID, "create/" + id.getPath().replace("pouring/", "")))
                .require(output.getItem())
                .output(fluid, amount)
                .output(container)
+               .withCondition(new ModLoadedCondition("create"))
                .build(consumerIn);
     }
 
