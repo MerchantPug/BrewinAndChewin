@@ -78,15 +78,10 @@ public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock 
    public InteractionResult use( BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result ) {
       ItemStack heldStack = player.getItemInHand(hand);
 
-//        if (!level.isClientSide) {
-      // commented out for sound effects
-
       BlockEntity tileEntity = level.getBlockEntity(pos);
       if ( tileEntity instanceof KegBlockEntity kegBE ) {
-         FluidTank kegTank = kegBE.getFluidTank();
-         ItemStack itm = kegBE.fluidExtract(kegBE, heldStack, player.getSlot(player.getInventory().getFreeSlot()).get());
+         ItemStack itm = kegBE.fluidExtract(kegBE, heldStack, player.getSlot(player.getInventory().getFreeSlot()).get(), 1);
          if ( !itm.isEmpty() ) {
-//            heldStack.shrink(itm.getCount());
             if ( heldStack.isEmpty() ) {
                player.setItemInHand(hand, itm);
             }
