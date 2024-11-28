@@ -115,10 +115,9 @@ public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBl
         int count = (int) entity.getItems().stream().filter(i -> !i.isEmpty()).count();
         poseStack.rotateAround(new Quaternionf().fromAxisAngleDeg(0, 1, 0, -(360f / 16f) * entity.getBlockState().getValue(CoasterBlock.ROTATION)), 0.5f, 0, 0.5f);
 
-
         RandomSource random = new LegacyRandomSource(entity.getBlockPos().asLong());
 
-        if (!entity.getBlockState().getValue(CoasterBlock.INVISIBLE)) {
+        if (!entity.getBlockState().getValue(CoasterBlock.INVISIBLE) || count == 0) {
             poseStack.pushPose();
             ResourceLocation modelId = entity.getBlockState().getValue(CoasterBlock.SIZE) > 1 ? new ResourceLocation(BrewinAndChewin.MODID, "block/coaster_tray") : new ResourceLocation(BrewinAndChewin.MODID, "block/coaster");
             Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), Minecraft.getInstance().getModelManager().getModel(modelId), entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, null);
