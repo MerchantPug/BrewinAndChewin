@@ -158,7 +158,7 @@ public class KegMenu extends RecipeBookMenu<RecipeWrapper>
     public int getFermentProgressionScaled() {
         int i = this.kegData.get(0);
         int j = this.kegData.get(1);
-        return j != 0 && i != 0 ? i * 24 / j : 0;
+        return j != 0 && i != 0 ? i * 22 / j : 0;
     }
 
     public float getProgression() {
