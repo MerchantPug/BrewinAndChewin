@@ -1,7 +1,6 @@
 package umpaz.brewinandchewin.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -13,7 +12,6 @@ import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import umpaz.brewinandchewin.BrewinAndChewin;
-import umpaz.brewinandchewin.common.block.entity.KegBlockEntity;
 import umpaz.brewinandchewin.common.block.entity.container.KegMenu;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 
@@ -24,7 +22,7 @@ import java.util.List;
 public class KegScreen extends AbstractContainerScreen<KegMenu>
 {
     private static final ResourceLocation BACKGROUND_TEXTURE = new ResourceLocation(BrewinAndChewin.MODID, "textures/gui/keg.png");
-    private static final Rectangle PROGRESS_ARROW = new Rectangle(74, 26, 0, 18);
+    private static final Rectangle PROGRESS_ARROW = new Rectangle(74, 25, 0, 18);
     private static final Rectangle FRIGID_BAR = new Rectangle(32, 55, 8, 4);
     private static final Rectangle COLD_BAR = new Rectangle(40, 55, 9, 4);
     private static final Rectangle WARM_BAR = new Rectangle(57, 55, 9, 4);
