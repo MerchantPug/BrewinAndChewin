@@ -17,7 +17,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import umpaz.brewinandchewin.common.block.CoasterBlock;
 import umpaz.brewinandchewin.common.registry.BnCBlockEntityTypes;
 import umpaz.brewinandchewin.common.registry.BnCItems;
-import umpaz.brewinandchewin.common.tag.BnCTags;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 
 import static umpaz.brewinandchewin.common.block.CoasterBlock.INVISIBLE;
@@ -70,7 +69,7 @@ public class CoasterBlockEntity extends SyncedBlockEntity {
     }
 
     private boolean addItem(Level level, BlockPos pos, BlockState state, ItemStack stack, boolean instabuild, int index) {
-        if (!stack.is(BnCTags.PLACEABLE_ON_COASTER))
+        if (stack.isEmpty())
             return false;
         level.setBlock(pos, state.setValue(SIZE, index + 1), 3);
         inventory.set(index, stack.copyWithCount(1));

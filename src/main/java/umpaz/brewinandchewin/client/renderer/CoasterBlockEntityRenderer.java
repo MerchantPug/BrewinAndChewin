@@ -3,6 +3,7 @@ package umpaz.brewinandchewin.client.renderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 
 import com.mojang.math.Axis;
+import com.sun.jna.platform.win32.COM.COMBindingBaseObject;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -14,6 +15,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.state.properties.RotationSegment;
@@ -131,7 +133,14 @@ public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBl
 
             poseUtil(poseStack, count, i, random, entity.getBlockState().getValue(CoasterBlock.INVISIBLE));
 
-            Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), model, entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, null);
+            if (model == Minecraft.getInstance().getModelManager().getMissingModel()) {
+                poseStack.translate(0.51, 0.05, 0.5);
+                poseStack.mulPose(Axis.XP.rotationDegrees(90));
+                poseStack.scale(0.5F, 0.5F ,0.5F);
+                Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItems().get(i), ItemDisplayContext.FIXED, combinedLight, combinedOverlay, poseStack, buffer, entity.getLevel(), (int) entity.getBlockPos().asLong());
+            } else
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), model, entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, null);
+
             poseStack.popPose();
         }
     }

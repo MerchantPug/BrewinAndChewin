@@ -18,7 +18,6 @@ public class BnCTags {
     public static final TagKey<Item> RAW_MEATS = modItemTag("raw_meats");
     public static final TagKey<Item> PIZZA_TOPPINGS = modItemTag("pizza_toppings");
     public static final TagKey<Item> CHEESE_WEDGES = modItemTag("cheese_wedges");
-    public static final TagKey<Item> PLACEABLE_ON_COASTER = modItemTag("placeable_on_coaster");
 
     public static final TagKey<Block> FREEZE_SOURCES = modBlockTag("freeze_sources");
 
