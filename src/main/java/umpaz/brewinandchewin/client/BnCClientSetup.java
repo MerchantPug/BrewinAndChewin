@@ -11,6 +11,7 @@ import umpaz.brewinandchewin.client.gui.IntoxicatedHealthOverlay;
 import umpaz.brewinandchewin.client.gui.KegScreen;
 import umpaz.brewinandchewin.client.gui.KegTooltip;
 import umpaz.brewinandchewin.common.registry.BnCMenuTypes;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
 
 @Mod.EventBusSubscriber(modid = BrewinAndChewin.MODID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public class BnCClientSetup {
@@ -25,5 +26,10 @@ public class BnCClientSetup {
     @SubscribeEvent
     public static void registerCustomTooltipRenderers(RegisterClientTooltipComponentFactoriesEvent event) {
         event.register(KegTooltip.KegTooltipComponent.class, KegTooltip::new);
+    }
+
+    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
+        BnCFluidItemDisplayUtils.defaultFluidToItems();
     }
 }

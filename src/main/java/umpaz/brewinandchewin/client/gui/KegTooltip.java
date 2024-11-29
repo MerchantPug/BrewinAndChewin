@@ -12,9 +12,11 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.inventory.tooltip.TooltipComponent;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import org.joml.Matrix4f;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 public class KegTooltip implements ClientTooltipComponent {
@@ -50,20 +52,25 @@ public class KegTooltip implements ClientTooltipComponent {
    public void renderImage( Font font, int mouseX, int mouseY, GuiGraphics gui ) {
       if ( mealStack.isEmpty() ) return;
 
-      IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(mealStack.getFluid());
-      ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(mealStack);
-      if ( stillTexture == null )
-         return;
+      ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(mealStack.getFluid());
+      if (itemDisplay.isEmpty()) {
+          IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(mealStack.getFluid());
+          ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(mealStack);
+          if ( stillTexture == null )
+              return;
 
-      TextureAtlasSprite sprite =
-              Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
-      int tintColor = fluidTypeExtensions.getTintColor(mealStack);
+          TextureAtlasSprite sprite =
+                  Minecraft.getInstance().getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
+          int tintColor = fluidTypeExtensions.getTintColor(mealStack);
 
-      float alpha = ( ( tintColor >> 24 ) & 0xFF ) / 255f;
-      float red = ( ( tintColor >> 16 ) & 0xFF ) / 255f;
-      float green = ( ( tintColor >> 8 ) & 0xFF ) / 255f;
-      float blue = ( tintColor & 0xFF ) / 255f;
-      gui.blit(mouseX, mouseY + 9, 0, 16, 16, sprite, red, green, blue, alpha);
+          float alpha = ( ( tintColor >> 24 ) & 0xFF ) / 255f;
+          float red = ( ( tintColor >> 16 ) & 0xFF ) / 255f;
+          float green = ( ( tintColor >> 8 ) & 0xFF ) / 255f;
+          float blue = ( tintColor & 0xFF ) / 255f;
+          gui.blit(mouseX, mouseY + 9, 0, 16, 16, sprite, red, green, blue, alpha);
+          return;
+      }
+      gui.renderItem(itemDisplay, mouseX, mouseY + 9);
    }
 
    @Override

@@ -9,10 +9,12 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.block.entity.container.KegMenu;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 
 import java.awt.*;
@@ -152,6 +154,11 @@ public class KegScreen extends AbstractContainerScreen<KegMenu>
         gui.innerBlit(sprite.atlasLocation(), this.leftPos + 108, this.leftPos + 108 + 16, y1, y2, 0, sprite.getU0(), sprite.getU1(), v0, sprite.getV1(), red, green, blue, alpha);
         gui.innerBlit(sprite.atlasLocation(), this.leftPos + 124, this.leftPos + 124 + 8, y1, y2, 0, sprite.getU0(), sprite.getU0() + 0.5F * ( sprite.getU1() - sprite.getU0() ), v0, sprite.getV1(), red, green, blue, alpha);
 
+        if (!menu.kegTank.getFluid().isEmpty()) {
+            ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(menu.kegTank.getFluid().getRawFluid());
+            if (!itemDisplay.isEmpty())
+                gui.renderItem(itemDisplay, this.leftPos + 112, this.topPos + 21);
+        }
         gui.blit(BACKGROUND_TEXTURE, this.leftPos + 107, this.topPos + 15, 176, 22, 27, 33);
 
     }
