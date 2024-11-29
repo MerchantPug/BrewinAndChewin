@@ -1,19 +1,10 @@
 package umpaz.brewinandchewin.data.recipe;
 
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
-import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.tags.ITagManager;
 import umpaz.brewinandchewin.common.registry.BnCFluids;
@@ -24,11 +15,10 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ForgeTags;
 
 import java.util.function.Consumer;
-import java.util.stream.Stream;
 
 public class KegFermentingRecipes {
-   public static final int NORMAL_COOKING = 6000;    // 5 minutes
-   public static final int SLOW_COOKING = 12000;      // 10 minutes
+   public static final int NORMAL_COOKING = 4800;    // 5 minutes
+   public static final int SLOW_COOKING = 9600;      // 8 minutes
 
 
    public static final float MEDIUM_EXP = 1.0F;

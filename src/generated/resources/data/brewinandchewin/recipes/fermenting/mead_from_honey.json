@@ -5,7 +5,7 @@
     "fluid": "brewinandchewin:honey"
   },
   "experience": 1.0,
-  "fermentingtime": 12000,
+  "fermentingtime": 9600,
   "ingredients": [
     {
       "item": "minecraft:wheat"

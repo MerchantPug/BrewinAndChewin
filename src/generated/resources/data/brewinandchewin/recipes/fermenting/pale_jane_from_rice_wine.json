@@ -5,7 +5,7 @@
     "fluid": "brewinandchewin:rice_wine"
   },
   "experience": 1.0,
-  "fermentingtime": 6000,
+  "fermentingtime": 4800,
   "ingredients": [
     {
       "item": "minecraft:honey_bottle"

@@ -5,7 +5,7 @@
     "fluid": "brewinandchewin:strongroot_ale"
   },
   "experience": 1.0,
-  "fermentingtime": 6000,
+  "fermentingtime": 4800,
   "ingredients": [
     {
       "item": "minecraft:iron_ingot"

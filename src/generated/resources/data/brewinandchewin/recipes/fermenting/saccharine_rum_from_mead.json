@@ -5,7 +5,7 @@
     "fluid": "brewinandchewin:mead"
   },
   "experience": 1.0,
-  "fermentingtime": 6000,
+  "fermentingtime": 4800,
   "ingredients": [
     {
       "item": "minecraft:sweet_berries"
