@@ -26,6 +26,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import umpaz.brewinandchewin.BrewinAndChewin;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
 import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 import umpaz.brewinandchewin.integration.jei.BnCJEIRecipeTypes;
@@ -123,6 +124,8 @@ public class FermentingRecipeCategory implements IRecipeCategory<KegFermentingPo
                  .addFluidStack(recipe.getFluidIngredient().getFluid(), recipe.getFluidIngredient().getAmount())
                  .setFluidRenderer(2000, false, 26, 30)
                  .setOverlay(kegOverlay, 0, 0);
+          builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 5, 5)
+                  .addItemStack(BnCFluidItemDisplayUtils.getFluidItemDisplay(recipe.getFluidIngredient()));
       }
 
       if ( recipe.getResultFluid() != null ) {
@@ -130,6 +133,8 @@ public class FermentingRecipeCategory implements IRecipeCategory<KegFermentingPo
                  .addFluidStack(recipe.getResultFluid(), recipe.getAmount())
                  .setFluidRenderer(2000, false, 26, 30)
                  .setOverlay(kegOverlay, 0, 0);
+          builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 105, 5)
+                  .addItemStack(BnCFluidItemDisplayUtils.getFluidItemDisplay(new FluidStack(recipe.getResultFluid(), recipe.getAmount())));
       }
 
       if ( recipe.getCatalyst() != null ) {
