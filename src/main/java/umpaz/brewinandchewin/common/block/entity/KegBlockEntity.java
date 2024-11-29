@@ -366,6 +366,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
                     } else {
                         output.grow(containerAmount);
                     }
+                    slotIn.shrink(containerAmount);
                 } else {
                     output = slotIn;
                 }
@@ -383,6 +384,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
                     } else {
                         output.grow(containerAmount);
                     }
+                    slotIn.shrink(containerAmount);
                 } else {
                     output = slotIn;
                 }
@@ -572,7 +574,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
     private static void splitAndSpawnExperience(ServerLevel level, Vec3 pos, int craftedAmount, float experience) {
         int expTotal = Mth.floor((float) craftedAmount * experience);
         float expFraction = Mth.frac((float) craftedAmount * experience);
-        if (expFraction != 0.0F && Math.random() < (double) expFraction) {
+        if (expFraction > 0.0F && Math.random() < (double) expFraction) {
             ++expTotal;
         }
 
