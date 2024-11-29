@@ -4,9 +4,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.material.Fluid;
+import net.minecraftforge.common.ForgeMod;
 import net.minecraftforge.fluids.FluidType;
 import umpaz.brewinandchewin.common.registry.BnCFluids;
 import umpaz.brewinandchewin.common.registry.BnCItems;
+import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,6 +17,8 @@ public class BnCFluidItemDisplayUtils {
     private static final Map<FluidType, ItemStack> FLUID_TYPE_TO_ITEM_MAP = new HashMap<>();
 
     public static void defaultFluidToItems() {
+        setFluidItemDisplay(ForgeMod.WATER_TYPE.get(), Items.POTION);
+        setFluidItemDisplay(ForgeMod.MILK_TYPE.get(), ModItems.MILK_BOTTLE.get());
         setFluidItemDisplay(BnCFluids.HONEY_FLUID_TYPE.get(), Items.HONEY_BOTTLE);
         setFluidItemDisplay(BnCFluids.BEER_FLUID_TYPE.get(), BnCItems.BEER.get());
         setFluidItemDisplay(BnCFluids.VODKA_FLUID_TYPE.get(), BnCItems.VODKA.get());
