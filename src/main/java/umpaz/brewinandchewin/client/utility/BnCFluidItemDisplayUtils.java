@@ -19,10 +19,8 @@ public class BnCFluidItemDisplayUtils {
     private static final Map<FluidType, Function<FluidStack, ItemStack>> FLUID_TYPE_TO_ITEM_MAP = new HashMap<>();
 
     public static void defaultFluidToItems() {
-        CompoundTag waterTag = new CompoundTag();
-        waterTag.putString("Potion", "minecraft:water");
         ItemStack waterPotion = new ItemStack(Items.POTION);
-        waterPotion.getOrCreateTag().put("tag", waterTag);
+        waterPotion.getOrCreateTag().putString("Potion", "minecraft:water");
         setFluidItemDisplay(ForgeMod.WATER_TYPE.get(), waterPotion);
         setFluidItemDisplay(ForgeMod.MILK_TYPE.get(), ModItems.MILK_BOTTLE.get());
         setFluidItemDisplay(BnCFluids.HONEY_FLUID_TYPE.get(), Items.HONEY_BOTTLE);
