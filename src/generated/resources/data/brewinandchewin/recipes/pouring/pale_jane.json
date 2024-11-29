@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:pale_jane",
   "output": {
     "item": "brewinandchewin:pale_jane"
-  }
+  },
+  "strict": false
 }

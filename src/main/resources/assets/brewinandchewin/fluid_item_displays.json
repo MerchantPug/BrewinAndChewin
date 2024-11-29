@@ -1,0 +1,37 @@
+{
+  "minecraft:water": {
+    "id": "minecraft:potion",
+    "tag": {
+      "Potion": "minecraft:water"
+    }
+  },
+  "minecraft:milk": "farmersdelight:milk_bottle",
+  "brewinandchewin:honey": "minecraft:honey_bottle",
+  "brewinandchewin:beer": "brewinandchewin:beer",
+  "brewinandchewin:vodka": "brewinandchewin:vodka",
+  "brewinandchewin:mead": "brewinandchewin:mead",
+  "brewinandchewin:egg_grog": "brewinandchewin:egg_grog",
+  "brewinandchewin:strongroot_ale": "brewinandchewin:strongroot_ale",
+  "brewinandchewin:rice_wine": "brewinandchewin:rice_wine",
+  "brewinandchewin:glittering_grenadine": "brewinandchewin:glittering_grenadine",
+  "brewinandchewin:steel_toe_stout": "brewinandchewin:steel_toe_stout",
+  "brewinandchewin:dread_nog": "brewinandchewin:dread_nog",
+  "brewinandchewin:kombucha": "brewinandchewin:kombucha",
+  "brewinandchewin:saccharine_rum": "brewinandchewin:saccharine_rum",
+  "brewinandchewin:pale_jane": "brewinandchewin:pale_jane",
+  "brewinandchewin:salty_folly": "brewinandchewin:salty_folly",
+  "brewinandchewin:bloody_mary": "brewinandchewin:bloody_mary",
+  "brewinandchewin:red_rum": "brewinandchewin:red_rum",
+  "brewinandchewin:withering_dross": "brewinandchewin:withering_dross",
+  "brewinandchewin:flaxen_cheese": "brewinandchewin:unripe_flaxen_cheese_wheel",
+  "brewinandchewin:scarlet_cheese": "brewinandchewin:unripe_scarlet_cheese_wheel",
+  "create:potion": {
+    "id": "minecraft:potion",
+    "tag": {
+      "Potion": {
+        "brewinandchewin:fluid_tag": "Potion"
+      }
+    },
+    "optional": true
+  }
+}

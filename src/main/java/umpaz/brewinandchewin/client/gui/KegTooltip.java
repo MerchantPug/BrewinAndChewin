@@ -16,7 +16,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import org.joml.Matrix4f;
-import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplays;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 public class KegTooltip implements ClientTooltipComponent {
@@ -52,7 +52,7 @@ public class KegTooltip implements ClientTooltipComponent {
    public void renderImage( Font font, int mouseX, int mouseY, GuiGraphics gui ) {
       if ( mealStack.isEmpty() ) return;
 
-      ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(mealStack);
+      ItemStack itemDisplay = BnCFluidItemDisplays.getFluidItemDisplay(Minecraft.getInstance().level.registryAccess(), mealStack);
       if (itemDisplay.isEmpty()) {
           IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(mealStack.getFluid());
           ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(mealStack);

@@ -39,7 +39,6 @@ import net.minecraftforge.fluids.capability.IFluidHandlerItem;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.IItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
 import umpaz.brewinandchewin.common.BnCConfiguration;
 import umpaz.brewinandchewin.common.block.KegBlock;
 import umpaz.brewinandchewin.common.block.entity.container.KegItemHandler;
@@ -50,6 +49,7 @@ import umpaz.brewinandchewin.common.registry.BnCBlockEntityTypes;
 import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.common.registry.BnCRecipeTypes;
 import umpaz.brewinandchewin.common.tag.BnCTags;
+import umpaz.brewinandchewin.common.utility.BnCRecipeWrapper;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 import vectorwing.farmersdelight.common.block.entity.SyncedBlockEntity;
 import vectorwing.farmersdelight.common.mixin.accessor.RecipeManagerAccessor;
@@ -73,6 +73,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
     private final LazyOptional<IItemHandler> outputHandler;
     private final FluidTank fluidTank;
     private final LazyOptional<FluidTank> fluidTankHandler;
+    private final BnCRecipeWrapper recipeWrapper;
 
     private int fermentTime;
     private int fermentTimeTotal;
@@ -97,7 +98,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         this.kegData = createIntArray();
         this.usedRecipeTracker = new Object2IntOpenHashMap<>();
         this.checkNewRecipe = true;
-
+        this.recipeWrapper = new BnCRecipeWrapper(inventory, fluidTank);
     }
 
     @Override
@@ -233,7 +234,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         keg.updateTemperature();
 
         if (keg.hasInput()) {
-            Optional<KegFermentingRecipe> recipe = keg.getMatchingRecipe(new RecipeWrapper(keg.inventory));
+            Optional<KegFermentingRecipe> recipe = keg.getMatchingRecipe(keg.recipeWrapper);
             if (recipe.isPresent()) {
                 if (keg.canFerment(recipe.get(), keg)) {
                     didInventoryChange = keg.processFermenting(recipe.get(), keg);
@@ -259,11 +260,11 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         }
     }
 
-    private Optional<KegFermentingRecipe> getMatchingRecipe(RecipeWrapper inventoryWrapper) {
+    private Optional<KegFermentingRecipe> getMatchingRecipe(BnCRecipeWrapper inventoryWrapper) {
         if (level == null) return Optional.empty();
 
         if (lastRecipeID != null) {
-            Recipe<RecipeWrapper> recipe = ((RecipeManagerAccessor) level.getRecipeManager())
+            Recipe<BnCRecipeWrapper> recipe = ((RecipeManagerAccessor) level.getRecipeManager())
                     .getRecipeMap(BnCRecipeTypes.FERMENTING.get())
                     .get(lastRecipeID);
             if (recipe instanceof KegFermentingRecipe kegFerm) {
@@ -346,23 +347,23 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         Item container = slotIn.getItem();
         ItemStack output = ItemStack.EMPTY;
 
-        Optional<KegPouringRecipe> recipe = keg.getPouringRecipe(container, keg.fluidTank.getFluid());
-        boolean changed = false;
-
         if (slotIn.isEmpty())
             return output;
 
+        Optional<KegPouringRecipe> recipe = keg.getPouringRecipe(slotIn);
+        boolean changed = false;
 
-        if (recipe.isPresent() && (keg.fluidTank.isEmpty() || keg.fluidTank.getFluid().getFluid().isSame(recipe.get().getFluid()))) { // if the recipe is present and the fluid is empty or the same
+        if (recipe.isPresent() && (keg.fluidTank.isEmpty() || keg.fluidTank.getFluid().getFluid() == recipe.get().getRawFluid())) { // if the recipe is present and the fluid is empty or the same
+            ItemStack resultItem = recipe.get().assemble(keg.recipeWrapper, keg.level.registryAccess());
             if (container.equals(recipe.get().getContainer().getItem()) && // if container is same
                     recipe.get().getAmount() <= keg.fluidTank.getFluidAmount() && // the amount is LTE the fluid amount
-                    (!inGui || keg.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() || ItemStack.isSameItemSameTags(recipe.get().getOutput(), keg.inventory.getStackInSlot(OUTPUT_SLOT)))) { // the output slot can accept this item
-                int containerAmount = Math.min(maxTakeAmount, Mth.clamp(slotIn.getCount(), 0, Math.min(keg.fluidTank.getFluidAmount() / recipe.get().getAmount(), recipe.get().getOutput().getMaxStackSize() - slotOut.getCount())));
+                    (!inGui || keg.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() || ItemStack.isSameItemSameTags(resultItem, keg.inventory.getStackInSlot(OUTPUT_SLOT)))) { // the output slot can accept this item
+                int containerAmount = Math.min(maxTakeAmount, Mth.clamp(slotIn.getCount(), 0, Math.min(keg.fluidTank.getFluidAmount() / recipe.get().getAmount(), resultItem.getMaxStackSize() - slotOut.getCount())));
                 keg.fluidTank.drain(new FluidStack(keg.fluidTank.getFluid(), recipe.get().getAmount() * containerAmount), IFluidHandler.FluidAction.EXECUTE);
 
                 if (!isCreative) {
                     if (output.isEmpty()) {
-                        output = recipe.get().getOutput().copyWithCount(containerAmount);
+                        output = resultItem.copyWithCount(containerAmount);
                     } else {
                         output.grow(containerAmount);
                     }
@@ -371,12 +372,12 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
                     output = slotIn;
                 }
                 changed = true;
-            } else if (container.equals(recipe.get().getOutput().getItem()) && // if result is same
+            } else if ((recipe.get().isStrict() && ItemStack.matches(resultItem, slotIn) || !recipe.get().isStrict() && container.equals(resultItem.getItem())) && // if result is same
                     (keg.fluidTank.isEmpty() || keg.fluidTank.getFluidAmount() < keg.fluidTank.getCapacity()) && // if the result can fit in the container
-                    (!inGui || keg.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() || ItemStack.isSameItemSameTags(recipe.get().getOutput(), keg.inventory.getStackInSlot(OUTPUT_SLOT)))) { // the output slot can accept this item
-                int containerAmount = Math.min(Math.min(maxTakeAmount, Mth.clamp(slotIn.getCount(), 0, recipe.get().getOutput().getMaxStackSize() - slotOut.getCount())), (keg.fluidTank.getCapacity() - keg.fluidTank.getFluidAmount()) / recipe.get().getAmount());
+                    (!inGui || keg.inventory.getStackInSlot(OUTPUT_SLOT).isEmpty() || ItemStack.isSameItemSameTags(resultItem, keg.inventory.getStackInSlot(OUTPUT_SLOT)))) { // the output slot can accept this item
+                int containerAmount = Math.min(Math.min(maxTakeAmount, Mth.clamp(slotIn.getCount(), 0, resultItem.getMaxStackSize() - slotOut.getCount())), (keg.fluidTank.getCapacity() - keg.fluidTank.getFluidAmount()) / recipe.get().getAmount());
 
-                keg.fluidTank.fill(new FluidStack(recipe.get().getFluid(), recipe.get().getAmount() * containerAmount), IFluidHandler.FluidAction.EXECUTE);
+                keg.fluidTank.fill(new FluidStack(recipe.get().getFluid(slotIn), recipe.get().getAmount() * containerAmount), IFluidHandler.FluidAction.EXECUTE);
 
                 if (!isCreative) {
                     if (output.isEmpty()) {
@@ -454,11 +455,22 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         return output;
     }
 
-    public Optional<KegPouringRecipe> getPouringRecipe(Item slot, FluidStack fluid) {
+    public Optional<KegPouringRecipe> getPouringRecipe(ItemStack slot) {
         if (level == null) return Optional.empty();
         Optional<KegPouringRecipe> recipe = level.getRecipeManager().getAllRecipesFor(BnCRecipeTypes.KEG_POURING.get())
                 .stream()
-                .filter(r -> (r.getContainer().getItem() == slot || r.getOutput().getItem() == (slot)) && (fluid.isEmpty() || r.getFluid().isSame(fluid.getFluid())))
+                .filter(r -> {
+                    boolean containerCheck = false;
+                    boolean resultCheck = false;
+                    boolean fluidCheck = false;
+                    if (r.isStrict() && ItemStack.isSameItemSameTags(r.getContainer(), slot) || !r.isStrict() && (r.getContainer().getItem() == slot.getItem()))
+                        containerCheck = true;
+                    if (!containerCheck && (r.isStrict() && ItemStack.isSameItemSameTags(r.assemble(recipeWrapper, level.registryAccess()), slot) || !r.isStrict() && r.assemble(recipeWrapper, level.registryAccess()).getItem() == slot.getItem()))
+                        resultCheck = true;
+                    if (recipeWrapper.getFluid(0).isEmpty() || (containerCheck && r.getRawFluid() == recipeWrapper.getFluid(0).getFluid() || r.getFluid(slot).isFluidEqual(recipeWrapper.getFluid(0))))
+                        fluidCheck = true;
+                    return (containerCheck || resultCheck) && fluidCheck;
+                })
                 .findFirst();
         if (recipe.isPresent()) {
             lastRecipeID = recipe.get().getId();

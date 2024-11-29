@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:kombucha",
   "output": {
     "item": "brewinandchewin:kombucha"
-  }
+  },
+  "strict": false
 }

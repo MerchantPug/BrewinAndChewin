@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:flaxen_cheese",
   "output": {
     "item": "brewinandchewin:unripe_flaxen_cheese_wheel"
-  }
+  },
+  "strict": false
 }

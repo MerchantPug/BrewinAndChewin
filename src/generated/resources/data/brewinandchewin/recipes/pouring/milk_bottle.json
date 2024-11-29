@@ -7,5 +7,6 @@
   "fluid": "minecraft:milk",
   "output": {
     "item": "farmersdelight:milk_bottle"
-  }
+  },
+  "strict": false
 }

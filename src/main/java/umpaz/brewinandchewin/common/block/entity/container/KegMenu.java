@@ -123,7 +123,7 @@ public class KegMenu extends RecipeBookMenu<RecipeWrapper>
                     return ItemStack.EMPTY;
                 }
             } else if (index > indexOutput) {
-                boolean isValidContainer = slotStack.is(blockEntity.getInventory().getStackInSlot(4).getItem()) || blockEntity.getPouringRecipe(slotStack.getItem(), blockEntity.getFluidTank().getFluid()).isPresent();
+                boolean isValidContainer = slotStack.is(blockEntity.getInventory().getStackInSlot(4).getItem()) || blockEntity.getPouringRecipe(slotStack).isPresent();
                 if (isValidContainer && !this.moveItemStackTo(slotStack, indexContainerInput, indexContainerInput + 1, false)) {
                     return ItemStack.EMPTY;
                 }

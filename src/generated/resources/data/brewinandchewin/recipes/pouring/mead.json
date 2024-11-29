@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:mead",
   "output": {
     "item": "brewinandchewin:mead"
-  }
+  },
+  "strict": false
 }

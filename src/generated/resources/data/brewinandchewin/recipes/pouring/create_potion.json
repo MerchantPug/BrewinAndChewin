@@ -1,0 +1,13 @@
+{
+  "type": "brewinandchewin:create_potion_pouring",
+  "amount": 250,
+  "conditions": [
+    {
+      "type": "forge:mod_loaded",
+      "modid": "create"
+    }
+  ],
+  "container": {
+    "item": "minecraft:glass_bottle"
+  }
+}

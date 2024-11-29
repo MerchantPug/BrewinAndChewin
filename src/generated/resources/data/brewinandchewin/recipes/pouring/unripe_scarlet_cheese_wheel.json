@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:scarlet_cheese",
   "output": {
     "item": "brewinandchewin:unripe_scarlet_cheese_wheel"
-  }
+  },
+  "strict": false
 }

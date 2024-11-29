@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:dread_nog",
   "output": {
     "item": "brewinandchewin:dread_nog"
-  }
+  },
+  "strict": false
 }

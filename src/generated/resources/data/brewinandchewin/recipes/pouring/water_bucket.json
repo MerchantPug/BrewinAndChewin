@@ -7,5 +7,6 @@
   "fluid": "minecraft:water",
   "output": {
     "item": "minecraft:water_bucket"
-  }
+  },
+  "strict": false
 }

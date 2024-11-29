@@ -1,6 +1,5 @@
 package umpaz.brewinandchewin.integration.jei.category;
 
-import com.simibubi.create.foundation.utility.Lang;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.forge.ForgeTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
@@ -16,6 +15,7 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import mezz.jei.api.runtime.IIngredientManager;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.core.NonNullList;
@@ -26,7 +26,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import umpaz.brewinandchewin.BrewinAndChewin;
-import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplays;
 import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 import umpaz.brewinandchewin.integration.jei.BnCJEIRecipeTypes;
@@ -122,19 +122,19 @@ public class FermentingRecipeCategory implements IRecipeCategory<KegFermentingPo
       if ( recipe.getFluidIngredient() != null ) {
          builder.addSlot(RecipeIngredientRole.CATALYST, 0, 2)
                  .addFluidStack(recipe.getFluidIngredient().getFluid(), recipe.getFluidIngredient().getAmount())
-                 .setFluidRenderer(2000, false, 26, 30)
+                 .setFluidRenderer(1000, false, 26, 30)
                  .setOverlay(kegOverlay, 0, 0);
           builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 5, 5)
-                  .addItemStack(BnCFluidItemDisplayUtils.getFluidItemDisplay(recipe.getFluidIngredient()));
+                  .addItemStack(BnCFluidItemDisplays.getFluidItemDisplay(Minecraft.getInstance().level.registryAccess(), recipe.getFluidIngredient()));
       }
 
       if ( recipe.getResultFluid() != null ) {
          builder.addSlot(RecipeIngredientRole.OUTPUT, 100, 2)
                  .addFluidStack(recipe.getResultFluid(), recipe.getAmount())
-                 .setFluidRenderer(2000, false, 26, 30)
+                 .setFluidRenderer(1000, false, 26, 30)
                  .setOverlay(kegOverlay, 0, 0);
           builder.addSlot(RecipeIngredientRole.RENDER_ONLY, 105, 5)
-                  .addItemStack(BnCFluidItemDisplayUtils.getFluidItemDisplay(new FluidStack(recipe.getResultFluid(), recipe.getAmount())));
+                  .addItemStack(BnCFluidItemDisplays.getFluidItemDisplay(Minecraft.getInstance().level.registryAccess(), new FluidStack(recipe.getResultFluid(), recipe.getAmount())));
       }
 
       if ( recipe.getCatalyst() != null ) {

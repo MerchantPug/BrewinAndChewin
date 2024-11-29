@@ -7,34 +7,34 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
 import net.minecraftforge.registries.ForgeRegistries;
 import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.common.registry.BnCRecipeSerializers;
 import umpaz.brewinandchewin.common.registry.BnCRecipeTypes;
-import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
+import umpaz.brewinandchewin.common.utility.BnCRecipeWrapper;
 
 import javax.annotation.Nullable;
 
-public class KegPouringRecipe implements Recipe<RecipeWrapper> {
+public class KegPouringRecipe implements Recipe<BnCRecipeWrapper> {
     private final ResourceLocation id;
     private final Fluid fluid;
     private final int amount;
     private final ItemStack container;
     private final ItemStack output;
+    private final boolean strict;
 
-    public KegPouringRecipe(ResourceLocation id, Fluid fluid, ItemStack container, ItemStack output, int amount) {
+    public KegPouringRecipe(ResourceLocation id, Fluid fluid, ItemStack container, ItemStack output, int amount, boolean strict) {
         this.id = id;
         this.amount = amount;
         this.fluid = fluid;
         this.container = container;
         this.output = output;
+        this.strict = strict;
     }
 
     @Override
@@ -50,12 +50,12 @@ public class KegPouringRecipe implements Recipe<RecipeWrapper> {
     }
 
     @Override
-    public boolean matches(RecipeWrapper inv, Level level) {
+    public boolean matches(BnCRecipeWrapper inv, Level level) {
         return Ingredient.of(this.container).test(inv.getItem(4));
     }
 
     @Override
-    public ItemStack assemble(RecipeWrapper recipeWrapper, RegistryAccess registryAccess) {
+    public ItemStack assemble(BnCRecipeWrapper recipeWrapper, RegistryAccess registryAccess) {
         return this.output.copy();
     }
 
@@ -81,8 +81,16 @@ public class KegPouringRecipe implements Recipe<RecipeWrapper> {
         return this.amount;
     }
 
-    public Fluid getFluid() {
+    public FluidStack getFluid(ItemStack container) {
+        return new FluidStack(fluid, amount);
+    }
+
+    public Fluid getRawFluid() {
         return this.fluid;
+    }
+
+    public boolean isStrict() {
+        return strict;
     }
 
     @Override
@@ -134,7 +142,8 @@ public class KegPouringRecipe implements Recipe<RecipeWrapper> {
             final int amountIn = GsonHelper.getAsInt(json, "amount", 250);
             ItemStack container = GsonHelper.isValidNode(json, "container") ? CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "container"), true) : ItemStack.EMPTY;
             final ItemStack outputIn = CraftingHelper.getItemStack(GsonHelper.getAsJsonObject(json, "output"), true);
-            return new KegPouringRecipe(recipeId, fluidIn, container, outputIn, amountIn);
+            final boolean strictIn = GsonHelper.getAsBoolean(json, "strict", false);
+            return new KegPouringRecipe(recipeId, fluidIn, container, outputIn, amountIn, strictIn);
         }
 
         @Nullable
@@ -144,7 +153,8 @@ public class KegPouringRecipe implements Recipe<RecipeWrapper> {
             int amountIn = buffer.readVarInt();
             ItemStack containerIn = buffer.readItem();
             ItemStack outputIn = buffer.readItem();
-            return new KegPouringRecipe(recipeId, fluidIn, containerIn, outputIn, amountIn);
+            boolean strictIn = buffer.readBoolean();
+            return new KegPouringRecipe(recipeId, fluidIn, containerIn, outputIn, amountIn, strictIn);
         }
 
         @Override
@@ -153,6 +163,7 @@ public class KegPouringRecipe implements Recipe<RecipeWrapper> {
             buffer.writeVarInt(recipe.amount);
             buffer.writeItem(recipe.container);
             buffer.writeItem(recipe.output);
+            buffer.writeBoolean(recipe.strict);
         }
     }
 }

@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:salty_folly",
   "output": {
     "item": "brewinandchewin:salty_folly"
-  }
+  },
+  "strict": false
 }

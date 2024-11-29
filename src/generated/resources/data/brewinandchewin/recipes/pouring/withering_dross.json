@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:withering_dross",
   "output": {
     "item": "brewinandchewin:withering_dross"
-  }
+  },
+  "strict": false
 }

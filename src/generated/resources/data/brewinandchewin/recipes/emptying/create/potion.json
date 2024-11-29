@@ -8,7 +8,10 @@
   ],
   "ingredients": [
     {
-      "item": "minecraft:potion"
+      "type": "forge:nbt",
+      "count": 1,
+      "item": "minecraft:potion",
+      "nbt": "{Potion:\"minecraft:water\"}"
     }
   ],
   "results": [

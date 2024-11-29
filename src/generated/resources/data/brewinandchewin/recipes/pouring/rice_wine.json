@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:rice_wine",
   "output": {
     "item": "brewinandchewin:rice_wine"
-  }
+  },
+  "strict": false
 }

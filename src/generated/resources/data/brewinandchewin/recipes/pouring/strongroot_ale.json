@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:strongroot_ale",
   "output": {
     "item": "brewinandchewin:strongroot_ale"
-  }
+  },
+  "strict": false
 }

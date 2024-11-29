@@ -8,5 +8,6 @@
   "output": {
     "item": "minecraft:potion",
     "nbt": "{Potion:\"minecraft:water\"}"
-  }
+  },
+  "strict": true
 }

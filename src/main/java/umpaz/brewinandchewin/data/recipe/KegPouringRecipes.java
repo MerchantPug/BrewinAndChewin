@@ -1,11 +1,17 @@
 package umpaz.brewinandchewin.data.recipe;
 
+import com.simibubi.create.AllFluids;
+import com.simibubi.create.AllItems;
 import net.minecraft.data.recipes.FinishedRecipe;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.registry.BnCFluids;
 import umpaz.brewinandchewin.common.registry.BnCItems;
+import umpaz.brewinandchewin.data.builder.CreatePotionPouringRecipeBuilder;
 import umpaz.brewinandchewin.data.builder.KegPouringRecipeBuilder;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -53,7 +59,7 @@ public class KegPouringRecipes {
 
         KegPouringRecipeBuilder.kegPouringRecipe(Items.GLASS_BOTTLE, ForgeMod.MILK.get(), 250, ModItems.MILK_BOTTLE.get())
                 .build(consumer);
-        KegPouringRecipeBuilder.kegPouringRecipe(Items.GLASS_BOTTLE, Fluids.WATER, 250, Items.POTION.getDefaultInstance())
+        KegPouringRecipeBuilder.kegPouringRecipe(Items.GLASS_BOTTLE, Fluids.WATER, 250, Items.POTION.getDefaultInstance(), true)
                 .build(consumer);
         KegPouringRecipeBuilder.kegPouringRecipe(Items.GLASS_BOTTLE, BnCFluids.HONEY_FLUID.get(), 250, Items.HONEY_BOTTLE)
                 .build(consumer);
@@ -66,5 +72,12 @@ public class KegPouringRecipes {
                 .build(consumer);
         KegPouringRecipeBuilder.kegPouringRecipe(Items.HONEYCOMB, BnCFluids.SCARLET_CHEESE.get(), 1000, BnCItems.UNRIPE_SCARLET_CHEESE_WHEEL.get())
                 .build(consumer);
+
+        // Create Compat
+        CreatePotionPouringRecipeBuilder.createPotionPouringRecipe(Items.GLASS_BOTTLE, 250)
+                .build(consumer, new ResourceLocation(BrewinAndChewin.MODID, "pouring/create_potion"));
+        KegPouringRecipeBuilder.kegPouringRecipe(Items.GLASS_BOTTLE, AllFluids.TEA.get(), 250, AllItems.BUILDERS_TEA.get())
+                .withCondition(new ModLoadedCondition("create"))
+                .build(consumer, new ResourceLocation(BrewinAndChewin.MODID, "create_builders_tea"));
     }
 }

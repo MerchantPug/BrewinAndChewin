@@ -38,7 +38,7 @@ public class BnCJEIRecipes {
         for (KegFermentingRecipe fermentingRecipe : ferms) {
             if (fermentingRecipe.getResultFluid() != null) {
                 for (KegPouringRecipe pouringRecipe : pours) {
-                    if (pouringRecipe.getFluid().isSame(fermentingRecipe.getResultFluid())) {
+                    if (pouringRecipe.getRawFluid().isSame(fermentingRecipe.getResultFluid())) {
                         kegRecipes.add(new KegFermentingPouringRecipe(fermentingRecipe, pouringRecipe));
                     }
                 }

@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:glittering_grenadine",
   "output": {
     "item": "brewinandchewin:glittering_grenadine"
-  }
+  },
+  "strict": false
 }

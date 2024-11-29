@@ -23,13 +23,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.common.registry.BnCRecipeSerializers;
 import umpaz.brewinandchewin.common.registry.BnCRecipeTypes;
+import umpaz.brewinandchewin.common.utility.BnCRecipeWrapper;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class KegFermentingRecipe implements Recipe<RecipeWrapper> {
+public class KegFermentingRecipe implements Recipe<BnCRecipeWrapper> {
    public static final int INPUT_SLOTS = 4;
 
    private final ResourceLocation id;
@@ -88,8 +89,8 @@ public class KegFermentingRecipe implements Recipe<RecipeWrapper> {
    }
 
    @Override
-   public ItemStack assemble( RecipeWrapper inv, RegistryAccess access ) {
-      return null;
+   public ItemStack assemble( BnCRecipeWrapper inv, RegistryAccess access ) {
+      return ItemStack.EMPTY;
    }
 
    public float getExperience() {
@@ -105,7 +106,7 @@ public class KegFermentingRecipe implements Recipe<RecipeWrapper> {
    }
 
    @Override
-   public boolean matches( RecipeWrapper inv, Level level ) {
+   public boolean matches( BnCRecipeWrapper inv, Level level ) {
       List<ItemStack> inputs = new ArrayList<>();
       int i = 0;
 

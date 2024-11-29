@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:red_rum",
   "output": {
     "item": "brewinandchewin:red_rum"
-  }
+  },
+  "strict": false
 }

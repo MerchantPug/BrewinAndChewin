@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:bloody_mary",
   "output": {
     "item": "brewinandchewin:bloody_mary"
-  }
+  },
+  "strict": false
 }

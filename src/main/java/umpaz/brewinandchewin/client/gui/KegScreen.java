@@ -1,6 +1,7 @@
 package umpaz.brewinandchewin.client.gui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
@@ -14,7 +15,7 @@ import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.block.entity.container.KegMenu;
-import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplayUtils;
+import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplays;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 
 import java.awt.*;
@@ -155,7 +156,7 @@ public class KegScreen extends AbstractContainerScreen<KegMenu>
         gui.innerBlit(sprite.atlasLocation(), this.leftPos + 124, this.leftPos + 124 + 8, y1, y2, 0, sprite.getU0(), sprite.getU0() + 0.5F * ( sprite.getU1() - sprite.getU0() ), v0, sprite.getV1(), red, green, blue, alpha);
 
         if (!menu.kegTank.getFluid().isEmpty()) {
-            ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(menu.kegTank.getFluid());
+            ItemStack itemDisplay = BnCFluidItemDisplays.getFluidItemDisplay(Minecraft.getInstance().level.registryAccess(), menu.kegTank.getFluid());
             if (!itemDisplay.isEmpty())
                 gui.renderItem(itemDisplay, this.leftPos + 112, this.topPos + 21);
         }

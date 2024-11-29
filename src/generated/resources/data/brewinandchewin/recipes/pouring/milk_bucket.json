@@ -7,5 +7,6 @@
   "fluid": "minecraft:milk",
   "output": {
     "item": "minecraft:milk_bucket"
-  }
+  },
+  "strict": false
 }

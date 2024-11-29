@@ -1,12 +1,13 @@
 {
   "type": "brewinandchewin:keg_pouring",
   "amount": 250,
+  "conditions": [],
   "container": {
     "item": "minecraft:glass_bottle"
   },
-  "fluid": "brewinandchewin:honey",
+  "fluid": "create:flowing_tea",
   "output": {
-    "item": "minecraft:honey_bottle"
+    "item": "create:builders_tea"
   },
   "strict": false
 }

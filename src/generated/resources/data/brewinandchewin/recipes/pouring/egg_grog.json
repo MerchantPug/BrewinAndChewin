@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:egg_grog",
   "output": {
     "item": "brewinandchewin:egg_grog"
-  }
+  },
+  "strict": false
 }

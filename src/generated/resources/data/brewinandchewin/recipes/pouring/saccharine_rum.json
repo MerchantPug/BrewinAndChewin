@@ -7,5 +7,6 @@
   "fluid": "brewinandchewin:saccharine_rum",
   "output": {
     "item": "brewinandchewin:saccharine_rum"
-  }
+  },
+  "strict": false
 }
