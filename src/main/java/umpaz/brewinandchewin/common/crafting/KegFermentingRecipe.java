@@ -70,14 +70,17 @@ public class KegFermentingRecipe implements Recipe<RecipeWrapper> {
       return this.inputItems;
    }
 
+   @Nullable
    public FluidStack getFluidIngredient() {
       return this.fluidIngredient;
    }
 
+   @Nullable
    public Fluid getResultFluid() {
       return this.resultFluid;
    }
 
+   @Nullable
    public Item getResultItem() {return this.resultItem;}
 
    public int getAmount() {

@@ -317,6 +317,8 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         }
 
         if (recipe.getResultItem() != null) {
+            if (recipe.getFluidIngredient() != null)
+                keg.fluidTank.drain(recipe.getFluidIngredient().getAmount(), IFluidHandler.FluidAction.EXECUTE);
             keg.inventory.insertItem(OUTPUT_SLOT, new ItemStack(recipe.getResultItem(), recipe.getAmount()), false);
         }
 
