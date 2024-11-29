@@ -2,12 +2,10 @@ package umpaz.brewinandchewin.data.recipe;
 
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.common.ForgeMod;
 import umpaz.brewinandchewin.common.registry.BnCFluids;
 import umpaz.brewinandchewin.common.registry.BnCItems;
-import umpaz.brewinandchewin.data.builder.KegFermentingRecipeBuilder;
 import umpaz.brewinandchewin.data.builder.KegPouringRecipeBuilder;
 import vectorwing.farmersdelight.common.registry.ModItems;
 
@@ -62,8 +60,6 @@ public class KegPouringRecipes {
         KegPouringRecipeBuilder.kegPouringRecipe(Items.BUCKET, Fluids.WATER, 1000, Items.WATER_BUCKET)
                 .build(consumer);
         KegPouringRecipeBuilder.kegPouringRecipe(Items.BUCKET, ForgeMod.MILK.get(), 1000, Items.MILK_BUCKET)
-                .build(consumer);
-        KegPouringRecipeBuilder.kegPouringRecipe(Items.BUCKET, Fluids.LAVA, 1000, Items.LAVA_BUCKET)
                 .build(consumer);
 
         KegPouringRecipeBuilder.kegPouringRecipe(Items.HONEYCOMB, BnCFluids.FLAXEN_CHEESE.get(), 1000, BnCItems.UNRIPE_FLAXEN_CHEESE_WHEEL.get())

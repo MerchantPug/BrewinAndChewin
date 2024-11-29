@@ -27,7 +27,6 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -39,7 +38,6 @@ import umpaz.brewinandchewin.common.registry.BnCBlockEntityTypes;
 import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -58,28 +56,29 @@ public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock 
 
    @Override
    public InteractionResult use( BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result ) {
-      ItemStack heldStack = player.getItemInHand(hand);
+       ItemStack heldStack = player.getItemInHand(hand);
 
-      BlockEntity tileEntity = level.getBlockEntity(pos);
-      if ( tileEntity instanceof KegBlockEntity kegBE ) {
-         ItemStack itm = kegBE.fluidExtract(kegBE, heldStack, player.getSlot(player.getInventory().getFreeSlot()).get(), 1, player.getAbilities().instabuild);
-         if ( !itm.isEmpty()) {
-             if (!ItemStack.isSameItemSameTags(itm, heldStack) ) {
-                 if ( heldStack.isEmpty() ) {
-                     player.setItemInHand(hand, itm);
-                 }
-                 else if ( !player.getInventory().add(itm) ) {
-                     player.drop(itm, false);
-                 }
-             }
-             level.playLocalSound(pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1, 1, false);
-             return InteractionResult.SUCCESS;
-         }
-         if ( !level.isClientSide() )
-            NetworkHooks.openScreen((ServerPlayer) player, kegBE, pos);
-      }
-      return InteractionResult.SUCCESS;
+       BlockEntity tileEntity = level.getBlockEntity(pos);
+       if (level.isClientSide())
+           return InteractionResult.SUCCESS;
+       if (tileEntity instanceof KegBlockEntity kegBE) {
+           ItemStack itm = kegBE.extractInWorld(kegBE, heldStack, player.getSlot(player.getInventory().getFreeSlot()).get(), 1, player.getAbilities().instabuild);
+           if (!itm.isEmpty()) {
+               if (!ItemStack.isSameItemSameTags(itm, heldStack)) {
+                   if (heldStack.isEmpty()) {
+                       player.setItemInHand(hand, itm);
+                   } else if (!player.getInventory().add(itm)) {
+                       player.drop(itm, false);
+                   }
+               }
+               level.playSound(null, pos, SoundEvents.BOTTLE_FILL, SoundSource.BLOCKS, 1, 1);
+               return InteractionResult.CONSUME;
+           }
+           NetworkHooks.openScreen((ServerPlayer) player, kegBE, pos);
+       }
+       return InteractionResult.CONSUME;
    }
+
 
    @Override
    public RenderShape getRenderShape( BlockState pState ) {

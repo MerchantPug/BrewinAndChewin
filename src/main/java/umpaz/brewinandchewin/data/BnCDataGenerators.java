@@ -28,6 +28,7 @@ public class BnCDataGenerators {
 
         BnCBlockTags blockTags = new BnCBlockTags(output, lookupProvider, helper);
         generator.addProvider(event.includeServer(), blockTags);
+        generator.addProvider(event.includeServer(), new BnCFluidTags(output, lookupProvider, helper));
         generator.addProvider(event.includeServer(), new BnCItemTags(output, lookupProvider, blockTags.contentsGetter(), helper));
         //generator.addProvider(event.includeServer(), new EntityTags(output, lookupProvider, helper));
         generator.addProvider(event.includeServer(), new BnCRecipes(output));
