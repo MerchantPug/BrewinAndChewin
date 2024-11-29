@@ -40,8 +40,8 @@ public class BnCFluidItemDisplayUtils {
         setFluidItemDisplay(BnCFluids.BLOODY_MARY_FLUID_TYPE.get(), BnCItems.BLOODY_MARY.get());
         setFluidItemDisplay(BnCFluids.RED_RUM_FLUID_TYPE.get(), BnCItems.RED_RUM.get());
         setFluidItemDisplay(BnCFluids.WITHERING_DROSS_FLUID_TYPE.get(), BnCItems.WITHERING_DROSS.get());
-        setFluidItemDisplay(BnCFluids.FLAXEN_CHEESE_FLUID_TYPE.get(), BnCItems.FLAXEN_CHEESE_WHEEL.get());
-        setFluidItemDisplay(BnCFluids.SCARLET_CHEESE_FLUID_TYPE.get(), BnCItems.SCARLET_CHEESE_WHEEL.get());
+        setFluidItemDisplay(BnCFluids.FLAXEN_CHEESE_FLUID_TYPE.get(), BnCItems.UNRIPE_FLAXEN_CHEESE_WHEEL.get());
+        setFluidItemDisplay(BnCFluids.SCARLET_CHEESE_FLUID_TYPE.get(), BnCItems.UNRIPE_SCARLET_CHEESE_WHEEL.get());
     }
 
     public static ItemStack getFluidItemDisplay(FluidStack fluid) {
