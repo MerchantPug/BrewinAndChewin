@@ -664,7 +664,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
     }
 
     private FluidTank createFluidTank() {
-        return new FluidTank(3000) {
+        return new FluidTank(1000) {
             @Override
             protected void onContentsChanged() {
                 super.onContentsChanged();
