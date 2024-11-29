@@ -1,10 +1,11 @@
 package umpaz.brewinandchewin.client.utility;
 
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.common.ForgeMod;
+import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidType;
 import umpaz.brewinandchewin.common.registry.BnCFluids;
 import umpaz.brewinandchewin.common.registry.BnCItems;
@@ -12,12 +13,15 @@ import vectorwing.farmersdelight.common.registry.ModItems;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
 
 public class BnCFluidItemDisplayUtils {
-    private static final Map<FluidType, ItemStack> FLUID_TYPE_TO_ITEM_MAP = new HashMap<>();
+    private static final Map<FluidType, Function<FluidStack, ItemStack>> FLUID_TYPE_TO_ITEM_MAP = new HashMap<>();
 
     public static void defaultFluidToItems() {
-        setFluidItemDisplay(ForgeMod.WATER_TYPE.get(), Items.POTION);
+        CompoundTag waterTag = new CompoundTag();
+        waterTag.putString("Potion", "minecraft:water");
+        setFluidItemDisplay(ForgeMod.WATER_TYPE.get(), new ItemStack(Items.POTION, 1, waterTag));
         setFluidItemDisplay(ForgeMod.MILK_TYPE.get(), ModItems.MILK_BOTTLE.get());
         setFluidItemDisplay(BnCFluids.HONEY_FLUID_TYPE.get(), Items.HONEY_BOTTLE);
         setFluidItemDisplay(BnCFluids.BEER_FLUID_TYPE.get(), BnCItems.BEER.get());
@@ -40,19 +44,23 @@ public class BnCFluidItemDisplayUtils {
         setFluidItemDisplay(BnCFluids.SCARLET_CHEESE_FLUID_TYPE.get(), BnCItems.SCARLET_CHEESE_WHEEL.get());
     }
 
-    public static ItemStack getFluidItemDisplay(Fluid fluid) {
-        if (FLUID_TYPE_TO_ITEM_MAP.containsKey(fluid.getFluidType()))
-            return FLUID_TYPE_TO_ITEM_MAP.get(fluid.getFluidType());
-        if (fluid.getBucket() != Items.AIR)
-            return fluid.getBucket().getDefaultInstance();
+    public static ItemStack getFluidItemDisplay(FluidStack fluid) {
+        if (FLUID_TYPE_TO_ITEM_MAP.containsKey(fluid.getFluid().getFluidType()))
+            return FLUID_TYPE_TO_ITEM_MAP.get(fluid.getFluid().getFluidType()).apply(fluid);
+        if (fluid.getFluid().getBucket() != Items.AIR)
+            return fluid.getFluid().getBucket().getDefaultInstance();
         return ItemStack.EMPTY;
     }
-    
+
+    public static void setFluidItemDisplay(FluidType type, Function<FluidStack, ItemStack> item) {
+        FLUID_TYPE_TO_ITEM_MAP.put(type, item);
+    }
+
     public static void setFluidItemDisplay(FluidType type, ItemLike item) {
-        FLUID_TYPE_TO_ITEM_MAP.put(type, new ItemStack(item));
+        FLUID_TYPE_TO_ITEM_MAP.put(type, fluidStack -> new ItemStack(item));
     }
 
     public static void setFluidItemDisplay(FluidType type, ItemStack stack) {
-        FLUID_TYPE_TO_ITEM_MAP.put(type, stack);
+        FLUID_TYPE_TO_ITEM_MAP.put(type, fluidStack -> stack);
     }
 }
