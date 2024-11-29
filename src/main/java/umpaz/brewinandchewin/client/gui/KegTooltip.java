@@ -52,7 +52,7 @@ public class KegTooltip implements ClientTooltipComponent {
    public void renderImage( Font font, int mouseX, int mouseY, GuiGraphics gui ) {
       if ( mealStack.isEmpty() ) return;
 
-      ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(mealStack.getFluid());
+      ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(mealStack);
       if (itemDisplay.isEmpty()) {
           IClientFluidTypeExtensions fluidTypeExtensions = IClientFluidTypeExtensions.of(mealStack.getFluid());
           ResourceLocation stillTexture = fluidTypeExtensions.getStillTexture(mealStack);

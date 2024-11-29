@@ -155,7 +155,7 @@ public class KegScreen extends AbstractContainerScreen<KegMenu>
         gui.innerBlit(sprite.atlasLocation(), this.leftPos + 124, this.leftPos + 124 + 8, y1, y2, 0, sprite.getU0(), sprite.getU0() + 0.5F * ( sprite.getU1() - sprite.getU0() ), v0, sprite.getV1(), red, green, blue, alpha);
 
         if (!menu.kegTank.getFluid().isEmpty()) {
-            ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(menu.kegTank.getFluid().getRawFluid());
+            ItemStack itemDisplay = BnCFluidItemDisplayUtils.getFluidItemDisplay(menu.kegTank.getFluid());
             if (!itemDisplay.isEmpty())
                 gui.renderItem(itemDisplay, this.leftPos + 112, this.topPos + 21);
         }
