@@ -5,7 +5,7 @@
   "container": {
     "item": "minecraft:glass_bottle"
   },
-  "fluid": "create:flowing_tea",
+  "fluid": "create:tea",
   "output": {
     "item": "create:builders_tea"
   },
