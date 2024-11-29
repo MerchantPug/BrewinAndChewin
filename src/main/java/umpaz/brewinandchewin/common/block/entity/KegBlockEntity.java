@@ -397,7 +397,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
 
         LazyOptional<IFluidHandlerItem> fluidHandler = isCreative ? slotIn.copy().getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM) : slotIn.getCapability(ForgeCapabilities.FLUID_HANDLER_ITEM);
         IFluidHandlerItem iFluidItemHandler = fluidHandler.orElse(null);
-        if (!iFluidItemHandler.getFluidInTank(0).isEmpty() && iFluidItemHandler.getFluidInTank(0).getFluid().is(BnCTags.KEG_BLACKLIST))
+        if (iFluidItemHandler != null && !iFluidItemHandler.getFluidInTank(0).isEmpty() && iFluidItemHandler.getFluidInTank(0).getFluid().is(BnCTags.KEG_BLACKLIST))
             return output;
 
         if (fluidHandler.isPresent() && !slotIn.isEmpty()) {
