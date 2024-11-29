@@ -9,11 +9,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -31,33 +27,19 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.common.ForgeMod;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.util.LazyOptional;
-import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.IFluidHandlerItem;
-import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.items.ItemStackHandler;
-import net.minecraftforge.items.wrapper.RecipeWrapper;
 import net.minecraftforge.network.NetworkHooks;
-import org.jetbrains.annotations.NotNull;
 import umpaz.brewinandchewin.common.block.entity.KegBlockEntity;
-import umpaz.brewinandchewin.common.crafting.KegPouringRecipe;
-import umpaz.brewinandchewin.common.fluid.AlcoholFluidType;
-import umpaz.brewinandchewin.common.item.BoozeItem;
 import umpaz.brewinandchewin.common.registry.BnCBlockEntityTypes;
-import umpaz.brewinandchewin.common.registry.BnCFluids;
-import umpaz.brewinandchewin.common.registry.BnCItems;
-import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.utility.MathUtils;
 
 import javax.annotation.Nullable;
-import java.util.Optional;
+import java.util.List;
 
 public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock {
    public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
@@ -152,16 +134,16 @@ public class KegBlock extends BaseEntityBlock implements SimpleWaterloggedBlock 
 
    @Override
    public void onRemove( BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving ) {
-      if ( state.getBlock() != newState.getBlock() ) {
-         BlockEntity tileEntity = level.getBlockEntity(pos);
-         if ( tileEntity instanceof KegBlockEntity kegEntity ) {
-            Containers.dropContents(level, pos, kegEntity.getDroppableInventory());
-            kegEntity.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
-            level.updateNeighbourForOutputSignal(pos, this);
-         }
+       if (state.getBlock() != newState.getBlock()) {
+           BlockEntity tileEntity = level.getBlockEntity(pos);
+           if (tileEntity instanceof KegBlockEntity kegEntity) {
+               Containers.dropContents(level, pos, kegEntity.getDroppableInventory());
+               kegEntity.getUsedRecipesAndPopExperience(level, Vec3.atCenterOf(pos));
+               level.updateNeighbourForOutputSignal(pos, this);
+           }
 
-         super.onRemove(state, level, pos, newState, isMoving);
-      }
+           super.onRemove(state, level, pos, newState, isMoving);
+       }
    }
 
    @Override
