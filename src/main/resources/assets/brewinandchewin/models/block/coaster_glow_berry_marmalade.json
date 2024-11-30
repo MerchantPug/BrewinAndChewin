@@ -1,0 +1,6 @@
+{
+  "parent": "brewinandchewin:block/coaster_jam_jar",
+  "textures": {
+    "jam": "brewinandchewin:block/glow_berry_marmalade"
+  }
+}

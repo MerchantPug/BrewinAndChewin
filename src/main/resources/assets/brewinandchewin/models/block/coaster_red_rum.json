@@ -1,5 +1,5 @@
 {
-  "parent": "brewinandchewin:block/tankard",
+  "parent": "brewinandchewin:block/coaster_tankard",
   "textures": {
     "particle": "brewinandchewin:block/red_rum",
     "tankard": "brewinandchewin:block/red_rum"

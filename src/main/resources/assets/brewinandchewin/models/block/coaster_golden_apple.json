@@ -1,0 +1,6 @@
+{
+  "parent": "brewinandchewin:block/coaster_apple",
+  "textures": {
+    "apple": "brewinandchewin:block/golden_apple"
+  }
+}

@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"melon": "brewinandchewin:block/melon_slice",
+        "particle": "#melon"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 2, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 0, 5]},
+			"faces": {
+				"north": {"uv": [6, 7, 0, 9], "texture": "#melon"},
+				"east": {"uv": [13, 13, 7, 15], "texture": "#melon"},
+				"south": {"uv": [0, 13, 6, 15], "texture": "#melon"},
+				"west": {"uv": [0, 10, 6, 12], "texture": "#melon"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#melon"},
+				"down": {"uv": [0, 6, 6, 0], "texture": "#melon"}
+			}
+		}
+	]
+}

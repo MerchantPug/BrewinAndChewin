@@ -1,5 +1,5 @@
 {
-  "parent": "brewinandchewin:block/jam_block",
+  "parent": "brewinandchewin:block/coaster_jam_jar",
   "textures": {
     "particle": "brewinandchewin:block/sweet_berry_jam",
     "jam": "brewinandchewin:block/sweet_berry_jam"

@@ -15,6 +15,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.Rotation;
@@ -127,8 +128,7 @@ public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBl
         }
 
         for (int i = 0; i < count; i++) {
-            ResourceLocation modelLocation = ITEM_TO_MODELS.get(ForgeRegistries.ITEMS.getKey(entity.getItems().get(i).getItem()));
-            BakedModel model = Minecraft.getInstance().getModelManager().getModel(modelLocation);
+            BakedModel model = getCoasterModel(entity.getItems().get(i).getItem());
             poseStack.pushPose();
 
             poseUtil(poseStack, count, i, random, entity.getBlockState().getValue(CoasterBlock.INVISIBLE));
@@ -139,9 +139,14 @@ public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBl
                 poseStack.scale(0.5F, 0.5F ,0.5F);
                 Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItems().get(i), ItemDisplayContext.FIXED, combinedLight, combinedOverlay, poseStack, buffer, entity.getLevel(), (int) entity.getBlockPos().asLong());
             } else
-                Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), model, entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, null);
+                Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), model, entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, RenderType.cutout());
 
             poseStack.popPose();
         }
+    }
+
+    public static BakedModel getCoasterModel(Item item) {
+        ResourceLocation modelLocation = ITEM_TO_MODELS.get(ForgeRegistries.ITEMS.getKey(item));
+        return Minecraft.getInstance().getModelManager().getModel(modelLocation);
     }
 }

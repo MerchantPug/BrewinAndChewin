@@ -1,0 +1,31 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"particle": "brewinandchewin:block/apple",
+		"apple": "brewinandchewin:block/apple"
+	},
+	"elements": [
+		{
+			"from": [5.5, 0, 5.5],
+			"to": [10.5, 5, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5.5, 0, 5.5]},
+			"faces": {
+				"north": {"uv": [1, 7, 6, 12], "texture": "#apple"},
+				"east": {"uv": [1, 7, 6, 12], "texture": "#apple"},
+				"south": {"uv": [1, 7, 6, 12], "texture": "#apple"},
+				"west": {"uv": [1, 7, 6, 12], "texture": "#apple"},
+				"up": {"uv": [1, 1, 6, 6], "texture": "#apple"},
+				"down": {"uv": [7, 1, 12, 6], "texture": "#apple"}
+			}
+		},
+		{
+			"from": [4.5, 5, 8],
+			"to": [9.5, 8, 8],
+			"rotation": {"angle": 45, "axis": "y", "origin": [8, 5, 8]},
+			"faces": {
+				"north": {"uv": [7, 7, 12, 10], "texture": "#apple"},
+				"south": {"uv": [12, 7, 7, 10], "texture": "#apple"}
+			}
+		}
+	]
+}

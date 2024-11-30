@@ -1,7 +1,0 @@
-{
-  "parent": "brewinandchewin:block/jam_block",
-  "textures": {
-    "particle": "brewinandchewin:block/glow_berry_marmalade",
-    "jam": "brewinandchewin:block/glow_berry_marmalade"
-  }
-}
