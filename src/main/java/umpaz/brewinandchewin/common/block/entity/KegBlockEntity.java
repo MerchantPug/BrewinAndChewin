@@ -59,6 +59,7 @@ import vectorwing.farmersdelight.common.utility.ItemUtils;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -459,6 +460,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         if (level == null) return Optional.empty();
         Optional<KegPouringRecipe> recipe = level.getRecipeManager().getAllRecipesFor(BnCRecipeTypes.KEG_POURING.get())
                 .stream()
+                .sorted(Comparator.comparingInt(value -> value.isStrict() ? 0 : 1))
                 .filter(r -> {
                     boolean containerCheck = false;
                     boolean resultCheck = false;
