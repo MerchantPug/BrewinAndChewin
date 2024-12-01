@@ -35,6 +35,7 @@ public class BnCConfiguration {
    public static ForgeConfigSpec.BooleanValue SIGN_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue NAME_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue TIPSY_SCREEN_EFFECT;
+   public static ForgeConfigSpec.BooleanValue SHOW_FLUID_IN_KEG;
 
 
    static {
@@ -53,7 +54,7 @@ public class BnCConfiguration {
 
       COMMON_BUILDER.comment("Keg").push(CATEGORY_KEG);
       KEG_CAPACITY = COMMON_BUILDER.comment("How much fluid (in millibuckets) can the Keg hold?")
-              .defineInRange("kegCapacity", 3000, 1, 10000);
+              .defineInRange("kegCapacity", 1000, 1, 10000);
       KEG_FREEZING = COMMON_BUILDER.comment("How many cold blocks (added to cold blocks) are required for a freezing temperature in the Keg?")
               .defineInRange("kegFreezing", 2, 1, 10);
       KEG_COLD = COMMON_BUILDER.comment("How many cold blocks are required for a cold temperature in the Keg?")
@@ -91,6 +92,8 @@ public class BnCConfiguration {
 
       TIPSY_SCREEN_EFFECT = CLIENT_BUILDER.comment("Should the screen wobble when the player has the Tipsy effect?")
               .define("tipsyScreenEffect", true);
+      SHOW_FLUID_IN_KEG = CLIENT_BUILDER.comment("Should kegs show the fluid texture in the result slot?")
+                      .define("showFluidInKeg", true);
       CLIENT_BUILDER.pop();
 
       CLIENT_CONFIG = CLIENT_BUILDER.build();

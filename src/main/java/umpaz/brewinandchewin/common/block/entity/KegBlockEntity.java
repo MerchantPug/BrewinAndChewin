@@ -94,7 +94,6 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
         this.inputHandler = LazyOptional.of(() -> new KegItemHandler(inventory, Direction.UP));
         this.outputHandler = LazyOptional.of(() -> new KegItemHandler(inventory, Direction.DOWN));
         this.fluidTank = createFluidTank();
-//        this.fluidTank.setFluid(new FluidStack(BnCFluids.SOURCE_BEER_FLUID.get(), 1000));
         this.fluidTankHandler = LazyOptional.of(() -> fluidTank);
         this.kegData = createIntArray();
         this.usedRecipeTracker = new Object2IntOpenHashMap<>();
@@ -678,7 +677,7 @@ public class KegBlockEntity extends SyncedBlockEntity implements MenuProvider, N
     }
 
     private FluidTank createFluidTank() {
-        return new FluidTank(1000) {
+        return new FluidTank(BnCConfiguration.KEG_CAPACITY.get()) {
             @Override
             protected void onContentsChanged() {
                 super.onContentsChanged();

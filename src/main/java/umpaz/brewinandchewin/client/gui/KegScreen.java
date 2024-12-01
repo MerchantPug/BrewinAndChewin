@@ -14,6 +14,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.extensions.common.IClientFluidTypeExtensions;
 import net.minecraftforge.fluids.FluidStack;
 import umpaz.brewinandchewin.BrewinAndChewin;
+import umpaz.brewinandchewin.common.BnCConfiguration;
 import umpaz.brewinandchewin.common.block.entity.container.KegMenu;
 import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplays;
 import umpaz.brewinandchewin.common.utility.BnCTextUtils;
@@ -128,32 +129,34 @@ public class KegScreen extends AbstractContainerScreen<KegMenu>
 
 
         // Fluid
-        TextureAtlasSprite sprite =
-                this.minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
-        int tintColor = fluidTypeExtensions.getTintColor(fluidStack);
+        if (BnCConfiguration.SHOW_FLUID_IN_KEG.get()) {
+            TextureAtlasSprite sprite =
+                    this.minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
+            int tintColor = fluidTypeExtensions.getTintColor(fluidStack);
 
-        float alpha = ((tintColor >> 24) & 0xFF) / 255f;
-        float red = ((tintColor >> 16) & 0xFF) / 255f;
-        float green = ((tintColor >> 8) & 0xFF) / 255f;
-        float blue = (tintColor & 0xFF) / 255f;
+            float alpha = ((tintColor >> 24) & 0xFF) / 255f;
+            float red = ((tintColor >> 16) & 0xFF) / 255f;
+            float green = ((tintColor >> 8) & 0xFF) / 255f;
+            float blue = (tintColor & 0xFF) / 255f;
 
-        float capacity = this.menu.kegTank.getFluidAmount() / (float) this.menu.kegTank.getCapacity();
-        if (capacity > 0.57) {
-            int y1 = this.topPos + 19 + (int) (12 * (1 - ((capacity - 0.57F) / .43F)));
-            int y2 = this.topPos + 19 + 12;
-            float topCapacity = (capacity - 0.57F) / 0.43F;
+            float capacity = Math.min(this.menu.kegTank.getCapacity(), this.menu.kegTank.getFluidAmount()) / (float) this.menu.kegTank.getCapacity();
+            if (capacity > 0.57) {
+                int y1 = this.topPos + 19 + (int) (12 * (1 - ((capacity - 0.57F) / .43F)));
+                int y2 = this.topPos + 19 + 12;
+                float topCapacity = (capacity - 0.57F) / 0.43F;
+                float vDistance = sprite.getV1() - sprite.getV0();
+                float v0 = sprite.getV0() + (0.25F * vDistance) + (0.75F * vDistance * (1 - topCapacity));
+                gui.innerBlit(sprite.atlasLocation(), this.leftPos + 108, this.leftPos + 108 + 16, y1, y2, 0, sprite.getU0(), sprite.getU1(), v0, sprite.getV1(), red, green, blue, alpha);
+                gui.innerBlit(sprite.atlasLocation(), this.leftPos + 124, this.leftPos + 124 + 8, y1, y2, 0, sprite.getU0(), sprite.getU0() + 0.5F * ( sprite.getU1() - sprite.getU0() ), v0, sprite.getV1(), red, green, blue, alpha);
+
+            }
+            int y1 = this.topPos + 31 + (int) (16 * (1 - Math.min(1, (capacity / .57F))));
+            int y2 = this.topPos + 31 + 16;
             float vDistance = sprite.getV1() - sprite.getV0();
-            float v0 = sprite.getV0() + (0.25F * vDistance) + (0.75F * vDistance * (1 - topCapacity));
+            float v0 = sprite.getV0() + (vDistance * (1 - Math.min(1, (capacity / .57F))));
             gui.innerBlit(sprite.atlasLocation(), this.leftPos + 108, this.leftPos + 108 + 16, y1, y2, 0, sprite.getU0(), sprite.getU1(), v0, sprite.getV1(), red, green, blue, alpha);
             gui.innerBlit(sprite.atlasLocation(), this.leftPos + 124, this.leftPos + 124 + 8, y1, y2, 0, sprite.getU0(), sprite.getU0() + 0.5F * ( sprite.getU1() - sprite.getU0() ), v0, sprite.getV1(), red, green, blue, alpha);
-
         }
-        int y1 = this.topPos + 31 + (int) (16 * (1 - Math.min(1, (capacity / .57F))));
-        int y2 = this.topPos + 31 + 16;
-        float vDistance = sprite.getV1() - sprite.getV0();
-        float v0 = sprite.getV0() + (vDistance * (1 - Math.min(1, (capacity / .57F))));
-        gui.innerBlit(sprite.atlasLocation(), this.leftPos + 108, this.leftPos + 108 + 16, y1, y2, 0, sprite.getU0(), sprite.getU1(), v0, sprite.getV1(), red, green, blue, alpha);
-        gui.innerBlit(sprite.atlasLocation(), this.leftPos + 124, this.leftPos + 124 + 8, y1, y2, 0, sprite.getU0(), sprite.getU0() + 0.5F * ( sprite.getU1() - sprite.getU0() ), v0, sprite.getV1(), red, green, blue, alpha);
 
         if (!menu.kegTank.getFluid().isEmpty()) {
             ItemStack itemDisplay = BnCFluidItemDisplays.getFluidItemDisplay(Minecraft.getInstance().level.registryAccess(), menu.kegTank.getFluid());
