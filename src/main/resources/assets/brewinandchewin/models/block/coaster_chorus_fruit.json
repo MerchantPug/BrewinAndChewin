@@ -2,7 +2,7 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"chorus_fruit": "brewinandchewin:block/chorus_fruit",
-		"particle": "#chorus_fruit"
+		"particle": "brewinandchewin:block/chorus_fruit"
 	},
 	"elements": [
 		{
@@ -28,6 +28,18 @@
 				"south": {"uv": [4, 1, 1, 4], "texture": "#chorus_fruit"},
 				"west": {"uv": [1, 9, 4, 12], "texture": "#chorus_fruit"},
 				"down": {"uv": [1, 13, 4, 16], "texture": "#chorus_fruit"}
+			}
+		},
+		{
+			"from": [11.5, 7, 9.5],
+			"to": [8.5, 4, 6.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [11.5, 7, 9.5]},
+			"faces": {
+				"north": {"uv": [4, 4, 1, 1], "texture": "#chorus_fruit"},
+				"east": {"uv": [1, 12, 4, 9], "texture": "#chorus_fruit"},
+				"south": {"uv": [1, 4, 4, 1], "texture": "#chorus_fruit"},
+				"west": {"uv": [1, 8, 4, 5], "texture": "#chorus_fruit"},
+				"up": {"uv": [1, 13, 4, 16], "texture": "#chorus_fruit"}
 			}
 		}
 	]

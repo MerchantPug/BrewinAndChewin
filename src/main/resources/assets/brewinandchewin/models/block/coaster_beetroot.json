@@ -24,7 +24,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [2.5, 2, 8]},
 			"faces": {
 				"up": {"uv": [12, 1, 15, 4], "texture": "#beetroot"},
-				"down": {"uv": [13, 13, 16, 16], "texture": "#beetroot"}
+				"down": {"uv": [12, 4, 15, 1], "texture": "#beetroot"}
 			}
 		},
 		{
@@ -33,7 +33,7 @@
 			"rotation": {"angle": 0, "axis": "y", "origin": [12.5, 2, 7]},
 			"faces": {
 				"up": {"uv": [12, 5, 15, 10], "texture": "#beetroot"},
-				"down": {"uv": [13, 11, 16, 16], "texture": "#beetroot"}
+				"down": {"uv": [12, 10, 15, 5], "texture": "#beetroot"}
 			}
 		}
 	]

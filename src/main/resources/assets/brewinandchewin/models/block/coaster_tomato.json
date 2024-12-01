@@ -23,7 +23,8 @@
 			"to": [10, 6, 8],
 			"rotation": {"angle": 45, "axis": "y", "origin": [8, 4, 8]},
 			"faces": {
-				"north": {"uv": [7, 1, 11, 3], "texture": "#tomato"}
+				"north": {"uv": [7, 1, 11, 3], "texture": "#tomato"},
+				"south": {"uv": [11, 1, 7, 3], "texture": "#tomato"}
 			}
 		}
 	]

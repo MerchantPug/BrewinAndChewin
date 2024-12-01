@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-        "tropical_fish": "brewinandchewin:block/tropical_fish",
-        "particle": "#tropical_fish"
+		"tropical_fish": "brewinandchewin:block/tropical_fish",
+		"particle": "#tropical_fish"
 	},
 	"elements": [
 		{
@@ -15,7 +15,7 @@
 				"south": {"uv": [6, 5, 11, 7], "texture": "#tropical_fish"},
 				"west": {"uv": [6, 0, 10, 2], "texture": "#tropical_fish"},
 				"up": {"uv": [5, 4, 0, 0], "texture": "#tropical_fish"},
-				"down": {"uv": [0, 8, 5, 12], "texture": "#tropical_fish"}
+				"down": {"uv": [5, 8, 0, 12], "texture": "#tropical_fish"}
 			}
 		},
 		{
@@ -36,7 +36,8 @@
 			"to": [10.5, 1, 11],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8.5, 0, 10]},
 			"faces": {
-				"up": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"}
+				"up": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"},
+				"down": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"}
 			}
 		},
 		{
@@ -44,7 +45,8 @@
 			"to": [5.5, 1, 10],
 			"rotation": {"angle": 0, "axis": "y", "origin": [3.5, 0, 9]},
 			"faces": {
-				"up": {"uv": [9, 15, 6, 11], "texture": "#tropical_fish"}
+				"up": {"uv": [9, 15, 6, 11], "texture": "#tropical_fish"},
+				"down": {"uv": [9, 11, 6, 15], "texture": "#tropical_fish"}
 			}
 		},
 		{
@@ -52,24 +54,18 @@
 			"to": [9.5, 2, 6],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 1, 5]},
 			"faces": {
-				"up": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"}
+				"up": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"},
+				"down": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"}
 			}
 		},
 		{
-			"from": [7.5, 0, 5],
-			"to": [9.5, 0, 6],
+			"from": [7.5, 0.01, 5],
+			"to": [9.5, 0.01, 6],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, -1, 5]},
 			"faces": {
-				"up": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"}
+				"up": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"},
+				"down": {"uv": [5, 14, 3, 15], "texture": "#tropical_fish"}
 			}
-		}
-	],
-	"groups": [
-		{
-			"name": "main",
-			"origin": [8, 8, 8],
-			"color": 0,
-			"children": [0, 1, 2, 3, 4, 5]
 		}
 	]
 }

@@ -23,7 +23,8 @@
 			"to": [5.5, 2, 8.5],
 			"rotation": {"angle": 22.5, "axis": "z", "origin": [5.5, 2, 6.5]},
 			"faces": {
-				"up": {"uv": [15, 2, 13, 0], "texture": "#pufferfish"}
+				"up": {"uv": [15, 2, 13, 0], "texture": "#pufferfish"},
+				"down": {"uv": [15, 0, 13, 2], "texture": "#pufferfish"}
 			}
 		},
 		{
@@ -31,7 +32,8 @@
 			"to": [12.5, 2, 8.5],
 			"rotation": {"angle": -22.5, "axis": "z", "origin": [10.5, 2, 6.5]},
 			"faces": {
-				"up": {"uv": [13, 2, 15, 0], "texture": "#pufferfish"}
+				"up": {"uv": [13, 2, 15, 0], "texture": "#pufferfish"},
+				"down": {"uv": [13, 0, 15, 2], "texture": "#pufferfish", "tintindex": 0}
 			}
 		},
 		{
@@ -39,6 +41,7 @@
 			"to": [8, 5, 12.5],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 10.5]},
 			"faces": {
+				"east": {"uv": [15, 3, 13, 7], "texture": "#pufferfish"},
 				"west": {"uv": [13, 3, 15, 7], "texture": "#pufferfish"}
 			}
 		}
