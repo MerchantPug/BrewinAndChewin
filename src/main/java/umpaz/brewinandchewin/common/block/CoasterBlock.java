@@ -57,7 +57,7 @@ public class CoasterBlock extends BaseEntityBlock {
 
     @Override
     public VoxelShape getCollisionShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return state.getValue(INVISIBLE) ? Shapes.empty() : COASTER_SHAPE;
+        return state.getValue(INVISIBLE) ? Shapes.empty() : super.getCollisionShape(state, worldIn, pos, context);
     }
 
     @Override

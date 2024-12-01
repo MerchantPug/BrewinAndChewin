@@ -13,6 +13,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.structure.BoundingBox;
+import net.minecraft.world.phys.AABB;
 import umpaz.brewinandchewin.common.block.CoasterBlock;
 import umpaz.brewinandchewin.common.registry.BnCBlockEntityTypes;
 import umpaz.brewinandchewin.common.registry.BnCItems;
@@ -56,12 +58,15 @@ public class CoasterBlockEntity extends SyncedBlockEntity {
             if (!player.getAbilities().instabuild && !player.addItem(inventory.get(count - 1))) {
                 player.drop(inventory.get(count - 1), false);
             }
-            inventory.set(count - 1, ItemStack.EMPTY);
-            inventoryChanged();
+            BlockState replaceWith = Blocks.AIR.defaultBlockState();
+            if (!state.getValue(INVISIBLE) || count > 1) {
+                inventory.set(count - 1, ItemStack.EMPTY);
+                inventoryChanged();
+                replaceWith = state
+                        .setValue(CoasterBlock.SIZE, state.getValue(CoasterBlock.SIZE) - 1);
+            }
+            level.setBlockAndUpdate(pos, replaceWith);
 
-            level.setBlockAndUpdate(pos, state.getValue(INVISIBLE) && count == 1 ? Blocks.AIR.defaultBlockState() : state
-                    .setValue(CoasterBlock.SIZE, state.getValue(CoasterBlock.SIZE) - 1)
-            );
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
@@ -88,6 +93,12 @@ public class CoasterBlockEntity extends SyncedBlockEntity {
    protected void saveAdditional( CompoundTag nbt ) {
        super.saveAdditional(nbt);
        ContainerHelper.saveAllItems(nbt, this.inventory);
+   }
+
+   @Override
+   public AABB getRenderBoundingBox() {
+        BlockPos pos = getBlockPos();
+        return AABB.of(BoundingBox.fromCorners(pos, pos.above()));
    }
 
    public NonNullList<ItemStack> getItems() {

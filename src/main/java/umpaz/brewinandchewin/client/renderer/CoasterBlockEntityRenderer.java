@@ -19,7 +19,6 @@ import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraftforge.client.model.data.ModelData;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.joml.Quaternionf;
 import org.joml.Vector2f;
