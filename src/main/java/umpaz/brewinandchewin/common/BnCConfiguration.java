@@ -92,7 +92,7 @@ public class BnCConfiguration {
 
       TIPSY_SCREEN_EFFECT = CLIENT_BUILDER.comment("Should the screen wobble when the player has the Tipsy effect?")
               .define("tipsyScreenEffect", true);
-      SHOW_FLUID_IN_KEG = CLIENT_BUILDER.comment("Should kegs show the fluid texture in the result slot?")
+      SHOW_FLUID_IN_KEG = CLIENT_BUILDER.comment("Should kegs show the fluid texture in the fluid slot?")
                       .define("showFluidInKeg", true);
       CLIENT_BUILDER.pop();
 
