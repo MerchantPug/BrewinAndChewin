@@ -37,18 +37,7 @@ public class CoasterBlock extends BaseEntityBlock {
     public static final BooleanProperty INVISIBLE = BooleanProperty.create("invisible");
 
     protected static final VoxelShape COASTER_SHAPE = Block.box(3.0D, 0.0D, 3.0D, 13.0D, 1.0D, 13.0D);
-    protected static final VoxelShape[] SHAPES_WITHOUT_COASTER = {
-            Block.box(6.0D, 0.0D, 6.0D, 11.0D, 10.0D, 11.0D),
-            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 10.0D, 15.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 10.0D, 15.0D)
-    };
-    protected static final VoxelShape[] SHAPES_WITH_COASTER = {
-            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 10.0D, 15.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 10.0D, 15.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 10.0D, 15.0D)
-    };
+    protected static final VoxelShape TRAY_SHAPE = Block.box(1.0D, 0.0D, 1.0D, 15.0D, 1.0D, 15.0D);
 
     public CoasterBlock() {
         super(Properties.copy(Blocks.BROWN_CARPET).sound(SoundType.WOOD).instabreak());
@@ -63,9 +52,7 @@ public class CoasterBlock extends BaseEntityBlock {
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         int size = state.getValue(SIZE);
-        if (size > 0)
-            return state.getValue(INVISIBLE) ? SHAPES_WITHOUT_COASTER[size - 1] : SHAPES_WITH_COASTER[size - 1];
-        return COASTER_SHAPE;
+        return size > 1 ? TRAY_SHAPE : COASTER_SHAPE;
     }
 
     @Override

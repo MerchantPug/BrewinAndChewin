@@ -1,4 +1,4 @@
 {
   "item": "minecraft:bread",
-  "model": "brewinandchewin:block/coaster_bread"
+  "models": "brewinandchewin:block/coaster_bread"
 }

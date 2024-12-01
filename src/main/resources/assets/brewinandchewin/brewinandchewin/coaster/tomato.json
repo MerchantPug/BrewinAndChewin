@@ -1,4 +1,4 @@
 {
   "item": "farmersdelight:tomato",
-  "model": "brewinandchewin:block/coaster_tomato"
+  "models": "brewinandchewin:block/coaster_tomato"
 }

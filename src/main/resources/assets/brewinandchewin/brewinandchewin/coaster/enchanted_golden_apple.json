@@ -1,0 +1,16 @@
+{
+  "item": "minecraft:enchanted_golden_apple",
+  "models": [
+    {
+      "model": "brewinandchewin:block/coaster_golden_apple"
+    },
+    {
+      "model": "brewinandchewin:block/coaster_golden_apple",
+      "texture_modifiers": [
+        {
+          "type": "brewinandchewin:glint"
+        }
+      ]
+    }
+  ]
+}

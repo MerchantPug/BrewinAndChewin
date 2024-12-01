@@ -1,5 +1,6 @@
 package umpaz.brewinandchewin;
 
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.inventory.RecipeBookType;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
 import net.minecraftforge.common.ForgeMod;
@@ -56,5 +57,8 @@ public class BrewinAndChewin
         ForgeMod.enableMilkFluid();
     }
 
+    public static ResourceLocation asResource(String path) {
+        return new ResourceLocation(MODID, path);
+    }
 
 }

@@ -1,4 +1,4 @@
 {
   "item": "minecraft:melon_slice",
-  "model": "brewinandchewin:block/coaster_melon_slice"
+  "models": "brewinandchewin:block/coaster_melon_slice"
 }

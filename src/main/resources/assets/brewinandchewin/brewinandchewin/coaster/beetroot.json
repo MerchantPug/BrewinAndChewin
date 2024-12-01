@@ -1,4 +1,4 @@
 {
   "item": "minecraft:beetroot",
-  "model": "brewinandchewin:block/coaster_beetroot"
+  "models": "brewinandchewin:block/coaster_beetroot"
 }

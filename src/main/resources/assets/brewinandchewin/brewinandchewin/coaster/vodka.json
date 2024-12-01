@@ -1,4 +1,4 @@
 {
   "item": "brewinandchewin:vodka",
-  "model": "brewinandchewin:block/coaster_vodka"
+  "models": "brewinandchewin:block/coaster_vodka"
 }

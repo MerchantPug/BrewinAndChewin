@@ -55,6 +55,7 @@ public class BnCFluidItemDisplays {
         return ItemStack.EMPTY;
     }
 
+    // TODO: Rewrite me.
     public static class Loader extends SimplePreparableReloadListener<Map<Fluid, FluidBasedItemStack>> {
         public static final Loader INSTANCE = new Loader();
         private static final Gson GSON = new GsonBuilder().create();

@@ -1,4 +1,4 @@
 {
   "item": "farmersdelight:sweet_berry_cookie",
-  "model": "brewinandchewin:block/coaster_sweet_berry_cookie"
+  "models": "brewinandchewin:block/coaster_sweet_berry_cookie"
 }

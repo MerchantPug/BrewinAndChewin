@@ -1,4 +1,4 @@
 {
   "item": "farmersdelight:cabbage",
-  "model": "brewinandchewin:block/coaster_cabbage"
+  "models": "brewinandchewin:block/coaster_cabbage"
 }

@@ -1,4 +1,4 @@
 {
   "item": "brewinandchewin:kombucha",
-  "model": "brewinandchewin:block/coaster_kombucha"
+  "models": "brewinandchewin:block/coaster_kombucha"
 }

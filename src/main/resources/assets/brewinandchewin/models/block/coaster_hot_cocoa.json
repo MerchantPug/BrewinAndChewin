@@ -1,6 +1,6 @@
 {
-    "parent": "brewinandchewin:block/coaster_milk_bottle",
+    "parent": "brewinandchewin:block/coaster_glass_mug",
     "textures": {
-      "bottle": "brewinandchewin:block/hot_cocoa"
+      "mug": "brewinandchewin:block/hot_cocoa"
     }
 }

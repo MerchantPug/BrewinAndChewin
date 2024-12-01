@@ -1,4 +1,4 @@
 {
   "item": "minecraft:glow_berries",
-  "model": "brewinandchewin:block/coaster_glow_berries"
+  "models": "brewinandchewin:block/coaster_glow_berries"
 }

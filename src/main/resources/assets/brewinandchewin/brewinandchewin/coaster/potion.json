@@ -1,0 +1,16 @@
+{
+  "item": "minecraft:potion",
+  "models": [
+    {
+      "model": "brewinandchewin:block/coaster_potion_bottle"
+    },
+    {
+      "model": "brewinandchewin:block/coaster_potion_contents",
+      "texture_modifiers": [
+        {
+          "type": "brewinandchewin:potion_tint"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "brewinandchewin:block/coaster_salmon",
+  "textures": {
+    "salmon": "brewinandchewin:block/cooked_salmon"
+  }
+}

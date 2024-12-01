@@ -1,4 +1,4 @@
 {
   "item": "farmersdelight:hot_cocoa",
-  "model": "brewinandchewin:block/coaster_hot_cocoa"
+  "models": "brewinandchewin:block/coaster_hot_cocoa"
 }

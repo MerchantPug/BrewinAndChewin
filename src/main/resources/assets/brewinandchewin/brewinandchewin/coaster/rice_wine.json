@@ -1,4 +1,4 @@
 {
   "item": "brewinandchewin:rice_wine",
-  "model": "brewinandchewin:block/coaster_rice_wine"
+  "models": "brewinandchewin:block/coaster_rice_wine"
 }

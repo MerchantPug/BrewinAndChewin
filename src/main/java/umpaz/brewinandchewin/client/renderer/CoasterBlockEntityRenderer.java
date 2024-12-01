@@ -2,49 +2,60 @@ package umpaz.brewinandchewin.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import com.mojang.datafixers.util.Either;
 import com.mojang.math.Axis;
-import com.sun.jna.platform.win32.COM.COMBindingBaseObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
-import net.minecraft.world.level.BlockAndTintGetter;
-import net.minecraft.world.level.block.Rotation;
-import net.minecraft.world.level.block.state.properties.RotationSegment;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.levelgen.LegacyRandomSource;
 import net.minecraftforge.client.model.data.ModelData;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.jetbrains.annotations.Nullable;
 import org.joml.Quaternionf;
 import org.joml.Vector2f;
-import org.spongepowered.asm.mixin.injection.selectors.ElementNode;
 import umpaz.brewinandchewin.BrewinAndChewin;
+import umpaz.brewinandchewin.client.model.CoasterWrappedModel;
+import umpaz.brewinandchewin.client.renderer.texture.BnCTextureModifiers;
+import umpaz.brewinandchewin.client.renderer.texture.modifier.TextureModifier;
 import umpaz.brewinandchewin.common.block.CoasterBlock;
 import umpaz.brewinandchewin.common.block.entity.CoasterBlockEntity;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
-import java.util.Random;
+import java.util.Set;
+import java.util.function.Function;
 
 public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBlockEntity> {
-    private static final Map<ResourceLocation, ResourceLocation> ITEM_TO_MODELS = new HashMap<>();
+    private static final Map<ResourceLocation, List<ModelEntry>> ITEM_TO_MODELS = new HashMap<>();
+    private static final Set<ResourceLocation> ERRONEOUS_ENTRIES  = new HashSet<>();
 
-    public static void addToModelMap(ResourceLocation itemId, ResourceLocation modelId) {
-        ITEM_TO_MODELS.put(itemId, modelId);
+    public static void resetCache() {
+        ITEM_TO_MODELS.clear();
+        ERRONEOUS_ENTRIES.clear();
+    }
+
+    public static List<ModelEntry> getModelEntries(ResourceLocation itemId) {
+        return ITEM_TO_MODELS.get(itemId);
+    }
+
+    public static void addToModelMap(ResourceLocation itemId, List<ModelEntry> models) {
+        ITEM_TO_MODELS.put(itemId, models);
     }
 
     public CoasterBlockEntityRenderer(BlockEntityRendererProvider.Context context) {
     }
-
 
     // there is definitely a better way to do this, but it felt better to do this than what was there
     private void poseUtil(PoseStack poseStack, int fullCount, int curCount, RandomSource seededRandom, boolean invisible) {
@@ -127,26 +138,65 @@ public class CoasterBlockEntityRenderer implements BlockEntityRenderer<CoasterBl
             poseStack.popPose();
         }
 
+        int tintIndex = -1;
         for (int i = 0; i < count; i++) {
-            BakedModel model = getCoasterModel(entity.getItems().get(i).getItem());
+            ItemStack stack = entity.getItems().get(i);
+            ResourceLocation itemId = ForgeRegistries.ITEMS.getKey(stack.getItem());
+            List<ModelEntry> modelEntries = getModelEntries(itemId);
             poseStack.pushPose();
 
             poseUtil(poseStack, count, i, random, entity.getBlockState().getValue(CoasterBlock.INVISIBLE));
 
-            if (model == Minecraft.getInstance().getModelManager().getMissingModel()) {
+            if (modelEntries != null) {
+                for (ModelEntry modelEntry : modelEntries) {
+                    BakedModel coasterModel = getCoasterModel(itemId, modelEntry);
+                    int color = 0XFFFFFFFF;
+                    RenderType renderType = RenderType.cutout();
+                    for (int j = 0; j < modelEntry.modifiers().size(); ++j) {
+                        for (TextureModifier modifier : modelEntry.modifiers()) {
+                            color = modifier.color(entity.getLevel(), entity.getBlockState(), entity.getBlockPos(), stack, color);
+                            renderType = modifier.renderType(entity.getLevel(), entity.getBlockState(), entity.getBlockPos(), stack, renderType);
+                        }
+                    }
+                    ModelData data = ModelData.EMPTY;
+                    if (color != -1) {
+                        ++tintIndex;
+                        data = ModelData.builder()
+                                .with(CoasterWrappedModel.TINT_INDEX, tintIndex)
+                                .build();
+                    }
+                    VertexConsumer consumer = buffer.getBuffer(renderType);
+                    Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), coasterModel, entity.getBlockState(), entity.getBlockPos(), poseStack, consumer, false, random, entity.getBlockPos().asLong(), combinedOverlay, data, renderType);
+                }
+            } else {
                 poseStack.translate(0.51, 0.05, 0.5);
                 poseStack.mulPose(Axis.XP.rotationDegrees(90));
-                poseStack.scale(0.5F, 0.5F ,0.5F);
-                Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItems().get(i), ItemDisplayContext.FIXED, combinedLight, combinedOverlay, poseStack, buffer, entity.getLevel(), (int) entity.getBlockPos().asLong());
-            } else
-                Minecraft.getInstance().getBlockRenderer().getModelRenderer().tesselateBlock(entity.getLevel(), model, entity.getBlockState(), entity.getBlockPos(), poseStack, buffer.getBuffer(RenderType.cutout()), false, random, entity.getBlockPos().asLong(), combinedOverlay, ModelData.EMPTY, RenderType.cutout());
-
+                poseStack.scale(0.5F, 0.5F, 0.5F);
+                Minecraft.getInstance().getItemRenderer().renderStatic(stack, ItemDisplayContext.FIXED, combinedLight, combinedOverlay, poseStack, buffer, entity.getLevel(), (int) entity.getBlockPos().asLong());
+            }
             poseStack.popPose();
         }
     }
 
-    public static BakedModel getCoasterModel(Item item) {
-        ResourceLocation modelLocation = ITEM_TO_MODELS.get(ForgeRegistries.ITEMS.getKey(item));
-        return Minecraft.getInstance().getModelManager().getModel(modelLocation);
+    public static BakedModel getCoasterModel(ResourceLocation itemId, ModelEntry modelEntry) {
+        BakedModel model = Minecraft.getInstance().getModelManager().getModel(modelEntry.model());
+        if (model == Minecraft.getInstance().getModelManager().getMissingModel() && !ERRONEOUS_ENTRIES.contains(modelEntry.model())) {
+            BrewinAndChewin.LOG.error("Failed to get model '{}'", modelEntry.model());
+            ERRONEOUS_ENTRIES.add(modelEntry.model());
+        }
+        return model;
+    }
+
+    public record ModelEntry(ResourceLocation model, List<? extends TextureModifier> modifiers) {
+        private static final Codec<ModelEntry> DIRECT_CODEC = RecordCodecBuilder.create(inst -> inst.group(
+                ResourceLocation.CODEC.fieldOf("model").forGetter(ModelEntry::model),
+                BnCTextureModifiers.CODEC.listOf().optionalFieldOf("texture_modifiers", List.of()).forGetter(modelEntry -> (List)modelEntry.modifiers())
+        ).apply(inst, ModelEntry::new));
+        public static final Codec<List<ModelEntry>> LIST_CODEC = Codec.either(ResourceLocation.CODEC, DIRECT_CODEC.listOf())
+                .xmap(either -> either.map(resourceLocation -> List.of(new ModelEntry(resourceLocation, List.of())), Function.identity()), modelEntry -> {
+                    if (modelEntry.size() == 1 && modelEntry.get(0).modifiers().isEmpty())
+                        return Either.left(modelEntry.get(0).model());
+                    return Either.right(modelEntry);
+                });
     }
 }

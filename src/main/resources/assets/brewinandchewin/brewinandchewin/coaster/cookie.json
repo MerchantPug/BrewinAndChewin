@@ -1,4 +1,4 @@
 {
   "item": "minecraft:cookie",
-  "model": "brewinandchewin:block/coaster_cookie"
+  "models": "brewinandchewin:block/coaster_cookie"
 }

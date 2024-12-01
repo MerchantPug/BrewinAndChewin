@@ -1,4 +1,4 @@
 {
   "item": "brewinandchewin:tankard",
-  "model": "brewinandchewin:block/coaster_tankard"
+  "models": "brewinandchewin:block/coaster_tankard"
 }
