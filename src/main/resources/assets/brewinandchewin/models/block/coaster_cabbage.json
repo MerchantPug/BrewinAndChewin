@@ -1,0 +1,54 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"cabbage": "brewinandchewin:block/cabbage",
+		"particle": "#cabbage"
+	},
+	"elements": [
+		{
+			"from": [5, 0, 5],
+			"to": [11, 5, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [5, 0, 5]},
+			"faces": {
+				"north": {"uv": [0, 6, 6, 11], "texture": "#cabbage"},
+				"east": {"uv": [0, 11, 6, 16], "texture": "#cabbage"},
+				"south": {"uv": [12, 11, 6, 16], "texture": "#cabbage"},
+				"west": {"uv": [6, 6, 12, 11], "texture": "#cabbage"},
+				"up": {"uv": [6, 6, 0, 0], "texture": "#cabbage"},
+				"down": {"uv": [6, 10, 12, 16], "texture": "#cabbage"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [11, 3, 5],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [5, 0, 5]},
+			"faces": {
+				"north": {"uv": [6, 3, 12, 6], "texture": "#cabbage"}
+			}
+		},
+		{
+			"from": [5, 0, 5],
+			"to": [5, 3, 11],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [5, 0, 11]},
+			"faces": {
+				"west": {"uv": [6, 3, 12, 6], "texture": "#cabbage"}
+			}
+		},
+		{
+			"from": [11, 0, 5],
+			"to": [11, 3, 11],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [11, 0, 11]},
+			"faces": {
+				"east": {"uv": [6, 3, 12, 6], "texture": "#cabbage"}
+			}
+		},
+		{
+			"from": [5, 0, 11],
+			"to": [11, 3, 11],
+			"rotation": {"angle": 22.5, "axis": "x", "origin": [5, 0, 11]},
+			"faces": {
+				"south": {"uv": [6, 3, 12, 6], "texture": "#cabbage"}
+			}
+		}
+	]
+}

@@ -1,0 +1,6 @@
+{
+    "parent": "brewinandchewin:block/coaster_milk_bottle",
+    "textures": {
+      "bottle": "brewinandchewin:block/hot_cocoa"
+    }
+}

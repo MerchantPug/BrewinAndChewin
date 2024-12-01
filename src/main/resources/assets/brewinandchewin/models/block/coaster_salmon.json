@@ -1,0 +1,54 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"salmon": "brewinandchewin:block/salmon",
+		"particle": "#salmon"
+	},
+	"elements": [
+		{
+			"from": [4.5, 0, 6],
+			"to": [13.5, 2, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 0, 6]},
+			"faces": {
+				"north": {"uv": [0, 8, 9, 10], "texture": "#salmon"},
+				"east": {"uv": [10, 3, 14, 5], "texture": "#salmon"},
+				"south": {"uv": [9, 0, 0, 2], "texture": "#salmon"},
+				"west": {"uv": [10, 0, 14, 2], "texture": "#salmon"},
+				"up": {"uv": [9, 7, 0, 3], "texture": "#salmon"},
+				"down": {"uv": [9, 11, 0, 15], "texture": "#salmon"}
+			}
+		},
+		{
+			"from": [7.5, 1, 10],
+			"to": [9.5, 1, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.5, 0, 10]},
+			"faces": {
+				"up": {"uv": [12, 11, 10, 12], "texture": "#salmon"}
+			}
+		},
+		{
+			"from": [0.5, 1, 6],
+			"to": [4.5, 1, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [2.5, 0, 9]},
+			"faces": {
+				"up": {"uv": [14, 10, 10, 6], "texture": "#salmon"}
+			}
+		},
+		{
+			"from": [10.5, 2, 5],
+			"to": [11.5, 2, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9.5, 1, 5]},
+			"faces": {
+				"up": {"uv": [13, 11, 14, 12], "texture": "#salmon"}
+			}
+		},
+		{
+			"from": [10.5, 0, 5],
+			"to": [11.5, 0, 6],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9.5, -1, 5]},
+			"faces": {
+				"up": {"uv": [13, 11, 14, 12], "texture": "#salmon"}
+			}
+		}
+	]
+}

@@ -97,23 +97,23 @@
 			"name": "main",
 			"origin": [8, 8, 8],
 			"color": 0,
-      "nbt": "{}",
+            "nbt": "{}",
 			"children": [
 				{
 					"name": "tankard",
 					"origin": [8, 8, 8],
 					"color": 0,
-          "nbt": "{}",
+                    "nbt": "{}",
 					"children": [0, 1, 2]
 				},
 				{
 					"name": "drink",
 					"origin": [8, 8, 8],
 					"color": 0,
-          "nbt": "{}",
-					"children": [3, 4, 5]
-				}
-			]
+                    "nbt": "{}",
+                    "children": [3, 4, 5]
+                }
+            ]
 		}
 	]
 }

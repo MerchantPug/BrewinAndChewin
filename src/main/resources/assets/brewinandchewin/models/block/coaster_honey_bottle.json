@@ -1,0 +1,22 @@
+{
+	"credit": "Made with Blockbench",
+	"textures": {
+		"jar": "brewinandchewin:block/honey_bottle",
+		"particle": "#jar"
+	},
+	"elements": [
+		{
+			"from": [6, 0, 6],
+			"to": [10, 5, 10],
+			"rotation": {"angle": 0, "axis": "y", "origin": [6, 0, 6]},
+			"faces": {
+				"north": {"uv": [1, 6, 5, 11], "texture": "#jar"},
+				"east": {"uv": [1, 6, 5, 11], "texture": "#jar"},
+				"south": {"uv": [1, 6, 5, 11], "texture": "#jar"},
+				"west": {"uv": [1, 6, 5, 11], "texture": "#jar"},
+				"up": {"uv": [1, 1, 5, 5], "texture": "#jar"},
+				"down": {"uv": [6, 1, 10, 5], "texture": "#jar"}
+			}
+		}
+	]
+}

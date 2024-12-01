@@ -1,6 +1,6 @@
 {
   "parent": "brewinandchewin:block/coaster_gourd_slice",
   "textures": {
-    "gourd": "brewinandchewin:block/melon_slice"
+    "gourd": "brewinandchewin:block/pumpkin_slice"
   }
 }

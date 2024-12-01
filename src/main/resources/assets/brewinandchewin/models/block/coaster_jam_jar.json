@@ -82,13 +82,5 @@
 				"down": {"uv": [12, 7, 16, 11], "texture": "#jam"}
 			}
 		}
-	],
-	"groups": [
-		{
-			"name": "main",
-			"origin": [8, 8, 8],
-			"color": 0,
-			"children": [0, 1, 2, 3, 4, 5]
-		}
 	]
 }

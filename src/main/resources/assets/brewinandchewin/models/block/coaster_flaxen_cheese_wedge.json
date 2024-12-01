@@ -1,0 +1,6 @@
+{
+  "parent": "brewinandchewin:block/coaster_cheese",
+  "textures": {
+    "cheese": "brewinandchewin:block/flaxen_cheese_wedge"
+  }
+}
