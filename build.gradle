@@ -182,18 +182,20 @@ compileJava {
 
 processResources {
     var replaceProperties = [
-            minecraft_version       : mc_version,
-            minecraft_version_range : mc_version_range,
-            forge_version_range     : forge_version_range,
+            minecraft_version: mc_version,
+            minecraft_version_range: mc_version_range,
+            forge_version_range: forge_version_range,
 
-            mod_id                  : mod_id,
-            mod_name                : mod_name,
-            mod_version             : version,
-            mod_license             : license,
-            mod_authors             : mod_authors,
-            mod_description         : mod_description,
-            mod_homepage            : mod_homepage,
-            mod_github              : mod_github
+            mod_id: mod_id,
+            mod_name: mod_name,
+            mod_version: version,
+            mod_license: license,
+            mod_authors: mod_authors,
+            mod_description: mod_description,
+            mod_homepage: mod_homepage,
+            mod_github: mod_github,
+
+            farmers_delight_version_range: farmers_delight_version_range,
     ]
     // setting them as input
     inputs.properties replaceProperties
