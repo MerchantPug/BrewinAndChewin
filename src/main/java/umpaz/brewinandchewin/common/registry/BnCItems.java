@@ -4,13 +4,12 @@ import com.google.common.collect.Sets;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.item.BoozeItem;
-import umpaz.brewinandchewin.common.item.DreadNogItem;
+import umpaz.brewinandchewin.common.item.JamJarItem;
 import umpaz.brewinandchewin.common.item.KegItem;
 import vectorwing.farmersdelight.common.item.ConsumableItem;
 
@@ -34,39 +33,39 @@ public class BnCItems {
 
     public static final RegistryObject<Item> TANKARD = registerWithTab("tankard", () -> new Item(new Item.Properties()));
 
-    public static final RegistryObject<Item> BEER = registerWithTab("beer", () -> new BoozeItem(BnCFluids.BEER.get(), 1, 8, new Item.Properties()
-            .stacksTo(16).craftRemainder(BnCItems.TANKARD.get())));
-    public static final RegistryObject<Item> VODKA = registerWithTab("vodka", () -> new BoozeItem(BnCFluids.VODKA.get(), 1, 12, new Item.Properties()
-            .stacksTo(16).craftRemainder(BnCItems.TANKARD.get())));
-    public static final RegistryObject<Item> MEAD = registerWithTab("mead", () -> new BoozeItem(BnCFluids.MEAD.get(), 1, 8, new Item.Properties()
+    public static final RegistryObject<Item> BEER = registerWithTab("beer", () -> new BoozeItem(BnCFluids.BEER.get(), new Item.Properties()
+            .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.BEER)));
+    public static final RegistryObject<Item> VODKA = registerWithTab("vodka", () -> new BoozeItem(BnCFluids.VODKA.get(), new Item.Properties()
+            .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.VODKA)));
+    public static final RegistryObject<Item> MEAD = registerWithTab("mead", () -> new BoozeItem(BnCFluids.MEAD.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.MEAD)));
-    public static final RegistryObject<Item> RICE_WINE = registerWithTab("rice_wine", () -> new BoozeItem(BnCFluids.RICE_WINE.get(), 1, 5, new Item.Properties()
+    public static final RegistryObject<Item> RICE_WINE = registerWithTab("rice_wine", () -> new BoozeItem(BnCFluids.RICE_WINE.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.RICE_WINE)));
-    public static final RegistryObject<Item> EGG_GROG = registerWithTab("egg_grog", () -> new BoozeItem(BnCFluids.EGG_GROG.get(), 1, 0, new Item.Properties()
+    public static final RegistryObject<Item> EGG_GROG = registerWithTab("egg_grog", () -> new BoozeItem(BnCFluids.EGG_GROG.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.EGG_GROG)));
-    public static final RegistryObject<Item> STRONGROOT_ALE = registerWithTab("strongroot_ale", () -> new BoozeItem(BnCFluids.STRONGROOT_ALE.get(), 2, 12, new Item.Properties()
+    public static final RegistryObject<Item> STRONGROOT_ALE = registerWithTab("strongroot_ale", () -> new BoozeItem(BnCFluids.STRONGROOT_ALE.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.STRONGROOT_ALE)));
-    public static final RegistryObject<Item> SACCHARINE_RUM = registerWithTab("saccharine_rum", () -> new BoozeItem(BnCFluids.SACCHARINE_RUM.get(), 2, 8, new Item.Properties()
+    public static final RegistryObject<Item> SACCHARINE_RUM = registerWithTab("saccharine_rum", () -> new BoozeItem(BnCFluids.SACCHARINE_RUM.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.SACCHARINE_RUM)));
-    public static final RegistryObject<Item> PALE_JANE = registerWithTab("pale_jane", () -> new BoozeItem(BnCFluids.PALE_JANE.get(), 1, 5, new Item.Properties()
+    public static final RegistryObject<Item> PALE_JANE = registerWithTab("pale_jane", () -> new BoozeItem(BnCFluids.PALE_JANE.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.PALE_JANE)));
-    public static final RegistryObject<Item> SALTY_FOLLY = registerWithTab("salty_folly", () -> new BoozeItem(BnCFluids.SALTY_FOLLY.get(), 2, 10, new Item.Properties()
+    public static final RegistryObject<Item> SALTY_FOLLY = registerWithTab("salty_folly", () -> new BoozeItem(BnCFluids.SALTY_FOLLY.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.SALTY_FOLLY)));
-    public static final RegistryObject<Item> STEEL_TOE_STOUT = registerWithTab("steel_toe_stout", () -> new BoozeItem(BnCFluids.STEEL_TOE_STOUT.get(), 3, 10, new Item.Properties()
+    public static final RegistryObject<Item> STEEL_TOE_STOUT = registerWithTab("steel_toe_stout", () -> new BoozeItem(BnCFluids.STEEL_TOE_STOUT.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.STEEL_TOE_STOUT)));
-    public static final RegistryObject<Item> GLITTERING_GRENADINE = registerWithTab("glittering_grenadine", () -> new BoozeItem(BnCFluids.GLITTERING_GRENADINE.get(), 1, 5, new Item.Properties()
+    public static final RegistryObject<Item> GLITTERING_GRENADINE = registerWithTab("glittering_grenadine", () -> new BoozeItem(BnCFluids.GLITTERING_GRENADINE.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.GLITTERING_GRENADINE)));
-    public static final RegistryObject<Item> BLOODY_MARY = registerWithTab("bloody_mary", () -> new BoozeItem(BnCFluids.BLOODY_MARY.get(), 1, 12, new Item.Properties()
+    public static final RegistryObject<Item> BLOODY_MARY = registerWithTab("bloody_mary", () -> new BoozeItem(BnCFluids.BLOODY_MARY.get(),  new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.BLOODY_MARY)));
-    public static final RegistryObject<Item> RED_RUM = registerWithTab("red_rum", () -> new BoozeItem(BnCFluids.RED_RUM.get(), 1, 18, new Item.Properties()
+    public static final RegistryObject<Item> RED_RUM = registerWithTab("red_rum", () -> new BoozeItem(BnCFluids.RED_RUM.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.RED_RUM)));
-    public static final RegistryObject<Item> WITHERING_DROSS = registerWithTab("withering_dross", () -> new BoozeItem(BnCFluids.WITHERING_DROSS.get(), 3, 20, new Item.Properties()
+    public static final RegistryObject<Item> WITHERING_DROSS = registerWithTab("withering_dross", () -> new BoozeItem(BnCFluids.WITHERING_DROSS.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.WITHERING_DROSS)));
 
-    public static final RegistryObject<Item> KOMBUCHA = registerWithTab("kombucha", () -> new BoozeItem(BnCFluids.KOMBUCHA.get(), 1, 18, new Item.Properties()
+    public static final RegistryObject<Item> KOMBUCHA = registerWithTab("kombucha", () -> new BoozeItem(BnCFluids.KOMBUCHA.get(), new Item.Properties()
             .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.KOMBUCHA)));
-    public static final RegistryObject<Item> DREAD_NOG = registerWithTab("dread_nog", () -> new DreadNogItem(BnCFluids.DREAD_NOG.get(), 3, 20, new Item.Properties()
-            .stacksTo(16).craftRemainder(BnCItems.TANKARD.get())));
+    public static final RegistryObject<Item> DREAD_NOG = registerWithTab("dread_nog", () -> new BoozeItem(BnCFluids.DREAD_NOG.get(), new Item.Properties()
+            .stacksTo(16).craftRemainder(BnCItems.TANKARD.get()).food(BnCFoods.DREAD_NOG)));
 
 
     public static final RegistryObject<Item> KIMCHI = registerWithTab("kimchi",
@@ -125,11 +124,11 @@ public class BnCItems {
             () -> new Item(new Item.Properties().food(BnCFoods.QUICHE_SLICE)));
 
     public static final RegistryObject<Item> SWEET_BERRY_JAM = registerWithTab("sweet_berry_jam",
-            () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.SWEET_BERRY_JAM)));
+            () -> new JamJarItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.SWEET_BERRY_JAM)));
     public static final RegistryObject<Item> GLOW_BERRY_MARMALADE = registerWithTab("glow_berry_marmalade",
-            () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.GLOW_BERRY_MARMALADE)));
+            () -> new JamJarItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.GLOW_BERRY_MARMALADE)));
     public static final RegistryObject<Item> APPLE_JELLY = registerWithTab("apple_jelly",
-            () -> new Item(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.APPLE_JELLY)));
+            () -> new JamJarItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).food(BnCFoods.APPLE_JELLY)));
     
 
 }

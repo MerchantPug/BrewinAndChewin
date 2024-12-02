@@ -1,6 +1,5 @@
 package umpaz.brewinandchewin.common.effects;
 
-import net.minecraft.client.renderer.blockentity.SignRenderer;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,7 +11,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
-import vectorwing.farmersdelight.client.renderer.CanvasSignRenderer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,26 +23,6 @@ public class IntoxicatedEffect extends MobEffect
      */
     public IntoxicatedEffect() {
         super(MobEffectCategory.HARMFUL, 0);
-    }
-
-    @Override
-    public void applyEffectTick(LivingEntity entity, int amplifier) {
-        if ( entity.getHealth() > ( entity.getMaxHealth() + entity.getAbsorptionAmount() ) / 1.5F ) {
-            entity.hurt(entity.damageSources().mobAttack(entity), 1.0F); // technically true :)
-        }
-
-        if ( !entity.hasEffect(BnCEffects.TIPSY.get()) )
-            entity.removeEffect(this);
-    }
-
-    @Override
-    public boolean isDurationEffectTick(int duration, int amplifier) {
-        int j = 100 >> amplifier;
-        if (j > 0) {
-            return duration % j == 0;
-        } else {
-            return true;
-        }
     }
 
     @SubscribeEvent

@@ -3,13 +3,9 @@ package umpaz.brewinandchewin.client;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.JsonOps;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.resources.Resource;
 import net.minecraft.server.packs.resources.ResourceManager;
@@ -19,29 +15,23 @@ import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.client.event.RegisterClientReloadListenersEvent;
 import net.minecraftforge.client.event.RegisterClientTooltipComponentFactoriesEvent;
 import net.minecraftforge.client.event.RegisterColorHandlersEvent;
-import net.minecraftforge.client.extensions.IForgeBlockAndTintGetter;
-import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.joml.Vector3f;
 import umpaz.brewinandchewin.BrewinAndChewin;
-import umpaz.brewinandchewin.client.gui.IntoxicatedHealthOverlay;
+import umpaz.brewinandchewin.client.gui.IntoxicatedFoodOverlay;
 import umpaz.brewinandchewin.client.gui.KegScreen;
 import umpaz.brewinandchewin.client.gui.KegTooltip;
 import umpaz.brewinandchewin.client.model.CoasterWrappedModel;
 import umpaz.brewinandchewin.client.renderer.CoasterBlockEntityRenderer;
 import umpaz.brewinandchewin.client.renderer.texture.BnCTextureModifiers;
 import umpaz.brewinandchewin.client.renderer.texture.modifier.TextureModifier;
-import umpaz.brewinandchewin.common.block.CoasterBlock;
 import umpaz.brewinandchewin.common.block.entity.CoasterBlockEntity;
 import umpaz.brewinandchewin.common.registry.BnCBlocks;
 import umpaz.brewinandchewin.common.registry.BnCMenuTypes;
 import umpaz.brewinandchewin.client.utility.BnCFluidItemDisplays;
 
-import javax.annotation.Syntax;
-import javax.swing.plaf.PanelUI;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -58,7 +48,7 @@ public class BnCClientSetup {
     public static void init(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> MenuScreens.register(BnCMenuTypes.KEG.get(), KegScreen::new));
 
-        IntoxicatedHealthOverlay.init();
+        IntoxicatedFoodOverlay.init();
         TipsyEffects.init();
         BnCTextureModifiers.init();
     }

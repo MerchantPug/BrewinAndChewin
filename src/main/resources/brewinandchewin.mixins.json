@@ -4,9 +4,10 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "brewinandchewin.refmap.json",
   "mixins": [
-    "client.TipsyChatComponentMixin"
+    "CancelSaturationMixin"
   ],
   "client": [
+    "client.TipsyDontRenderFoodMixin",
     "client.TipsyDrunkRendererMixin",
     "client.TipsyMouseHandlerMixin",
     "client.TipsySignRendererMixin"

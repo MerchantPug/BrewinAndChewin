@@ -1,43 +1,41 @@
 package umpaz.brewinandchewin.common.item;
 
+import com.mojang.serialization.Codec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
-import net.minecraft.world.item.context.BlockPlaceContext;
-import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import umpaz.brewinandchewin.common.registry.BnCBlocks;
+import oshi.jna.platform.windows.WinNT;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
-import umpaz.brewinandchewin.common.registry.BnCItems;
-import umpaz.brewinandchewin.common.utility.BnCTextUtils;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Set;
+import java.util.function.Supplier;
 
 public class BoozeItem extends Item {
     private final Fluid fluid;
-    private final int potency;
-    private final int duration;
 
-    public BoozeItem(Fluid fluid, int potency, int duration, Properties properties) {
+    public BoozeItem(Fluid fluid, Properties properties) {
         super(properties);
         this.fluid = fluid;
-        this.potency = potency;
-        this.duration = duration;
     }
 
     public Fluid getFluid() {
@@ -79,7 +77,8 @@ public class BoozeItem extends Item {
     @Override
     public ItemStack finishUsingItem(ItemStack stack, Level level, LivingEntity consumer) {
         if (!level.isClientSide) {
-            this.affectConsumer(consumer);
+            var tipsy = stack.getFoodProperties(consumer).getEffects().stream().filter(pair -> pair.getFirst().getEffect() == BnCEffects.TIPSY.get()).findFirst();
+            this.affectConsumer(consumer, tipsy.map(pair -> pair.getFirst().getDuration()).orElse(0), tipsy.map(pair -> pair.getFirst().getAmplifier()).orElse(-1));
         }
         ItemStack containerStack = stack.getCraftingRemainingItem();
         Player player;
@@ -110,25 +109,30 @@ public class BoozeItem extends Item {
         }
     }
 
-    //Tipsy Stuff
-    public void affectConsumer(LivingEntity consumer) {
-       if (consumer.hasEffect(BnCEffects.TIPSY.get())) {
-            MobEffectInstance effect = consumer.getEffect(BnCEffects.TIPSY.get());
-          consumer.addEffect(new MobEffectInstance(BnCEffects.TIPSY.get(), effect.getDuration() + ( duration * 1200 ), Math.min(effect.getAmplifier() + potency, 9), false, false, true), consumer);
-        } else {
-           consumer.addEffect(new MobEffectInstance(BnCEffects.TIPSY.get(), duration * 1200, potency - 1, false, false, true), consumer);
-        }
+    @Override
+    public SoundEvent getEatingSound() {
+        return SoundEvents.GENERIC_DRINK;
     }
+
+    //Tipsy Stuff
+    public void affectConsumer(LivingEntity consumer, int duration, int potency) {
+       if (consumer.hasEffect(BnCEffects.TIPSY.get())) {
+           MobEffectInstance effect = consumer.getEffect(BnCEffects.TIPSY.get());
+           consumer.addEffect(new MobEffectInstance(BnCEffects.TIPSY.get(), effect.getDuration() == -1 ? -1 : effect.getDuration() + duration, Math.min(effect.getAmplifier() + potency + 1, 9), effect.isAmbient(), effect.isVisible(), effect.showIcon()));
+       }
+    }
+
+    public static final Set<Supplier<MobEffect>> RED_EFFECTS = Set.of(BnCEffects.TIPSY, () -> MobEffects.BAD_OMEN);
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack stack, @Nullable Level worldIn, List<Component> tooltip, TooltipFlag flagIn) {
-        MutableComponent textTipsy = BnCTextUtils.getTranslation("tooltip.tipsy"+potency, duration);
-        tooltip.add(textTipsy.withStyle(ChatFormatting.RED));
         TextUtils.addFoodEffectTooltip(stack, tooltip, 1.0F);
-        if (stack.is(BnCItems.DREAD_NOG.get())) {
-            MutableComponent textEmpty = BnCTextUtils.getTranslation("tooltip." + this);
-            tooltip.add(textEmpty.withStyle(ChatFormatting.RED));
+        for (int i = 0; i < tooltip.size(); ++i) {
+            Component component = tooltip.get(i);
+            if (RED_EFFECTS.stream().anyMatch(supplier -> component.contains(Component.translatable(supplier.get().getDescriptionId())))) {
+                tooltip.set(i, component.copy().withStyle(ChatFormatting.RED));
+            }
         }
     }
 }

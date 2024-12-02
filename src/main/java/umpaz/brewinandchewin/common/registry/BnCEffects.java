@@ -8,7 +8,6 @@ import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.effects.IntoxicatedEffect;
 import umpaz.brewinandchewin.common.effects.SweetHeartEffect;
 import umpaz.brewinandchewin.common.effects.TipsyEffect;
-import umpaz.brewinandchewin.common.effects.HangoverEffect;
 
 
 public class BnCEffects {
@@ -16,7 +15,6 @@ public class BnCEffects {
 
     public static final RegistryObject<MobEffect> SWEET_HEART = EFFECTS.register("sweet_heart", SweetHeartEffect::new);
     public static final RegistryObject<MobEffect> TIPSY = EFFECTS.register("tipsy", TipsyEffect::new);
-   public static final RegistryObject<MobEffect> HANGOVER = EFFECTS.register("hangover", HangoverEffect::new);
     public static final RegistryObject<MobEffect> INTOXICATED = EFFECTS.register("intoxicated", IntoxicatedEffect::new);
 
 }

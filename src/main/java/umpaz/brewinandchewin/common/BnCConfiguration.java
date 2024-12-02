@@ -30,7 +30,7 @@ public class BnCConfiguration {
    // CLIENT
    public static final String CATEGORY_CLIENT = "client";
 
-   public static ForgeConfigSpec.BooleanValue INTOXICATED_HEALTH_OVERLAY;
+   public static ForgeConfigSpec.BooleanValue INTOXICATED_FOOD_OVERLAY;
    public static ForgeConfigSpec.BooleanValue CHAT_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue SIGN_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue NAME_SCRAMBLE;
@@ -81,7 +81,7 @@ public class BnCConfiguration {
       ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 
       CLIENT_BUILDER.comment("Client settings").push(CATEGORY_CLIENT);
-      INTOXICATED_HEALTH_OVERLAY = CLIENT_BUILDER.comment("Should the health bar have a yellow overlay when the player has the Intoxicated effect?")
+       INTOXICATED_FOOD_OVERLAY = CLIENT_BUILDER.comment("Should the food bar have a yellow overlay when the player has the Intoxicated effect?")
               .define("intoxicatedHealthOverlay", true);
       CHAT_SCRAMBLE = CLIENT_BUILDER.comment("Should the chat scramble when the player has the Tipsy effect?")
               .define("scrambleChat", true);
