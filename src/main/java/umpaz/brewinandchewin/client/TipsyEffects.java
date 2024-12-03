@@ -108,7 +108,7 @@ public class TipsyEffects {
    }
 
    @SubscribeEvent
-   public static void othersCanSpeak( ClientChatReceivedEvent event ) {
+   public static void iCanHear( ClientChatReceivedEvent event ) {
        if (BnCConfiguration.CHAT_SCRAMBLE.get()) {
            Player player = Minecraft.getInstance().player;
            if (player != null && !event.isSystem() && event.getSender() != player.getUUID())
