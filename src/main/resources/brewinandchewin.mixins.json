@@ -9,6 +9,8 @@
     "client.TipsyDontRenderNourishment"
   ],
   "client": [
+    "client.GuiAccessor",
+    "client.GuiMixin",
     "client.TipsyDontRenderFoodMixin",
     "client.TipsyDrunkRendererMixin",
     "client.TipsyMouseHandlerMixin",

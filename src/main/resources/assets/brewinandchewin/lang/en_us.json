@@ -82,6 +82,9 @@
 
   "brewinandchewin.block.feast.use_knife": "You need a Knife to cut this.",
 
+  "death.attack.brewinandchewin.cardiacArrest": "%1$s remembered they got hurt",
+  "death.attack.brewinandchewin.cardiacArrest.player": "%1$s was sent into cardiac arrest by %2$s",
+
   "itemGroup.brewinandchewin": "Brewin' and Chewin'",
   "brewinandchewin.jei.fermenting": "Fermenting",
   "brewinandchewin.jei.aging": "Aging",

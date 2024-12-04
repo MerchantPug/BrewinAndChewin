@@ -12,7 +12,6 @@ public class BnCConfiguration {
    public static ForgeConfigSpec.IntValue LEVEL_CHAT_SCRAMBLE;
    public static ForgeConfigSpec.IntValue LEVEL_SIGN_SCRAMBLE;
    public static ForgeConfigSpec.IntValue LEVEL_NAME_SCRAMBLE;
-   public static ForgeConfigSpec.IntValue LEVEL_INTOXICATED;
 
    public static final String CATEGORY_RECIPE_BOOK = "recipe_book";
    public static ForgeConfigSpec.BooleanValue ENABLE_RECIPE_BOOK_KEG;
@@ -30,12 +29,13 @@ public class BnCConfiguration {
    // CLIENT
    public static final String CATEGORY_CLIENT = "client";
 
-   public static ForgeConfigSpec.BooleanValue INTOXICATED_FOOD_OVERLAY;
+   public static ForgeConfigSpec.BooleanValue NUMBED_HEART_FLICKERING;
+   public static ForgeConfigSpec.BooleanValue INTOXICATION_FOOD_OVERLAY;
    public static ForgeConfigSpec.BooleanValue CHAT_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue SIGN_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue NAME_SCRAMBLE;
    public static ForgeConfigSpec.BooleanValue TIPSY_SCREEN_EFFECT;
-   public static ForgeConfigSpec.BooleanValue SHOW_FLUID_IN_KEG;
+   public static ForgeConfigSpec.BooleanValue FLUID_IN_KEG;
 
 
    static {
@@ -49,8 +49,6 @@ public class BnCConfiguration {
               .defineInRange("levelSignScramble", 3, 1, 10);
       LEVEL_NAME_SCRAMBLE = COMMON_BUILDER.comment("At what level of Tipsy should nametags scramble?")
               .defineInRange("levelNameScramble", 3, 1, 10);
-      LEVEL_INTOXICATED = COMMON_BUILDER.comment("At what level of Tipsy should the player get the Intoxicated effect?")
-              .defineInRange("levelIntoxicated", 3, 1, 10);
 
       COMMON_BUILDER.comment("Keg").push(CATEGORY_KEG);
       KEG_CAPACITY = COMMON_BUILDER.comment("How much fluid (in millibuckets) can the Keg hold?")
@@ -81,8 +79,10 @@ public class BnCConfiguration {
       ForgeConfigSpec.Builder CLIENT_BUILDER = new ForgeConfigSpec.Builder();
 
       CLIENT_BUILDER.comment("Client settings").push(CATEGORY_CLIENT);
-       INTOXICATED_FOOD_OVERLAY = CLIENT_BUILDER.comment("Should the food bar have a yellow overlay when the player has the Intoxicated effect?")
-              .define("intoxicatedHealthOverlay", true);
+      NUMBED_HEART_FLICKERING = CLIENT_BUILDER.comment("Should the numbed hearts obtained from being damaged when Tipsy flicker when you lose the effect and are about to take damage?")
+               .define("numbedHeartFlickering", true);
+      INTOXICATION_FOOD_OVERLAY = CLIENT_BUILDER.comment("Should the food bar have a yellow overlay when the player has the Intoxication effect?")
+              .define("intoxicationFoodOverlay", true);
       CHAT_SCRAMBLE = CLIENT_BUILDER.comment("Should the chat scramble when the player has the Tipsy effect?")
               .define("scrambleChat", true);
       NAME_SCRAMBLE = CLIENT_BUILDER.comment("Should other player's nametags scramble when the player has the Tipsy effect?")
@@ -92,8 +92,8 @@ public class BnCConfiguration {
 
       TIPSY_SCREEN_EFFECT = CLIENT_BUILDER.comment("Should the screen wobble when the player has the Tipsy effect?")
               .define("tipsyScreenEffect", true);
-      SHOW_FLUID_IN_KEG = CLIENT_BUILDER.comment("Should kegs show the fluid texture in the fluid slot?")
-                      .define("showFluidInKeg", true);
+      FLUID_IN_KEG = CLIENT_BUILDER.comment("Should kegs show the fluid texture in the fluid slot?")
+                      .define("fluidInKeg", true);
       CLIENT_BUILDER.pop();
 
       CLIENT_CONFIG = CLIENT_BUILDER.build();

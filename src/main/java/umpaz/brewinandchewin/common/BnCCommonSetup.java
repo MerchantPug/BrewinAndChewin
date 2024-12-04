@@ -3,15 +3,16 @@ package umpaz.brewinandchewin.common;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctions;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import umpaz.brewinandchewin.common.network.BnCNetworkHandler;
 import umpaz.brewinandchewin.common.registry.BnCItems;
 import umpaz.brewinandchewin.data.loot.BnCCopyMealFunction;
-import vectorwing.farmersdelight.common.registry.ModItems;
 
 public class BnCCommonSetup {
 
     public static void init(final FMLCommonSetupEvent event) {
         event.enqueueWork(BnCCommonSetup::registerCompostables);
-       event.enqueueWork(BnCCommonSetup::registerLootItemFunctions);
+        event.enqueueWork(BnCCommonSetup::registerLootItemFunctions);
+        event.enqueueWork(BnCNetworkHandler::register);
     }
 
     public static void registerCompostables() {

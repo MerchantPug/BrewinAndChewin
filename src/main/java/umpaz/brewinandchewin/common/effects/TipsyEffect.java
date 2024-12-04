@@ -1,14 +1,10 @@
 package umpaz.brewinandchewin.common.effects;
 
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.util.Mth;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.ai.attributes.Attribute;
-import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.item.ItemStack;
 import org.joml.Vector3f;
 import umpaz.brewinandchewin.client.particle.DrunkBubbleParticleOptions;
@@ -19,7 +15,7 @@ import java.util.List;
 public class TipsyEffect extends MobEffect {
 
    public TipsyEffect() {
-      super(MobEffectCategory.HARMFUL, 13208334);
+      super(MobEffectCategory.NEUTRAL, 13208334);
    }
 
    @Override
@@ -47,16 +43,5 @@ public class TipsyEffect extends MobEffect {
    @Override
    public List<ItemStack> getCurativeItems() {
       return new ArrayList<>();
-   }
-
-   private static final String TIPSY_ATTACK_DAMAGE = "6b4c6410-c7ec-4985-9e5b-6543ecf7cdf1";
-   private static final String TIPSY_ATTACK_SPEED = "19781790-2ad0-448e-bef9-22def6114aa3";
-
-   @Override
-   public void addAttributeModifiers( LivingEntity pLivingEntity, AttributeMap pAttributeMap, int pAmplifier ) {
-      this.addAttributeModifier(Attributes.ATTACK_DAMAGE, TIPSY_ATTACK_DAMAGE, Mth.clamp(pAmplifier / 3, 0, 3), AttributeModifier.Operation.ADDITION);
-      this.addAttributeModifier(Attributes.ATTACK_SPEED, TIPSY_ATTACK_SPEED, Mth.clamp(pAmplifier / 3, 0, 3) * -0.01, AttributeModifier.Operation.ADDITION);
-
-      super.addAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);
    }
 }

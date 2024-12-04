@@ -129,7 +129,7 @@ public class KegScreen extends AbstractContainerScreen<KegMenu>
 
 
         // Fluid
-        if (BnCConfiguration.SHOW_FLUID_IN_KEG.get()) {
+        if (BnCConfiguration.FLUID_IN_KEG.get()) {
             TextureAtlasSprite sprite =
                     this.minecraft.getTextureAtlas(InventoryMenu.BLOCK_ATLAS).apply(stillTexture);
             int tintColor = fluidTypeExtensions.getTintColor(fluidStack);

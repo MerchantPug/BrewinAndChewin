@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 import umpaz.brewinandchewin.client.BnCClientSetup;
 import umpaz.brewinandchewin.common.BnCCommonSetup;
 import umpaz.brewinandchewin.common.BnCConfiguration;
+import umpaz.brewinandchewin.common.network.BnCNetworkHandler;
 import umpaz.brewinandchewin.common.registry.*;
 import umpaz.brewinandchewin.data.loot.BnCCopyMealFunction;
 import vectorwing.farmersdelight.common.CommonSetup;

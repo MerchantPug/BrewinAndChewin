@@ -12,6 +12,7 @@ import squeek.appleskin.api.event.HUDOverlayEvent;
 import squeek.appleskin.api.food.FoodValues;
 import squeek.appleskin.helpers.FoodHelper;
 import squeek.appleskin.helpers.TextureHelper;
+import umpaz.brewinandchewin.common.BnCConfiguration;
 import umpaz.brewinandchewin.common.mixin.client.integration.appleskin.HUDOverlayHandlerAccessor;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
 
@@ -27,13 +28,13 @@ public class TipsyAppleSkinCompat {
 
     public static void preventSaturationInAppleSkin(FoodValuesEvent event) {
         Player entity = event.player;
-        if ( entity.hasEffect(BnCEffects.TIPSY.get())) {
+        if (entity.hasEffect(BnCEffects.TIPSY.get())) {
             event.modifiedFoodValues = new FoodValues(event.modifiedFoodValues.hunger, 0.0F);
         }
     }
 
     public static void renderAppleSkinSaturation(HUDOverlayEvent.Saturation event) {
-        if (!Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
+        if (!BnCConfiguration.INTOXICATION_FOOD_OVERLAY.get() || !Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
             return;
 
         if (event.saturationLevel < 0)
@@ -79,7 +80,7 @@ public class TipsyAppleSkinCompat {
     }
 
     public static void renderAppleSkinRestored(HUDOverlayEvent.HungerRestored event) {
-        if (!Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
+        if (!BnCConfiguration.INTOXICATION_FOOD_OVERLAY.get() || !Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
             return;
 
         if (event.foodValues.hunger < 0)
@@ -108,8 +109,7 @@ public class TipsyAppleSkinCompat {
             int u = iconStartOffset + 4 * iconSize;
             int ub = iconStartOffset + iconSize;
 
-            if (FoodHelper.isRotten(event.itemStack, Minecraft.getInstance().player))
-            {
+            if (FoodHelper.isRotten(event.itemStack, Minecraft.getInstance().player)) {
                 u += 4 * iconSize;
                 ub += 12 * iconSize;
             }

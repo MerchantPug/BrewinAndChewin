@@ -7,6 +7,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import umpaz.brewinandchewin.common.BnCConfiguration;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
 import vectorwing.farmersdelight.client.gui.NourishmentHungerOverlay;
 
@@ -14,7 +15,7 @@ import vectorwing.farmersdelight.client.gui.NourishmentHungerOverlay;
 public class TipsyDontRenderNourishment {
     @Inject(method = "drawNourishmentOverlay", at = @At("HEAD"), cancellable = true, remap = false)
     private static void brewinandchewin$dontRenderNourishment(FoodData stats, Minecraft mc, GuiGraphics graphics, int left, int top, boolean naturalHealing, CallbackInfo ci) {
-        if (mc.player.hasEffect(BnCEffects.INTOXICATION.get()))
+        if (BnCConfiguration.INTOXICATION_FOOD_OVERLAY.get() && mc.player.hasEffect(BnCEffects.INTOXICATION.get()))
             ci.cancel();
     }
 }
