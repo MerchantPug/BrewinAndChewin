@@ -21,6 +21,8 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: "org.spongepowered.mixin"
 
+jarJar.enable()
+
 mixin {
     add sourceSets.main, "brewinandchewin.refmap.json"
 }
@@ -181,7 +183,6 @@ compileJava {
     options.compilerArgs << "-Acrafttweaker.processor.document.output_directory=${file('docsOut')}"
 }
 
-
 processResources {
     var replaceProperties = [
             minecraft_version: mc_version,
@@ -205,4 +206,16 @@ processResources {
     filesMatching("META-INF/mods.toml") {
         expand replaceProperties + [project: project]
     }
+}
+
+tasks.jarJar.configure {
+    archiveClassifier = ""
+    dependsOn('reobfJar')
+}
+
+jar.finalizedBy('jarJar')
+
+
+tasks.withType(PublishToMavenRepository) {
+    dependsOn('jarJar')
 }

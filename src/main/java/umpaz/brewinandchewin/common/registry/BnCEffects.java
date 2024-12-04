@@ -15,6 +15,6 @@ public class BnCEffects {
 
     public static final RegistryObject<MobEffect> SWEET_HEART = EFFECTS.register("sweet_heart", SweetHeartEffect::new);
     public static final RegistryObject<MobEffect> TIPSY = EFFECTS.register("tipsy", TipsyEffect::new);
-    public static final RegistryObject<MobEffect> INTOXICATION = EFFECTS.register("intoxicated", IntoxicationEffect::new);
+    public static final RegistryObject<MobEffect> INTOXICATION = EFFECTS.register("intoxication", IntoxicationEffect::new);
 
 }
