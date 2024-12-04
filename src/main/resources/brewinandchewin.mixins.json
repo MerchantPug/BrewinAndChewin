@@ -1,16 +1,19 @@
 {
   "required": true,
   "package": "umpaz.brewinandchewin.common.mixin",
+  "plugin": "umpaz.brewinandchewin.common.BnCMixinConfigPlugin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "brewinandchewin.refmap.json",
   "mixins": [
-    "CancelSaturationMixin"
+    "CancelSaturationMixin",
+    "client.TipsyDontRenderNourishment"
   ],
   "client": [
     "client.TipsyDontRenderFoodMixin",
     "client.TipsyDrunkRendererMixin",
     "client.TipsyMouseHandlerMixin",
-    "client.TipsySignRendererMixin"
+    "client.TipsySignRendererMixin",
+    "client.integration.appleskin.HUDOverlayHandlerAccessor"
   ],
   "injectors": {
     "defaultRequire": 1

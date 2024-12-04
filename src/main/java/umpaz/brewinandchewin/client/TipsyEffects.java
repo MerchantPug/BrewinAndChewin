@@ -26,7 +26,7 @@ import java.util.Random;
 public class TipsyEffects {
     public static void init() {
         if (ModList.get().isLoaded("appleskin"))
-            MinecraftForge.EVENT_BUS.register(new TipsyAppleSkinCompat());
+            TipsyAppleSkinCompat.init();
     }
 
     @SubscribeEvent

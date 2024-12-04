@@ -16,13 +16,16 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.BnCConfiguration;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
+import vectorwing.farmersdelight.FarmersDelight;
+import vectorwing.farmersdelight.client.gui.NourishmentHungerOverlay;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.Random;
 
 public class IntoxicatedFoodOverlay {
    protected static int foodIconsOffset;
-   private static final ResourceLocation MOD_ICONS_TEXTURE = new ResourceLocation(BrewinAndChewin.MODID, "textures/gui/bnc_icons.png");
+   public static final ResourceLocation MOD_ICONS_TEXTURE = new ResourceLocation(BrewinAndChewin.MODID, "textures/gui/bnc_icons.png");
+    private static final ResourceLocation NOURISHMENT_ICONS_TEXTURE = new ResourceLocation("farmersdelight", "textures/gui/fd_icons.png");
 
    public static void init() {
       MinecraftForge.EVENT_BUS.register(new IntoxicatedFoodOverlay());
@@ -37,7 +40,7 @@ public class IntoxicatedFoodOverlay {
          Minecraft mc = Minecraft.getInstance();
          ForgeGui gui = (ForgeGui) mc.gui;
          if ( !mc.options.hideGui && gui.shouldDrawSurvivalElements() ) {
-            if (mc.player.getEffect(BnCEffects.INTOXICATED.get()) != null && !mc.player.hasEffect(ModEffects.NOURISHMENT.get())) {
+            if (mc.player.hasEffect(BnCEffects.INTOXICATED.get())) {
                renderIntoxicatedOverlay(gui, event.getGuiGraphics());
             }
          }
@@ -70,16 +73,26 @@ public class IntoxicatedFoodOverlay {
       RenderSystem.setShaderTexture(0, MOD_ICONS_TEXTURE);
       RenderSystem.enableBlend();
 
+      ResourceLocation texture = player.hasEffect(ModEffects.NOURISHMENT.get()) ? NOURISHMENT_ICONS_TEXTURE : MOD_ICONS_TEXTURE;
+
       for ( int i = 0; i < 10; ++i ) {
          int x = ( right - i * 8 - 9 ) + (int) ( Mth.cos(( ticks + i * 2 ) * 0.20F) * 2f );
          int y = ( top ) + (int) ( Mth.sin(( ticks + i * 2 ) * 0.25F) * 2f );
 
-         graphics.blit(MOD_ICONS_TEXTURE, x, y, 18, 0, 9, 9);
          float effectiveHungerOfBar = (float)player.getFoodData().getFoodLevel() / 2.0F - (float)i;
+          boolean isPlayerHealingWithSaturationAndNourishment =
+                  player.hasEffect(ModEffects.NOURISHMENT.get()) &&
+                  player.level().getGameRules().getBoolean(GameRules.RULE_NATURAL_REGENERATION)
+                          && player.isHurt()
+                          && player.getFoodData().getFoodLevel() >= 18;
+         int naturalHealingOffset = isPlayerHealingWithSaturationAndNourishment ? 18 : 0;
+
+         graphics.blit(texture, x, y, 0, 0, 9, 9);
+
          if (effectiveHungerOfBar >= 1.0F) {
-             graphics.blit(MOD_ICONS_TEXTURE, x, y, 0, 0, 9, 9);
+             graphics.blit(texture, x, y, 18 + naturalHealingOffset, 0, 9, 9);
          } else if ((double)effectiveHungerOfBar >= (double)0.5F) {
-             graphics.blit(MOD_ICONS_TEXTURE, x, y, 9, 0, 9, 9);
+             graphics.blit(texture, x, y, 9 + naturalHealingOffset, 0, 9, 9);
          }
       }
 
