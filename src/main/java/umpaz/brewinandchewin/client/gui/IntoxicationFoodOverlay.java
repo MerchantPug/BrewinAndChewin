@@ -16,19 +16,17 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import umpaz.brewinandchewin.BrewinAndChewin;
 import umpaz.brewinandchewin.common.BnCConfiguration;
 import umpaz.brewinandchewin.common.registry.BnCEffects;
-import vectorwing.farmersdelight.FarmersDelight;
-import vectorwing.farmersdelight.client.gui.NourishmentHungerOverlay;
 import vectorwing.farmersdelight.common.registry.ModEffects;
 
 import java.util.Random;
 
-public class IntoxicatedFoodOverlay {
+public class IntoxicationFoodOverlay {
    protected static int foodIconsOffset;
    public static final ResourceLocation MOD_ICONS_TEXTURE = new ResourceLocation(BrewinAndChewin.MODID, "textures/gui/bnc_icons.png");
     private static final ResourceLocation NOURISHMENT_ICONS_TEXTURE = new ResourceLocation("farmersdelight", "textures/gui/fd_icons.png");
 
    public static void init() {
-      MinecraftForge.EVENT_BUS.register(new IntoxicatedFoodOverlay());
+      MinecraftForge.EVENT_BUS.register(new IntoxicationFoodOverlay());
    }
 
 
@@ -40,7 +38,7 @@ public class IntoxicatedFoodOverlay {
          Minecraft mc = Minecraft.getInstance();
          ForgeGui gui = (ForgeGui) mc.gui;
          if ( !mc.options.hideGui && gui.shouldDrawSurvivalElements() ) {
-            if (mc.player.hasEffect(BnCEffects.INTOXICATED.get())) {
+            if (mc.player.hasEffect(BnCEffects.INTOXICATION.get())) {
                renderIntoxicatedOverlay(gui, event.getGuiGraphics());
             }
          }

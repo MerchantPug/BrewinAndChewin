@@ -20,7 +20,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 import umpaz.brewinandchewin.BrewinAndChewin;
-import umpaz.brewinandchewin.client.gui.IntoxicatedFoodOverlay;
+import umpaz.brewinandchewin.client.gui.IntoxicationFoodOverlay;
 import umpaz.brewinandchewin.client.gui.KegScreen;
 import umpaz.brewinandchewin.client.gui.KegTooltip;
 import umpaz.brewinandchewin.client.model.CoasterWrappedModel;
@@ -48,7 +48,7 @@ public class BnCClientSetup {
     public static void init(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> MenuScreens.register(BnCMenuTypes.KEG.get(), KegScreen::new));
 
-        IntoxicatedFoodOverlay.init();
+        IntoxicationFoodOverlay.init();
         TipsyEffects.init();
         BnCTextureModifiers.init();
     }

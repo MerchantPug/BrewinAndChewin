@@ -2,7 +2,6 @@ package umpaz.brewinandchewin.common.effects;
 
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.entity.living.MobEffectEvent;
@@ -16,12 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Mod.EventBusSubscriber(modid = BrewinAndChewin.MODID)
-public class IntoxicatedEffect extends MobEffect
+public class IntoxicationEffect extends MobEffect
 {
-    /**
-     * This effect is basically a slower, way less potent version of poison
-     */
-    public IntoxicatedEffect() {
+    public IntoxicationEffect() {
         super(MobEffectCategory.HARMFUL, 0);
     }
 
@@ -29,7 +25,7 @@ public class IntoxicatedEffect extends MobEffect
     public static void canBeAffected(MobEffectEvent.Applicable event) {
         if (event.getEntity().getMobType() == MobType.UNDEAD) {
             MobEffect mobeffect = event.getEffectInstance().getEffect();
-            if (mobeffect == BnCEffects.INTOXICATED.get()) {
+            if (mobeffect == BnCEffects.INTOXICATION.get()) {
                 event.setResult(Event.Result.DENY);
             }
         }

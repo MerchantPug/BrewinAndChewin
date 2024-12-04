@@ -13,7 +13,7 @@ import umpaz.brewinandchewin.common.registry.BnCEffects;
 public class TipsyDontRenderFoodMixin {
     @Inject(method = "renderFood", at = @At("HEAD"), cancellable = true, remap = false)
     private void brewinandchewin$dontRenderFood(int width, int height, GuiGraphics guiGraphics, CallbackInfo ci) {
-        if (Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATED.get()))
+        if (Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
             ci.cancel();
     }
 }

@@ -25,7 +25,7 @@ public class CancelSaturationMixin {
 
     @ModifyVariable(method = "eat(IF)V", at = @At("HEAD"), argsOnly = true, index = 2)
     private float disableSaturation(float value) {
-        if (brewinandchewin$entity != null && brewinandchewin$entity.hasEffect(BnCEffects.INTOXICATED.get())) {
+        if (brewinandchewin$entity != null && brewinandchewin$entity.hasEffect(BnCEffects.INTOXICATION.get())) {
             brewinandchewin$entity = null;
             return 0.0F;
         }

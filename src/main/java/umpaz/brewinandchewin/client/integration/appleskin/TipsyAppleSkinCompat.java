@@ -33,7 +33,7 @@ public class TipsyAppleSkinCompat {
     }
 
     public static void renderAppleSkinSaturation(HUDOverlayEvent.Saturation event) {
-        if (!Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATED.get()))
+        if (!Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
             return;
 
         if (event.saturationLevel < 0)
@@ -79,7 +79,7 @@ public class TipsyAppleSkinCompat {
     }
 
     public static void renderAppleSkinRestored(HUDOverlayEvent.HungerRestored event) {
-        if (!Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATED.get()))
+        if (!Minecraft.getInstance().player.hasEffect(BnCEffects.INTOXICATION.get()))
             return;
 
         if (event.foodValues.hunger < 0)

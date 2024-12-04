@@ -14,7 +14,7 @@ import vectorwing.farmersdelight.client.gui.NourishmentHungerOverlay;
 public class TipsyDontRenderNourishment {
     @Inject(method = "drawNourishmentOverlay", at = @At("HEAD"), cancellable = true, remap = false)
     private static void brewinandchewin$dontRenderNourishment(FoodData stats, Minecraft mc, GuiGraphics graphics, int left, int top, boolean naturalHealing, CallbackInfo ci) {
-        if (mc.player.hasEffect(BnCEffects.INTOXICATED.get()))
+        if (mc.player.hasEffect(BnCEffects.INTOXICATION.get()))
             ci.cancel();
     }
 }
