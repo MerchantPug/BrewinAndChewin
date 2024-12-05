@@ -15,9 +15,8 @@
 
 Using a keg, you can brew or ferment many new foods, including liquors, cheese, and fudge!
 
-🔨 Required Dependencies:
-
-- Farmer's Delight
+### Required Dependencies
+- [Farmer's Delight](https://github.com/vectorwing/FarmersDelight/)
 
 ### Discord
-__Chef's Delights [Discord](https://discord.gg/7PBaMYNtrg)__ for questions or whatever~
+- [Chef's Delights Discord](https://discord.gg/7PBaMYNtrg) for questions or whatever~
