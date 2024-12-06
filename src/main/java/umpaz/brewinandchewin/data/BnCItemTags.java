@@ -44,6 +44,7 @@ public class BnCItemTags extends ItemTagsProvider {
         tag(BnCTags.HORROR_MEATS).addTag(ForgeTags.RAW_BEEF).addTag(ForgeTags.RAW_MUTTON);
         tag(BnCTags.RAW_MEATS).addTag(ForgeTags.RAW_BACON).addTag(ForgeTags.RAW_BEEF).addTag(ForgeTags.RAW_CHICKEN)
                 .addTag(ForgeTags.RAW_MUTTON).addTag(ForgeTags.RAW_PORK).add(Items.ROTTEN_FLESH);
-
+        tag(BnCTags.TIPSY_REDUCER)
+                .addTag(ForgeTags.MILK);
     }
 }

@@ -6,12 +6,14 @@
   "refmap": "brewinandchewin.refmap.json",
   "mixins": [
     "CancelSaturationMixin",
-    "client.TipsyDontRenderNourishment"
+    "PreventIntoxicationRemovalMixin$HotCocoa",
+    "PreventIntoxicationRemovalMixin$MilkBottle"
   ],
   "client": [
     "client.GuiAccessor",
     "client.GuiMixin",
     "client.TipsyDontRenderFoodMixin",
+    "client.TipsyDontRenderNourishment",
     "client.TipsyDrunkRendererMixin",
     "client.TipsyMouseHandlerMixin",
     "client.TipsySignRendererMixin",
