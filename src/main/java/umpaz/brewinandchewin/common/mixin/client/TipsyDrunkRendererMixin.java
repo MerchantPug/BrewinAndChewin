@@ -20,7 +20,7 @@ public class TipsyDrunkRendererMixin {
     Minecraft minecraft;
 
     @ModifyVariable(method = "renderLevel", at = @At(value = "INVOKE", target = "Lorg/joml/Matrix3f;invert()Lorg/joml/Matrix3f;"), argsOnly = true)
-    private PoseStack renderTipsySpin(PoseStack pose) {
+    private PoseStack brewinandchewin$renderTipsySpin(PoseStack pose) {
         Player player = Minecraft.getInstance().player;
         if (player.hasEffect(BnCEffects.TIPSY.get())) {
             int ticks = minecraft.levelRenderer.getTicks();

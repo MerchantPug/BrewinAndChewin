@@ -21,7 +21,7 @@ public class TipsySignRendererMixin {
 
 
    @ModifyVariable(method = "renderSignText(Lnet/minecraft/core/BlockPos;Lnet/minecraft/world/level/block/entity/SignText;Lcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;IIIZ)V", at = @At(value = "HEAD"), ordinal = 0, argsOnly = true)
-   private SignText renderSignText(SignText signText) {
+   private SignText brewinandchewin$renderSignText(SignText signText) {
 
       if ( BnCConfiguration.SIGN_SCRAMBLE.get() )
          if ( Minecraft.getInstance().player != null )

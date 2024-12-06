@@ -19,12 +19,12 @@ public class CancelSaturationMixin {
     private LivingEntity brewinandchewin$entity;
 
     @Inject(method = "eat(Lnet/minecraft/world/item/Item;Lnet/minecraft/world/item/ItemStack;Lnet/minecraft/world/entity/LivingEntity;)V", at = @At("HEAD"), remap = false)
-    private void findPlayer(Item pItem, ItemStack pStack, LivingEntity entity, CallbackInfo ci) {
+    private void brewinandchewin$findPlayer(Item pItem, ItemStack pStack, LivingEntity entity, CallbackInfo ci) {
         this.brewinandchewin$entity = entity;
     }
 
     @ModifyVariable(method = "eat(IF)V", at = @At("HEAD"), argsOnly = true, index = 2)
-    private float disableSaturation(float value) {
+    private float brewinandchewin$disableSaturation(float value) {
         if (brewinandchewin$entity != null && brewinandchewin$entity.hasEffect(BnCEffects.INTOXICATION.get())) {
             brewinandchewin$entity = null;
             return 0.0F;

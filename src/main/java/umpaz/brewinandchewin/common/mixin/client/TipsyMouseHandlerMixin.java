@@ -14,7 +14,7 @@ import umpaz.brewinandchewin.common.registry.BnCEffects;
 public class TipsyMouseHandlerMixin {
 
    @ModifyExpressionValue(method = "turnPlayer()V", at = @At(value = "FIELD", target = "Lnet/minecraft/client/Options;smoothCamera:Z", opcode = Opcodes.GETFIELD))
-   private boolean enableSmoothCamera(boolean original) {
+   private boolean brewinandchewin$enableSmoothCamera(boolean original) {
       if (Minecraft.getInstance().player != null) {
          if (Minecraft.getInstance().player.hasEffect(BnCEffects.TIPSY.get())) {
             return true;
@@ -24,7 +24,7 @@ public class TipsyMouseHandlerMixin {
    }
 
    @ModifyArg(method = "turnPlayer()V", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/SmoothDouble;getNewDeltaValue(DD)D"), index = 1)
-   private double smoothCameraMovement(double original) {
+   private double brewinandchewin$smoothCameraMovement(double original) {
       if (Minecraft.getInstance().player != null) {
          if (Minecraft.getInstance().player.hasEffect(BnCEffects.TIPSY.get())) {
             return original * (5 - (Minecraft.getInstance().player.getEffect(BnCEffects.TIPSY.get()).getAmplifier() / 3.0D ));
