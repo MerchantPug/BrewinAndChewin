@@ -60,8 +60,8 @@ public class BnCFoods {
             .build();
     public static final FoodProperties STEEL_TOE_STOUT = (new FoodProperties.Builder())
             .effect(() -> new MobEffectInstance(BnCEffects.TIPSY.get(), 12000, 2), 1.0F)
-            .effect(() -> new MobEffectInstance(BnCEffects.INTOXICATION.get(), 3000, 0), 1.0F)
-            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 12000, 1), 1.0F)
+            .effect(() -> new MobEffectInstance(BnCEffects.INTOXICATION.get(), 6000, 0), 1.0F)
+            .effect(() -> new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 6000, 1), 1.0F)
             .alwaysEat()
             .build();
     public static final FoodProperties GLITTERING_GRENADINE = (new FoodProperties.Builder())
