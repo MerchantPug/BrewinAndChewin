@@ -1,5 +1,6 @@
 {
   "values": [
-    "brewinandchewin:corn_dough"
+    "#c:foods/dough/corn",
+    "#c:foods/dough/wheat"
   ]
 }
